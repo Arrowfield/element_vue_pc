@@ -12,8 +12,11 @@
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/index.css">
+  <!--插件的CSS样式-->
   <link rel="stylesheet" href="./css/index/style.css">
   <link rel="stylesheet" href="./css/index/style01.css">
+  <link rel="stylesheet" href="./css/index/style02.css">
+  <link rel="stylesheet" href="./css/index/style03.css">
   <link rel="stylesheet" href="./css/index/swiper.min.css">
   <!--js-->
   <script src="./js/jquery-3.2.1.js"></script>
@@ -52,6 +55,7 @@
     }
     .my-left a{
       color:white;
+      text-decoration: none;
     }
     .my-left a:hover {
       text-decoration: none;
@@ -102,6 +106,20 @@
       font-weight: normal;
       font-size:5rem;
     }
+    /*侧边栏的样式*/
+    .aside{
+      position: fixed;
+      top:0;
+      left:0;
+      z-index: 1000;
+    }
+    .icon-bar{
+      width:26px;
+      height:3px;
+    }
+    .nav{
+      /* display: none; */
+    }
   </style>
 </head>
 
@@ -133,6 +151,13 @@
           <div id="marker"></div>
         </ul>
       </nav>
+      <div class="nav">
+        <button class="btn-nav">
+          <span class="icon-bar top"></span>
+          <span class="icon-bar middle"></span>
+          <span class="icon-bar bottom"></span>
+        </button>
+      </div>
       <div class="menu cross menu--1">
         <label>
           <input type="checkbox">
@@ -179,10 +204,19 @@
     <div class="swiper-button-prev"></div>
   </div>
   <!--侧边的导航栏-->
-  <div>
-    
+  <div class="aside">
+    <div class="nav-content hideNav hidden">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#" class="item-anchor">首页</a></li>
+        <li class="nav-item"><a href="#" class="item-anchor">APP下载</a></li>
+        <li class="nav-item"><a href="#" class="item-anchor">关于快洽</a></li>
+        <li class="nav-item"><a href="#" class="item-anchor">快洽动态</a></li>
+        <li class="nav-item"><a href="#" class="item-anchor">联系我们</a></li>
+        <li class="nav-item"><a href="#" class="item-anchor">帮助中心</a></li>
+      </ul>
+    </div>
   </div>
- <!--
+  <!--
   <section class="main-box">
     <div class="my-bg1">
       <em>内容1</em>
@@ -207,6 +241,7 @@
   <script src="./js/index.js"></script> -->
   <script src="./js/index/swiper.min.js"></script>
   <script>
+    //轮播的事件
     var swiper = new Swiper('.swiper-container', {
       spaceBetween: 30,
       centeredSlides: true,
@@ -223,11 +258,11 @@
         prevEl: '.swiper-button-prev',
       },
     });
-    $(function () {
-      $(".menu").click(function () {
-
-      })
-    })
+    //侧边栏的事件
+    $('.btn-nav').on('click tap', function () {
+      $('.nav-content').toggleClass('showNav hideNav').removeClass('hidden');
+      $(this).toggleClass('animated');
+    });
   </script>
 </body>
 
