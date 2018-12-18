@@ -22,8 +22,8 @@
   <script src="./js/jquery-3.2.1.js"></script>
   <script src="./js/popper.js"></script>
   <script src="./js/bootstrap.js"></script>
-  <!-- <script src="./js/jquery.mousewheel.js"></script> -->
   <!--插件的JS-->
+  <script src="./js/jquery.mousewheel.js"></script>
   <!-- <script src="./js/index/style.js"></script> -->
   <style>
     /*头部样式*/
@@ -121,12 +121,23 @@
     .nav{
       display: none;
     }
+    /*为每一个页面设置宽高*/
+    .first{
+      width:100%;
+      height:100%;
+    }
+    .second{
+      background: url("./img/bg01.png") no-repeat center center;
+      background-size: cover;
+    }
   </style>
 </head>
 
 <body>
-  <!--头部-->
-  <div class="container">
+  <div class="main-box">
+    <div class="first">
+      <!--头部-->
+      <div class="container">
     <div class="my-left">
       <a href="#">
         <span class="my-title">kuaiqia</span>
@@ -164,9 +175,9 @@
         </label>
       </div>
     </div>
-  </div>
-  <!--轮播-->
-  <div class="swiper-container">
+      </div>
+      <!--轮播-->
+      <div class="swiper-container">
     <!-- Add Swiper-->
     <div class="swiper-wrapper">
       <div class="swiper-slide">
@@ -196,9 +207,9 @@
     <!-- Add Arrows -->
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-  </div>
-  <!--侧边的导航栏-->
-  <div class="aside">
+      </div>
+      <!--侧边的导航栏-->
+      <div class="aside">
     <div class="nav">
       <button class="btn-nav">
         <span class="icon-bar top"></span>
@@ -216,7 +227,12 @@
         <li class="nav-item"><a href="#" class="item-anchor">帮助中心</a></li>
       </ul>
     </div>
+      </div>
+    </div>
+    <div class="second">
+    </div>
   </div>
+  
   <!--
   <section class="main-box">
     <div class="my-bg1">
@@ -237,11 +253,16 @@
     <div class="my-bg6">
       <em>内容6</em>
     </div>
-  </section>
-  <footer></footer>
-  <script src="./js/index.js"></script> -->
+  </section>-->
+  <!--页面切换时的特效-->
+  <script src="./js/index.js"></script>
   <script src="./js/index/swiper.min.js"></script>
   <script>
+    $(function(){
+      //刷新时执行的事件
+      var width = $(".container").width()
+      $(".container").css({"margin-left":-width/2});
+    })
     //（1）轮播的事件
     var swiper = new Swiper('.swiper-container', {
       spaceBetween: 30,
@@ -264,7 +285,7 @@
       $('.nav-content').toggleClass('showNav hideNav').removeClass('hidden');
       $(this).toggleClass('animated');
     });
-    //（3）
+    //（3）加载更新事件LOADING
     //（4）通过JS控制container的margin-left
     $(window).resize(function(){
       var width = $(".container").width()

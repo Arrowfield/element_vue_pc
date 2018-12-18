@@ -16,10 +16,6 @@ html, body {
   background: url("../img/index/bg1.jpg") no-repeat;
 }
 
-.my-bg2 {
-  background: red url("../img/index/bg2.jpg") no-repeat;
-}
-
 .my-bg3 {
   background: red url("../img/index/bg3.jpg") no-repeat;
 }
