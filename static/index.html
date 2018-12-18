@@ -1,24 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>快洽-首页</title>
-  <link rel="icon" href="./img/picture.ico" type="image/x-icon"/> 
+  <!--icon-->
+  <link rel="icon" href="./img/picture.ico" type="image/x-icon" />
+  <!--css-->
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/index/style.css">
+  <link rel="stylesheet" href="./css/index/style01.css">
+  <link rel="stylesheet" href="./css/index/swiper.min.css">
+  <!--js-->
+  <script src="./js/jquery-3.2.1.js"></script>
+  <script src="./js/popper.js"></script>
+  <script src="./js/bootstrap.js"></script>
+  <!-- <script src="./js/jquery.mousewheel.js"></script> -->
+  <!--插件的JS-->
+
+  <!-- <script src="./js/index/style.js"></script> -->
   <style>
-    .container{
-      height:500px;
-      border:1px solid gray;
+    /*头部样式*/
+    .container {
+      position: fixed;
+      top:0;
+      left:50%;
+      z-index:2;      
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left:-655px;
+    }
+    .container::before{
+      content: "";
+      display: none;
+    }
+    .container::after{
+      content: "";
+      display: none;
+    }
+    .my-title {
+      font-family: logo;
+      font-size: 5rem;
+    }
+    .active{
+      color:#00ffff !important;
+    }
+    .my-left a{
+      color:white;
+    }
+    .my-left a:hover {
+      text-decoration: none;
+      color:white;
+    }
+    .my-right nav{
+      float: left;
+    }
+    .my-right div{
+      float: right;
+    }
+    /*轮播图样式*/
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: transparent;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+     -webkit-box-pack: center;
+     -ms-flex-pack: center;
+     -webkit-justify-content: center;
+      justify-content: center;
+     -webkit-box-align: center;
+     -ms-flex-align: center;
+     -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-button-next,.swiper-button-prev{
+      color:white !important;
+    }
+    .notice{
+      border-top:0.1rem solid white;
+      border-bottom: 0.1rem solid white;
+      padding:5rem 0;
+    }
+    .notice p:nth-child(1){
+      /* font-weight: 200; */
+      font-size:7rem;
+      font-weight: bold;
+    }
+    .notice p:nth-child(2){
+      font-weight: normal;
+      font-size:5rem;
     }
   </style>
 </head>
-<body>
-  <header></header>
-  <div class="container">
 
+<body>
+  <!--头部-->
+  <div class="container">
+    <div class="my-left">
+      <a href="#">
+        <span class="my-title">kuaiqia</span>
+      </a>
+    </div>
+    <div class="my-right">
+      <nav>
+        <ul id="main">
+          <li class="active">首页</li>
+          <li>APP下载</li>
+          <li>关于快洽
+            <!-- <ul class="drop">
+              <div>
+                <li>scss</li>
+                <li>jquery</li>
+                <li>html</li>
+              </div>
+            </ul> -->
+          </li>
+          <li>快洽动态</li>
+          <li>联系我们</li>
+          <li>帮助中心</li>
+          <div id="marker"></div>
+        </ul>
+      </nav>
+      <div class="menu cross menu--1">
+        <label>
+          <input type="checkbox">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="30" />
+            <path class="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
+            <path class="line--2" d="M0 50h70" />
+            <path class="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
+          </svg>
+        </label>
+      </div>
+    </div>
   </div>
+  <!--轮播-->
+  <div class="swiper-container">
+    <!-- Add Swiper-->
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="notice">
+          <p>眼见不一定为实</p>
+          <p>SEEING IS NOT ALWAYS TRUE.</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="notice">
+          <p>打造虚拟世界</p>
+          <p>CREATE ILLUSORY WORLD.</p>
+        </div>
+      </div>
+      <!-- <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide">Slide 6</div>
+      <div class="swiper-slide">Slide 7</div>
+      <div class="swiper-slide">Slide 8</div>
+      <div class="swiper-slide">Slide 9</div>
+      <div class="swiper-slide">Slide 10</div> -->
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <!--侧边的导航栏-->
+  <div>
+    
+  </div>
+ <!--
+  <section class="main-box">
+    <div class="my-bg1">
+      <em>内容1</em>
+    </div>
+    <div class="my-bg2">
+      <em>内容2</em>
+    </div>
+    <div class="my-bg3">
+      <em>内容3</em>
+    </div>
+    <div class="my-bg4">
+      <em>内容4</em>
+    </div>
+    <div class="my-bg5">
+      <em>内容5</em>
+    </div>
+    <div class="my-bg6">
+      <em>内容6</em>
+    </div>
+  </section>
+  <footer></footer>
+  <script src="./js/index.js"></script> -->
+  <script src="./js/index/swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+    $(function () {
+      $(".menu").click(function () {
+
+      })
+    })
+  </script>
 </body>
+
 </html>
