@@ -24,7 +24,6 @@
   <script src="./js/bootstrap.js"></script>
   <!-- <script src="./js/jquery.mousewheel.js"></script> -->
   <!--插件的JS-->
-
   <!-- <script src="./js/index/style.js"></script> -->
   <style>
     /*头部样式*/
@@ -101,7 +100,6 @@
       padding:5rem 0;
     }
     .notice p:nth-child(1){
-      /* font-weight: 200; */
       font-size:7rem;
       font-weight: bold;
     }
@@ -244,7 +242,7 @@
   <script src="./js/index.js"></script> -->
   <script src="./js/index/swiper.min.js"></script>
   <script>
-    //轮播的事件
+    //（1）轮播的事件
     var swiper = new Swiper('.swiper-container', {
       spaceBetween: 30,
       centeredSlides: true,
@@ -261,11 +259,12 @@
         prevEl: '.swiper-button-prev',
       },
     });
-    //侧边栏的事件
+    //（2）侧边栏的事件
     $('.btn-nav').on('click tap', function () {
       $('.nav-content').toggleClass('showNav hideNav').removeClass('hidden');
       $(this).toggleClass('animated');
     });
+    //（3）
   </script>
 </body>
 
