@@ -53,6 +53,9 @@
     .active{
       color:#00ffff !important;
     }
+    a:hover{
+      text-decoration: none !important;
+    }
     .my-left a{
       color:white;
       text-decoration: none;
@@ -118,7 +121,7 @@
       height:3px;
     }
     .nav{
-      /* display: none; */
+      display: none;
     }
   </style>
 </head>
@@ -151,13 +154,6 @@
           <div id="marker"></div>
         </ul>
       </nav>
-      <div class="nav">
-        <button class="btn-nav">
-          <span class="icon-bar top"></span>
-          <span class="icon-bar middle"></span>
-          <span class="icon-bar bottom"></span>
-        </button>
-      </div>
       <div class="menu cross menu--1">
         <label>
           <input type="checkbox">
@@ -205,6 +201,13 @@
   </div>
   <!--侧边的导航栏-->
   <div class="aside">
+    <div class="nav">
+      <button class="btn-nav">
+        <span class="icon-bar top"></span>
+        <span class="icon-bar middle"></span>
+        <span class="icon-bar bottom"></span>
+      </button>
+    </div>
     <div class="nav-content hideNav hidden">
       <ul class="nav-list">
         <li class="nav-item"><a href="#" class="item-anchor">首页</a></li>
