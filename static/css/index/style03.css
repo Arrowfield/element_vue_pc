@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 body,
 html {
-  background-color: #14213D;
   height: 100%;
   width: 100%;
   padding: 0;
@@ -17,12 +16,11 @@ html {
 }
 
 .btn-nav {
-  position: fixed;
-  top: 50px;
-  left: 30px;
+  position: absolute;
+  top:50%;
   background: transparent;
   border: none;
-  padding: 10px;
+  right:0;
   -webkit-transition: all .5s ease;
   -moz-transition: all .5s ease;
   -ms-transition: all .5s ease;
@@ -30,6 +28,7 @@ html {
   transition: all .5s ease;
   cursor: pointer;
   z-index: 99999;
+  margin-top:-17.5px;
 }
 
 .btn-nav:focus {

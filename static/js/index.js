@@ -9,7 +9,7 @@ $(document).ready(function(){
   changeSize();
   $(window).on('resize', function(event) {
 		event.preventDefault();
-		changeSize();
+    changeSize();
 	});
   $(document).mousewheel(function(event,delta){
     if(canscroll){

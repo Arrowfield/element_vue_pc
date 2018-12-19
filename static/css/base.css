@@ -167,12 +167,21 @@ input[type="number"]+div > .count_subtract{
     min-width:1310px;
   }
 }
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1200px){
+  .my-right nav{
+    display: none;
+  }
+}
+@media screen and (max-width: 992px){
+  .my-right nav{
+    display: none;
+  }
+}
+@media screen and (max-width: 768px){
   .my-right nav{
     display: none;
   }
   .container{
-    margin-left:-485px;
-    min-width:1310px;
+    width:500px;
   }
 }
