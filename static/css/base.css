@@ -181,6 +181,25 @@ input[type="number"]+div > .count_subtract{
     display: none;
   }
   .container{
-    width:500px;
+    width:300px;
+  }
+  .notice p:nth-child(1){
+    font-size:3rem !important;
+    font-weight: bold;
+  }
+  .notice p:nth-child(2){
+    font-weight: normal;
+    font-size:2rem !important;
+  }
+  .second-body p:nth-child(1){
+    font-size:2rem !important;
+  }
+  .contact {
+    width:75% !important;
+  }
+  .contact li{
+    width:3rem !important;
+    height:3rem !important;
+    line-height: 3rem !important;
   }
 }

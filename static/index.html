@@ -167,11 +167,10 @@
     /*二维码样式*/
     .my-img{
       position: absolute;
-      top:75%;
-      left: 80%;
+      top:70%;
       color:gray;
       text-align: center;
-      right:0;
+      right:1rem;
     }
     .my-img img{
       width:12rem;
@@ -193,8 +192,11 @@
       font-size:7rem;
     }
     .contact {
-      margin:0 auto;
+      margin:2rem auto 0;
       overflow: hidden;
+      width:20%;
+      display: flex;
+      justify-content: space-between;
     }
     .contact li{
       width:5rem;
@@ -204,6 +206,11 @@
       line-height: 5rem;
       float: left;
       border-radius: 50%;
+      transition: all .5s linear;
+    }
+    .contact li:hover{
+      background-color: rgb(10, 10, 10,.8);
+      cursor: pointer;
     }
   </style>
 </head>
@@ -235,7 +242,7 @@
   <!--头部-->
   <div>
     <div class="main-box">
-      <div class="first">
+      <div id="home" class="first">
         <!--头部-->
         <div class="container">
           <div class="my-left">
@@ -247,18 +254,22 @@
             <!--导航-->
             <nav>
               <ul id="main">
-                <li class="active">首页</li>
+                <li class="active">
+                  <a href="#home">首页</a>
+                </li>
                 <li>APP下载</li>
                 <li>关于快洽
                   <ul class="drop">
                     <div>
-                      <li>scss</li>
-                      <li>jquery</li>
-                      <li>html</li>
+                      <li>ABOUT</li>
+                      <li>QUESTION</li>
+                      <li>ANSWER</li>
                     </div>
                   </ul>
                 </li>
-                <li>快洽动态</li>
+                <li>
+                  <a href="./dynamic.html" target="_blank">快洽动态</a>
+                </li>
                 <li>联系我们</li>
                 <li><a href="#help">帮助中心</a></li>
                 <div id="marker"></div>
@@ -371,7 +382,7 @@
     <script>
       $(function () {
         //刷新时执行的事件
-        var width = $(".container").width()
+        var width = $(".container").innerWidth()
         $(".container").css({
           "margin-left": -width / 2
         });
@@ -408,7 +419,7 @@
       }
       //（4）通过JS控制container的margin-left
       $(window).resize(function () {
-        var width = $(".container").width()
+        var width = $(".container").innerWidth()
         $(".container").css({
           "margin-left": -width / 2
         });
