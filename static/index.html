@@ -14,10 +14,11 @@
   <link rel="stylesheet" href="./css/index.css">
   <!--插件的CSS样式-->
   <link rel="stylesheet" href="./css/index/style.css">
-  <link rel="stylesheet" href="./css/index/style01.css">
-  <link rel="stylesheet" href="./css/index/style02.css">
-  <link rel="stylesheet" href="./css/index/style03.css">
-  <link rel="stylesheet" href="./css/index/swiper.min.css">
+  <link rel="stylesheet" href="./css/index/style01.css"><!--按钮-->
+  <link rel="stylesheet" href="./css/index/style02.css"><!--水平导航-->
+  <link rel="stylesheet" href="./css/index/style03.css"><!--导航按钮-->
+  <link rel="stylesheet" href="./css/index/swiper.min.css"><!--轮播-->
+  <link rel="stylesheet" href="./css/index/style04.css"><!--loading-->
   <!--js-->
   <script src="./js/jquery-3.2.1.js"></script>
   <script src="./js/popper.js"></script>
@@ -121,10 +122,44 @@
     .nav{
       display: none;
     }
+    /*LOADING的样式*/
+    .loading{
+      position: fixed;
+      top:0;
+      left:0;
+      z-index: 5;
+      width:100%;
+      height:100%;
+      background: black;
+
+    }
   </style>
 </head>
 
 <body>
+  <!--LOADING-->
+  <div class="loading">
+    <div class="spinner">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  </div>
   <!--头部-->
   <div class="container">
     <div class="my-left">
@@ -133,6 +168,7 @@
       </a>
     </div>
     <div class="my-right">
+      <!--导航-->
       <nav>
         <ul id="main">
           <li class="active">首页</li>
@@ -152,6 +188,7 @@
           <div id="marker"></div>
         </ul>
       </nav>
+      <!--按钮-->
       <div class="menu cross menu--1">
         <label>
           <input type="checkbox">
@@ -264,7 +301,12 @@
       $('.nav-content').toggleClass('showNav hideNav').removeClass('hidden');
       $(this).toggleClass('animated');
     });
-    //（3）
+    //（3）页面入场效果
+    window.onload = function(){
+      $(".loading").animate({"opacity":0},"slow",function(){
+        $(".loading").hide();
+      })
+    }
   </script>
 </body>
 
