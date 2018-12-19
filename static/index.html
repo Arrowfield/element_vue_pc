@@ -162,6 +162,19 @@
       z-index: -100; 
      -webkit-filter: grayscale(20%);
     }
+    /*二维码样式*/
+    .my-img{
+      position: absolute;
+      top:75%;
+      left: 80%;
+      color:gray;
+      text-align: center;
+      right:0;
+    }
+    .my-img img{
+      width:12rem;
+      margin-bottom:10px;
+    }
   </style>
 </head>
 
@@ -203,23 +216,23 @@
           <div class="my-right">
             <!--导航-->
             <nav>
-              <ul-- id="main">
+              <ul id="main">
                 <li class="active">首页</li>
                 <li>APP下载</li>
                 <li>关于快洽
-                  <!--ul class="drop">
+                  <ul class="drop">
                     <div>
                       <li>scss</li>
                       <li>jquery</li>
                       <li>html</li>
                     </div>
-                  </ul-->
+                  </ul>
                 </li>
                 <li>快洽动态</li>
                 <li>联系我们</li>
                 <li>帮助中心</li>
                 <div id="marker"></div>
-                </ul>
+              </ul>
             </nav>
             <!--按钮1-->
             <!--
@@ -300,6 +313,11 @@
             <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
             <p>您的浏览器不支持video标签请访问<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
           </video>
+        </div>
+        <!--二维码-->
+        <div class="my-img">
+          <img src="./img/index/erweima.jpg">
+          <p>扫描二维码下载客户端</p>
         </div>
       </div>
       <div class="second">

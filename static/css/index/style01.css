@@ -36,7 +36,7 @@ li {
   padding: 0;
   width: 100%;
   left: 0;
-  top: 48px;
+  top: 55px;
 }
 .drop div {
   -webkit-transform: translate(0, -100%);
@@ -53,7 +53,7 @@ li {
   display: block;
   padding: 0;
   width: 100%;
-  background: #3E8760 !important;
+  background: transparent !important;
 }
 
 #marker {
