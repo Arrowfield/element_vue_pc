@@ -3,9 +3,6 @@ body,
 html {
   height: 100%;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  font-family: 'Lato', sans-serif;
 }
 
 .nav {
@@ -49,7 +46,7 @@ html {
   -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
   transition: all 1s ease;
-  background-color: #FCA311;
+  background-color: #00ffff;
 }
 
 .nav-content {
@@ -61,7 +58,7 @@ html {
   background: #000000;
   display: block;
   height: 100%;
-  z-index: 9;
+  z-index: 1;
 }
 
 .nav-list {
@@ -98,7 +95,7 @@ html {
 
 .item-anchor:hover,
 .item-anchor:focus {
-  color: #FCA311;
+  color: #00ffff;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -ms-transition: all 1s ease;
@@ -109,7 +106,7 @@ html {
 .item-anchor:hover:after,
 .item-anchor:focus:after{
   width: 100%;
-  background: #FCA311;
+  background: #00ffff;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -ms-transition: all 1s ease;
@@ -124,12 +121,12 @@ html {
 
 .animated {
   display: block;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .animated:hover .icon-bar,
 .animated:focus .icon-bar{
-  background-color: #FCA311;
+  /* background-color: #00ffff; */
 }
 
 .animated:focus {
@@ -152,7 +149,7 @@ html {
 
 .animated .icon-bar {
   z-index: 999999;
-  background-color: #FCA311;
+  background-color: #00ffff;
 }
 
 .animated .top {
