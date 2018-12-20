@@ -23,14 +23,15 @@
   <link rel="stylesheet" href="./css/index/swiper.min.css">
   <!--轮播-->
   <link rel="stylesheet" href="./css/index/style04.css">
-  <!--loading-->
   <!--js-->
   <script src="./js/jquery-3.2.1.js"></script>
   <script src="./js/popper.js"></script>
   <script src="./js/bootstrap.js"></script>
-  <!--插件的JS-->
+  <!--页面滚动平滑过渡JS-->
+  <link rel="stylesheet" type="text/css" href="./plugins/scrollbyjq/css/public.css" />
+  <link rel="stylesheet" type="text/css" href="./plugins/scrollbyjq/css/zsstyle.css" />
   <script src="./js/jquery.mousewheel.js"></script>
-  <!-- <script src="./js/index/style.js"></script> -->
+  <script src="./plugins/scrollbyjq/js/sectionscroll.js"></script>
   <style>
     /*头部样式*/
     .container {
@@ -129,9 +130,6 @@
       width:26px;
       height:3px;
     }
-    .nav{
-      /* display: none; */
-    }
     /*LOADING的样式*/
     .loading{
       position: fixed;
@@ -151,10 +149,12 @@
     .second{
       background: url("./img/bg01.png") no-repeat center center;
       background-size: cover;
+      height:100%
     }
     .thrid{
       background: url("./img/bg01.png") no-repeat center center;
       background-size: cover;
+      height:100%;
     }
     /*为视频背景设置样式*/
     .my-video video{
@@ -166,7 +166,6 @@
       width: auto;
       height: auto;
       z-index: -100; 
-     -webkit-filter: grayscale(20%);
     }
     /*二维码样式*/
     .my-img{
@@ -216,6 +215,18 @@
       background-color: rgb(10, 10, 10,.8);
       cursor: pointer;
     }
+    
+    /*版权样式*/
+    .copyright{
+      position: absolute;
+      bottom:1rem;
+      left:0;
+      right:0;
+    }
+    .copyright p{
+      font-size:1.1rem;
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -243,196 +254,217 @@
       </div>
     </div>
   </div>
-  <!--头部-->
-  <div>
-    <div class="main-box">
-      <div id="home" class="first">
-        <!--头部-->
-        <div class="container">
-          <div class="my-left">
-            <a href="#">
-              <span class="my-title">kuaiqia</span>
-            </a>
-          </div>
-          <div class="my-right">
-            <!--导航-->
-            <nav>
-              <ul id="main">
-                <li class="active">
-                  <a href="#home">首页</a>
-                </li>
-                <li>APP下载</li>
-                <li>
+  <section class="section ">
+    <div id="home" class="first">
+      <!--头部-->
+      <div class="container">
+        <div class="my-left">
+          <a href="#">
+            <span class="my-title">kuaiqia</span>
+          </a>
+        </div>
+        <div class="my-right">
+          <!--导航-->
+          <nav>
+            <ul id="main">
+              <li class="active">
+                <a href="#home">首页</a>
+              </li>
+              <li>
+                <a href="#app">APP下载</a>
+              </li>
+              <li>
                 <a href="#about">关于快洽</a>
-                  <ul class="drop">
-                    <div>
-                      <li>ABOUT</li>
-                      <li>QUESTION</li>
-                      <li>ANSWER</li>
-                    </div>
-                  </ul>
-                </li>
-                <li>
-                  <a href="./dynamic.html" target="_blank">快洽动态</a>
-                </li>
-                <li>联系我们</li>
-                <li><a href="#help">帮助中心</a></li>
-                <div id="marker"></div>
-              </ul>
-            </nav>
-            <!--按钮1-->
-            <!--
-            <div class="menu cross menu--1">
-              <label>
-                <input type="checkbox">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="50" cy="50" r="30" />
-                  <path class="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
-                  <path class="line--2" d="M0 50h70" />
-                  <path class="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
-                </svg>
-              </label>
-            </div>
-            -->
-            <!--按钮2-->
-            <button class="btn-nav">
-              <span class="icon-bar top"></span>
-              <span class="icon-bar middle"></span>
-              <span class="icon-bar bottom"></span>
-            </button>
-          </div>
-        </div>
-        <!--轮播-->
-        <div class="swiper-container">
-          <!-- Add Swiper-->
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="notice">
-                <p>眼见不一定为实</p>
-                <p>SEEING IS NOT ALWAYS TRUE.</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="notice">
-                <p>打造虚拟世界</p>
-                <p>CREATE ILLUSORY WORLD.</p>
-              </div>
-            </div>
-            <!-- 
-              <div class="swiper-slide">Slide 2</div>
-              <div class="swiper-slide">Slide 3</div>
-              <div class="swiper-slide">Slide 4</div>
-              <div class="swiper-slide">Slide 5</div>
-              <div class="swiper-slide">Slide 6</div>
-              <div class="swiper-slide">Slide 7</div>
-              <div class="swiper-slide">Slide 8</div>
-              <div class="swiper-slide">Slide 9</div>
-              <div class="swiper-slide">Slide 10</div> 
-            -->
-          </div>
-          <!-- Add Pagination -->
-          <div class="swiper-pagination"></div>
-          <!-- Add Arrows -->
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-        </div>
-        <!--侧边的导航栏-->
-        <div class="aside">
-          <div class="nav">
-          </div>
-          <div class="nav-content hideNav hidden">
-            <ul class="nav-list">
-              <li class="nav-item"><a href="#" class="item-anchor">首页</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">APP下载</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">关于快洽</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">快洽动态</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">联系我们</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">帮助中心</a></li>
+                <ul class="drop">
+                  <div>
+                    <li>ABOUT</li>
+                    <li>QUESTION</li>
+                    <li>ANSWER</li>
+                  </div>
+                </ul>
+              </li>
+              <li>
+                <a href="./dynamic.html" target="_blank">快洽动态</a>
+              </li>
+              <li>联系我们</li>
+              <li><a href="#help">帮助中心</a></li>
+              <div id="marker"></div>
             </ul>
-          </div>
-        </div>
-        <!--视频背景-->
-        <div class="my-video">
-          <video preload="auto" poster="" loop="loop" muted="true" autoplay="autoplay">
-            <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-            <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
-            <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
-            <p>您的浏览器不支持video标签请访问<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-          </video>
-        </div>
-        <!--二维码-->
-        <div class="my-img">
-          <img src="./img/index/erweima.jpg">
-          <p>扫描二维码下载客户端</p>
+          </nav>
+          <!--按钮1-->
+          <!--
+              <div class="menu cross menu--1">
+                <label>
+                  <input type="checkbox">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="30" />
+                    <path class="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
+                    <path class="line--2" d="M0 50h70" />
+                    <path class="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
+                  </svg>
+                </label>
+              </div>
+              -->
+          <!--按钮2-->
+          <button class="btn-nav">
+            <span class="icon-bar top"></span>
+            <span class="icon-bar middle"></span>
+            <span class="icon-bar bottom"></span>
+          </button>
         </div>
       </div>
-      <div id="about" class="thrid">
-
-      </div>
-      <div id="help" class="second">
-        <div class="second-body">
-            <p>一切来自未来，一切为了未来</p>
-            <p>联系电话：18888888888</p>
-            <p>邮箱：email@email.mt</p>
-            <p>地址：广东省深圳市龙华区六工业区8号傻鸟哥</p>
-            <ul class="contact">
-              <li>微信</li>
-              <li>QQ</li>
-              <li>微博</li>
-              <li>邮箱</li>
-            </ul>
+      <!--轮播-->
+      <div class="swiper-container">
+        <!-- Add Swiper-->
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="notice">
+              <p>眼见不一定为实</p>
+              <p>SEEING IS NOT ALWAYS TRUE.</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="notice">
+              <p>打造虚拟世界</p>
+              <p>CREATE ILLUSORY WORLD.</p>
+            </div>
+          </div>
+          <!-- 
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+                <div class="swiper-slide">Slide 7</div>
+                <div class="swiper-slide">Slide 8</div>
+                <div class="swiper-slide">Slide 9</div>
+                <div class="swiper-slide">Slide 10</div> 
+              -->
         </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      <!--侧边的导航栏-->
+      <div class="aside">
+        <div class="nav">
+        </div>
+        <div class="nav-content hideNav hidden">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="item-anchor">首页</a></li>
+            <li class="nav-item"><a href="#" class="item-anchor">APP下载</a></li>
+            <li class="nav-item"><a href="#" class="item-anchor">关于快洽</a></li>
+            <li class="nav-item"><a href="#" class="item-anchor">快洽动态</a></li>
+            <li class="nav-item"><a href="#" class="item-anchor">联系我们</a></li>
+            <li class="nav-item"><a href="#" class="item-anchor">帮助中心</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--视频背景-->
+      <div class="my-video">
+        <video preload="auto" poster="" loop="loop" muted="true" autoplay="autoplay">
+          <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+          <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+          <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+          <p>您的浏览器不支持video标签请访问<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+      </div>
+      <!--二维码-->
+      <div class="my-img">
+        <img src="./img/index/erweima.jpg">
+        <p>扫描二维码下载客户端</p>
       </div>
     </div>
-    <!--页面切换时的特效-->
-    <script src="./js/index.js"></script>
-    <script src="./js/index/swiper.min.js"></script>
-    <script>
-      $(function () {
-        //刷新时执行的事件
-        var width = $(".container").innerWidth()
-        $(".container").css({
-          "margin-left": -width / 2
-        });
-      })
-      //（1）轮播的事件
-      var swiper = new Swiper('.swiper-container', {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-          delay: 3500,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
+  </section>
+  <section class="section">
+    <div id="app" class="thrid">
+      <!--使用插件-->
+      <!-- <iframe src="./plugins/appdownload/index.html" frameborder="0" width="100%" height="100%"></iframe> -->
+    </div>
+  </section>
+  <section class="section">
+    <div id="help" class="second">
+      <div class="second-body">
+        <p>一切来自未来，一切为了未来</p>
+        <p>联系电话：18888888888</p>
+        <p>邮箱：email@email.mt</p>
+        <p>地址：广东省深圳市龙华区六工业区8号傻鸟哥</p>
+        <ul class="contact">
+          <li>微信</li>
+          <li>QQ</li>
+          <li>微博</li>
+          <li>邮箱</li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <p>我的网站 版权所有 2008-2018 湘ICP备66666666 本站内容、
+          图片、视频为网站模板演示数据，如有涉及侵犯版权，请联系我们提供书面反馈，我们核实后会立即删除。</p>
+        <p>Powered by MetInfo 6.1.3 ©2008-2018 MetInfo Inc.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    4
+  </section>
+  <section class="section">
+    5
+  </section>
+  <section class="section">
+    6
+  </section>
+  <!--页面切换时的特效-->
+  <script src="./js/index/swiper.min.js"></script>
+  <script>
+    $(function () {
+      //刷新时执行的事件
+      var width = $(".container").innerWidth()
+      $(".container").css({
+        "margin-left": -width / 2
       });
-      //（2）侧边栏的事件
-      $('.btn-nav').on('click tap', function () {
-        $('.nav-content').toggleClass('showNav hideNav').removeClass('hidden');
-        $(this).toggleClass('animated');
-      });
-      //（3）页面入场效果
-      window.onload = function () {
+    })
+    //（1）轮播的事件
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+    //（2）侧边栏的事件
+    $('.btn-nav').on('click tap', function () {
+      $('.nav-content').toggleClass('showNav hideNav').removeClass('hidden');
+      $(this).toggleClass('animated');
+    });
+    //（3）页面入场效果
+    window.onload = function () {
+      setTimeout(function () {
         $(".loading").animate({
           "opacity": 0
         }, "slow", function () {
           $(".loading").hide();
         })
-      }
-      //（4）通过JS控制container的margin-left
-      $(window).resize(function () {
-        var width = $(".container").innerWidth()
-        $(".container").css({
-          "margin-left": -width / 2
-        });
-      })
-    </script>
+      }, 1500)
+    }
+    //（4）通过JS控制container的margin-left
+    $(window).resize(function () {
+      var width = $(".container").innerWidth()
+      $(".container").css({
+        "margin-left": -width / 2
+      });
+    })
+    //（5）页面切换平滑过渡的JS代码
+  </script>
 </body>
 
 </html>

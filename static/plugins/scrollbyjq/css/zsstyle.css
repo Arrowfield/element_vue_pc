@@ -1,0 +1,17 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+.section .mt20 {
+	margin: 0;
+}
+
+.foot {
+	z-index: 101;
+}
+section, article {
+	width: 100%;
+	min-width: 1000px;
+	height: 100%;
+	position: relative;
+}
