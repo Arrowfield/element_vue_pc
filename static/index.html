@@ -29,6 +29,7 @@
   <script src="./js/bootstrap.js"></script>
   <!--页面滚动平滑过渡JS-->
   <script src="./js/jquery.mousewheel.js"></script>
+  <!--软件下载页面的-->
   <style>
     /*头部样式*/
     .container {
@@ -63,6 +64,14 @@
     a:hover{
       text-decoration: none !important;
       color:#00ffff;
+    }
+    a:focus{
+      text-decoration: none;
+    }
+    a:visited{
+      color:white;
+      text-decoration: none;
+      border:none;
     }
     .my-left a{
       color:white;
@@ -222,6 +231,54 @@
       font-size:1.1rem;
       text-align: center;
     }
+    .thrid{
+      position: relative;
+    }
+    .downapp{
+      position: absolute;
+      top:22%;
+      left:0;
+      right:0;
+      /* border:1px solid gray; */
+    }
+    .row{
+      margin:0 auto;
+      width:60%;
+    }
+    .row h3{
+      font-size:4rem;
+    }
+    .row ul{
+      list-style: circle;
+      padding:4rem;
+      padding-bottom:2rem;
+    }
+    .row ul li{
+      font-size:2rem;
+      margin-bottom:2rem;
+    }
+    .row button{
+      padding:1.2rem 3rem;
+      border-radius: 0.3rem;
+      background-color: #317B5E;
+      border:0;
+      color:white;
+    }
+    .row button:nth-child(1),.btn-left{
+      margin-left:4rem;
+    }
+    .row button:hover{
+      background-color: rgb(52, 124, 95,.8);
+    }
+    .btn-left{
+      margin-left:4rem;
+    }
+    .dynamic{
+      background-color: black;
+    }
+    .about{
+      background-color: rgb(95, 88, 88);
+    }
   </style>
 </head>
 
@@ -249,7 +306,7 @@
       </div>
     </div>
   </div>
-  
+
   <div>
     <div class="main-box">
       <div id="home" class="first">
@@ -264,25 +321,10 @@
             <!--导航-->
             <nav>
               <ul id="main">
-                <li>
-                  首页
-                </li>
-                <li>
-                  APP下载
-                </li>
-                <li>
-                  关于快洽
-                  <ul class="drop">
-                    <div>
-                      <li>ABOUT</li>
-                      <li>QUESTION</li>
-                      <li>ANSWER</li>
-                    </div>
-                  </ul>
-                </li>
-                <li>
-                 快洽动态
-                </li>
+                <li>首页</li>
+                <li>APP下载</li>
+                <li>关于快洽</li>
+                <li>快洽动态</li>
                 <li>联系我们</li>
                 <li>帮助中心</li>
                 <div id="marker"></div>
@@ -350,12 +392,12 @@
           </div>
           <div class="nav-content hideNav hidden">
             <ul class="nav-list">
-              <li class="nav-item"><a href="#" class="item-anchor">首页</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">APP下载</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">关于快洽</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">快洽动态</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">联系我们</a></li>
-              <li class="nav-item"><a href="#" class="item-anchor">帮助中心</a></li>
+              <li class="nav-item"><a href="#">首页</a></li>
+              <li class="nav-item"><a href="#">APP下载</a></li>
+              <li class="nav-item"><a href="#">关于快洽</a></li>
+              <li class="nav-item"><a href="#">快洽动态</a></li>
+              <li class="nav-item"><a href="#">联系我们</a></li>
+              <li class="nav-item"><a href="#">帮助中心</a></li>
             </ul>
           </div>
         </div>
@@ -376,25 +418,43 @@
       </div>
       <div id="app" class="thrid">
         <!--使用插件-->
-        <iframe src="./plugins/appdownload/index.html" frameborder="0" width="100%" height="100%"></iframe>
+        <!-- <iframe src="./plugins/appdownload/index.html" frameborder="0" width="100%" height="100%"></iframe> -->
+        <div class="downapp">
+          <div class="row">
+            <div class="col-lg-6">
+              <h3>赶紧下载您的APP吧！</h3>
+              <ul>
+                <li>我们的愿望是世界和平</li>
+                <li>快洽与您共建绿色文明直播平台</li>
+                <li>快来加入！</li>
+                <li>Tell the world about the story behind the app</li>
+              </ul>
+              <button class="btn-left">安卓客户端下载</button>
+              <button>IOS客户端下载</button>
+            </div>
+            <div class="col-lg-6"></div>
+          </div>
+        </div>
       </div>
+      <div class="about"></div>
+      <div class="dynamic"></div>
       <div id="help" class="second">
         <div class="second-body">
-            <p>一切来自未来，一切为了未来</p>
-            <p>联系电话：18888888888</p>
-            <p>邮箱：email@email.mt</p>
-            <p>地址：广东省深圳市龙华区六工业区8号傻鸟哥</p>
-            <ul class="contact">
-              <li>微信</li>
-              <li>QQ</li>
-              <li>微博</li>
-              <li>邮箱</li>
-            </ul>
+          <p>一切来自未来，一切为了未来</p>
+          <p>联系电话：18888888888</p>
+          <p>邮箱：email@email.mt</p>
+          <p>地址：广东省深圳市龙华区六工业区8号傻鸟哥</p>
+          <ul class="contact">
+            <li>微信</li>
+            <li>QQ</li>
+            <li>微博</li>
+            <li>邮箱</li>
+          </ul>
         </div>
         <div class="copyright">
           <p>我的网站 版权所有 2008-2018 湘ICP备66666666 本站内容、
-          图片、视频为网站模板演示数据，如有涉及侵犯版权，请联系我们提供书面反馈，我们核实后会立即删除。</p>
-          <p>Powered by MetInfo 6.1.3 ©2008-2018  MetInfo Inc.</p>
+            图片、视频为网站模板演示数据，如有涉及侵犯版权，请联系我们提供书面反馈，我们核实后会立即删除。</p>
+          <p>Powered by MetInfo 6.1.3 ©2008-2018 MetInfo Inc.</p>
         </div>
       </div>
     </div>
@@ -433,11 +493,13 @@
       });
       //（3）页面入场效果
       window.onload = function () {
-        setTimeout(function(){
-          $(".loading").animate({"opacity": 0}, "slow", function () {
-          $(".loading").hide();
+        setTimeout(function () {
+          $(".loading").animate({
+            "opacity": 0
+          }, "slow", function () {
+            $(".loading").hide();
           })
-        },1500)
+        }, 1500)
       }
       //（4）通过JS控制container的margin-left
       $(window).resize(function () {
@@ -447,14 +509,22 @@
         });
       })
       //（5）页面切换平滑过渡的JS代码
-      //（6）导航点击显示高亮
-      $("#main").on("click","LI",function(){
+      //（6）导航悬停显示高亮
+      $("#main").on("mouseenter", "LI", function () {
         var height = $(window).innerHeight();
         var i = $(this).index();
-        //$(window).scrollTop(i * height);//相对于顶部的偏移量
-        $(this).css({"color":"#00ffff"}).siblings().css({"color":"white"})
-        $("#marker").css({"transform":`translate(${i*120}px, 0)`})
+        //$(window).scrollTop(i * height); //相对于顶部的偏移量
+        $('body,html').animate({scrollTop: i*height}, 600);
+        $(this).css({
+          "color": "#00ffff"
+        }).siblings().css({
+          "color": "white"
+        })
+        $("#marker").css({
+          "transform": `translate(${i*120}px, 0)`
+        })
       })
+     
     </script>
 </body>
 

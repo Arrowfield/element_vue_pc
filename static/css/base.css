@@ -202,4 +202,11 @@ input[type="number"]+div > .count_subtract{
     height:3rem !important;
     line-height: 3rem !important;
   }
+  .row{
+    width:100% !important;
+    text-align: center;
+  }
+  .row button:nth-child(1),.btn-left{
+    margin-left:0 !important;
+  }
 }
