@@ -1,15 +1,8 @@
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css";
 
-/*-------------------------------*/
-/*           VARIABLES           */
-/*-------------------------------*/
 body {
   position: relative;
   overflow-x: hidden;
-}
-body,
-html {
-  height: 100%;
 }
 .nav .open > a {
   background-color: transparent;
@@ -20,9 +13,6 @@ html {
 .nav .open > a:focus {
   background-color: transparent;
 }
-/*-------------------------------*/
-/*           Wrappers            */
-/*-------------------------------*/
 #wrapper {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;

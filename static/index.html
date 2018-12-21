@@ -11,17 +11,18 @@
   <!--css-->
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/index.css">
   <!--插件的CSS样式-->
-  <link rel="stylesheet" href="./css/index/style.css">
+  <!--SVG按钮-->
+  <!-- <link rel="stylesheet" href="./css/index/style.css"> -->
+  <!--水平导航-->
   <link rel="stylesheet" href="./css/index/style01.css">
   <!--按钮-->
   <link rel="stylesheet" href="./css/index/style02.css">
-  <!--水平导航-->
+  <!--垂直导航-->
   <link rel="stylesheet" href="./css/index/style03.css">
-  <!--导航按钮-->
-  <link rel="stylesheet" href="./css/index/swiper.min.css">
   <!--轮播-->
+  <link rel="stylesheet" href="./css/index/swiper.min.css">
+  <!--LOADING样式-->
   <link rel="stylesheet" href="./css/index/style04.css">
   <!--js-->
   <script src="./js/jquery-3.2.1.js"></script>
@@ -29,256 +30,9 @@
   <script src="./js/bootstrap.js"></script>
   <!--页面滚动平滑过渡JS-->
   <script src="./js/jquery.mousewheel.js"></script>
-  <!--软件下载页面的-->
+  <link rel="stylesheet" href="./css/index.css">
   <style>
-    /*头部样式*/
-    .container {
-      position: fixed;
-      top:0;
-      left:50%;
-      z-index:2;      
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-left:-655px;
-    }
-    .container::before{
-      content: "";
-      display: none;
-    }
-    .container::after{
-      content: "";
-      display: none;
-    }
-    .my-title {
-      font-family: logo;
-      font-size: 5rem;
-    }
-    .active{
-      /* color:#00ffff !important; */
-    }
-    a{
-      text-decoration: none;
-      color:white;
-    }
-    a:hover{
-      text-decoration: none !important;
-      color:#00ffff;
-    }
-    a:focus{
-      text-decoration: none;
-    }
-    a:visited{
-      color:white;
-      text-decoration: none;
-      border:none;
-    }
-    .my-left a{
-      color:white;
-      text-decoration: none;
-    }
-    .my-left a:hover {
-      text-decoration: none;
-      color:white;
-    }
-    .my-right nav{
-      float: left;
-    }
-    .my-right div{
-      float: right;
-    }
-    /*轮播图样式*/
-    .swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: transparent;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-     -webkit-box-pack: center;
-     -ms-flex-pack: center;
-     -webkit-justify-content: center;
-      justify-content: center;
-     -webkit-box-align: center;
-     -ms-flex-align: center;
-     -webkit-align-items: center;
-      align-items: center;
-    }
-    .swiper-button-next,.swiper-button-prev{
-      color:white !important;
-    }
-    .notice{
-      border-top:0.1rem solid white;
-      border-bottom: 0.1rem solid white;
-      padding:5rem 0;
-    }
-    .notice p:nth-child(1){
-      font-size:7rem;
-      font-weight: bold;
-    }
-    .notice p:nth-child(2){
-      font-weight: normal;
-      font-size:5rem;
-    }
-    /*侧边栏的样式*/
-    .aside{
-      /* position: fixed; */
-      top:0;
-      left:0;
-      /* z-index: 1000; */
-    }
-    .icon-bar{
-      width:26px;
-      height:3px;
-    }
-    /*LOADING的样式*/
-    .loading{
-      position: fixed;
-      top:0;
-      left:0;
-      z-index: 5;
-      width:100%;
-      height:100%;
-      background: black;
-    }
-    /*为每一个页面设置宽高*/
-    .first{
-      width:100%;
-      height:100%;
-      position: relative;
-    }
-    .second{
-      background: url("./img/bg01.png") no-repeat center center;
-      background-size: cover;
-    }
-    .thrid{
-      background: url("./img/index/bg3.jpg") no-repeat center center;
-      background-size: cover;
-    }
-    /*为视频背景设置样式*/
-    .my-video video{
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -100; 
-    }
-    /*二维码样式*/
-    .my-img{
-      position: absolute;
-      top:70%;
-      color:gray;
-      text-align: center;
-      right:1rem;
-    }
-    .my-img img{
-      width:12rem;
-      margin-bottom:10px;
-    }
-    /*帮助中心的页面介绍*/
-    .second{
-      position: relative;
-    }
-    .second-body {
-      position: absolute;
-      top:50%;
-      left:0;
-      right:0;
-      text-align: center;
-      margin-top:-80px;
-    }
-    .second-body p:nth-child(1){
-      font-size:7rem;
-    }
-    .contact {
-      margin:2rem auto 0;
-      overflow: hidden;
-      width:20%;
-      display: flex;
-      justify-content: space-between;
-    }
-    .contact li{
-      width:5rem;
-      height:5rem;
-      border:1px solid gray;
-      text-align: center;
-      line-height: 5rem;
-      float: left;
-      border-radius: 50%;
-      transition: all .5s linear;
-    }
-    .contact li:hover{
-      background-color: rgb(10, 10, 10,.8);
-      cursor: pointer;
-    }
-    
-    /*版权样式*/
-    .copyright{
-      position: absolute;
-      bottom:1rem;
-      left:0;
-      right:0;
-    }
-    .copyright p{
-      font-size:1.1rem;
-      text-align: center;
-    }
-    .thrid{
-      position: relative;
-    }
-    .downapp{
-      position: absolute;
-      top:22%;
-      left:0;
-      right:0;
-      /* border:1px solid gray; */
-    }
-    .row{
-      margin:0 auto;
-      width:60%;
-    }
-    .row h3{
-      font-size:4rem;
-    }
-    .row ul{
-      list-style: circle;
-      padding:4rem;
-      padding-bottom:2rem;
-    }
-    .row ul li{
-      font-size:2rem;
-      margin-bottom:2rem;
-    }
-    .row button{
-      padding:1.2rem 3rem;
-      border-radius: 0.3rem;
-      background-color: #317B5E;
-      border:0;
-      color:white;
-    }
-    .row button:nth-child(1),.btn-left{
-      margin-left:4rem;
-    }
-    .row button:hover{
-      background-color: rgb(52, 124, 95,.8);
-    }
-    .btn-left{
-      margin-left:4rem;
-    }
-    .dynamic{
-      background-color: black;
-    }
-    .about{
-      background-color: rgb(95, 88, 88);
-    }
+
   </style>
 </head>
 
@@ -463,68 +217,8 @@
     <script src="./js/index/swiper.min.js"></script>
     <script>
       $(function () {
-        //刷新时执行的事件
-        var width = $(".container").innerWidth()
-        $(".container").css({
-          "margin-left": -width / 2
-        });
+
       })
-      //（1）轮播的事件
-      var swiper = new Swiper('.swiper-container', {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-          delay: 3500,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      });
-      //（2）侧边栏的事件
-      $('.btn-nav').on('click tap', function () {
-        $('.nav-content').toggleClass('showNav hideNav').removeClass('hidden');
-        $(this).toggleClass('animated');
-      });
-      //（3）页面入场效果
-      window.onload = function () {
-        setTimeout(function () {
-          $(".loading").animate({
-            "opacity": 0
-          }, "slow", function () {
-            $(".loading").hide();
-          })
-        }, 1500)
-      }
-      //（4）通过JS控制container的margin-left
-      $(window).resize(function () {
-        var width = $(".container").innerWidth()
-        $(".container").css({
-          "margin-left": -width / 2
-        });
-      })
-      //（5）页面切换平滑过渡的JS代码
-      //（6）导航悬停显示高亮
-      $("#main").on("mouseenter", "LI", function () {
-        var height = $(window).innerHeight();
-        var i = $(this).index();
-        //$(window).scrollTop(i * height); //相对于顶部的偏移量
-        $('body,html').animate({scrollTop: i*height}, 600);
-        $(this).css({
-          "color": "#00ffff"
-        }).siblings().css({
-          "color": "white"
-        })
-        $("#marker").css({
-          "transform": `translate(${i*120}px, 0)`
-        })
-      })
-     
     </script>
 </body>
 
