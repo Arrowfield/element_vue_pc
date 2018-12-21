@@ -1,0 +1,50 @@
+/*头部样式*/
+.container {
+  position: fixed;
+  top:0;
+  left:50%;
+  z-index:2;      
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left:-655px;
+}
+.container::before{
+  content: "";
+  display: none;
+}
+.container::after{
+  content: "";
+  display: none;
+}
+.my-title {
+  font-family: logo;
+  font-size: 5rem;
+}
+
+a:hover{
+  text-decoration: none !important;
+  color:#00ffff;
+}
+a:focus{
+  text-decoration: none;
+}
+a:visited{
+  color:white;
+  text-decoration: none;
+  border:none;
+}
+.my-left a{
+  color:white;
+  text-decoration: none;
+}
+.my-left a:hover {
+  text-decoration: none;
+  color:white;
+}
+.my-right nav{
+  float: left;
+}
+.my-right div{
+  float: right;
+}

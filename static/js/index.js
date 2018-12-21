@@ -1,4 +1,17 @@
 $(function () {
+  $('<link rel="stylesheet" href="./css/header.css">').appendTo("head")//CSS文件
+  //使用AJAX加载头部
+  $.ajax({
+    url:"../sub/header.html",
+    type:"GET",
+    success:function(result){
+      $(result).replaceAll("header")
+      $('<script src="./js/header.js"></script>').appendTo("body")//JS文件
+    },
+    error:function(err){
+      console.log(err.statusText)
+    }
+  })
   //刷新时执行的事件
   var width = $(".container").innerWidth()
   $(".container").css({
@@ -21,37 +34,6 @@ $(function () {
       prevEl: '.swiper-button-prev',
     },
   });
-  //（2）侧边栏的事件
-  $('.btn-nav').on('click tap', function () {
-    $('.nav-content').toggleClass('showNav hideNav').removeClass('hidden');
-    $(this).toggleClass('animated');
-  });
-
-  //（4）通过JS控制container的margin-left
-  $(window).resize(function () {
-    var width = $(".container").innerWidth()
-    $(".container").css({
-      "margin-left": -width / 2
-    });
-  })
-  //（5）页面切换平滑过渡的JS代码
-  //（6）导航悬停显示高亮
-  $("#main").on("mouseenter", "LI", function () {
-    var height = $(window).innerHeight();
-    var i = $(this).index();
-    //$(window).scrollTop(i * height); //相对于顶部的偏移量
-    $('body,html').animate({
-      scrollTop: i * height
-    }, 600);
-    $(this).css({
-      "color": "#00ffff"
-    }).siblings().css({
-      "color": "white"
-    })
-    $("#marker").css({
-      "transform": `translate(${i*120}px, 0)`
-    })
-  })
 })
 //（3）页面入场效果
 window.onload = function () {

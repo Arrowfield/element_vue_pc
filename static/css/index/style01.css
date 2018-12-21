@@ -21,6 +21,10 @@
   color:white;
 }
 
+#main li a{
+  font-size: 1.8rem;
+}
+
 #main li:hover{
   color:#00FFFF;
 }
