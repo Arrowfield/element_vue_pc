@@ -48,3 +48,14 @@ a:visited{
 .my-right div{
   float: right;
 }
+/*侧边栏的样式*/
+.aside{
+  /* position: fixed; */
+  top:0;
+  left:0;
+  /* z-index: 1000; */
+}
+.icon-bar{
+  width:26px;
+  height:3px;
+}
