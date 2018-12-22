@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="./css/index/style03.css">
   <!--LOADING样式-->
   <link rel="stylesheet" href="./css/index/style04.css">
+  <!--分页插件-->
+  <script src="./plugins/page/laypage/laypage.js"></script>
   <!--js-->
   <script src="./js/jquery-3.2.1.js"></script>
   <script src="./js/popper.js"></script>
@@ -134,6 +136,130 @@
     .next-ul li {
       margin: 1rem 0 !important;
     }
+
+    /*分页的样式*/
+    /*
+    .pagenation {
+      padding: 40px 30px 60px 0;
+      color: #666;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .pagenation .pagenum {
+      float: left;
+      min-width: 30px;
+      padding: 3px 5px;
+      text-align: center;
+      margin-right: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 3px;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+
+    .pagenation .pagenum.indexpage,
+    .pagenation .pagenum.lastpage,
+    .pagenation .pagenum.nextpage {
+      background: rgba(255, 255, 255, 0);
+      color: #d9cfce;
+    }
+
+    .pagenation .pagenum.indexpage.active,
+    .pagenation .pagenum.lastpage.active,
+    .pagenation .pagenum.nextpage.active {
+      background-color: #f5f5f5;
+      color: #999;
+    }
+
+    .pagenation .pagenum.indexpage.active a,
+    .pagenation .pagenum.lastpage.active a,
+    .pagenation .pagenum.nextpage.active a {
+      color: #999;
+    }
+
+    .pagenation .pagenum.pagetext,
+    .pagenation .pagenum.totalpage {
+      border-radius: 0px;
+      background: rgba(255, 255, 255, 0);
+      border: none;
+    }
+
+    .pagenation .pagenum a {
+      color: #999;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pagenation .pageswiperbox {
+      min-width: 35px;
+      max-width: 175px;
+      overflow: hidden;
+      word-break: keep-all;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      float: left;
+    }
+
+    .pagenation .pageswiper {
+      width: auto;
+    }
+
+    .pagenation .pageswiper .pagenum {
+      display: inline-block;
+      float: none;
+    }
+
+    .pagenation .pagenum.curpage {
+      background: rgba(255, 255, 255, 0);
+      color: #FE7200;
+      border: none;
+    }
+
+    .pagenation .pagenum.curpage a {
+      color: #FE7200;
+      display: block;
+      width: 100%;
+    }
+
+    .pagenation .pageinput {
+      text-align: center;
+      border: 1px solid #e5e5e5;
+      width: 40px;
+      margin: 0 3px;
+      line-height: 17px;
+      box-sizing: border-box;
+      vertical-align: top;
+    }
+
+    .pagenation .pagesubbtn {
+      background: rgba(255, 255, 255, 0);
+    }
+
+    .pagenation .pagesubbtn a {
+      color: #d9cfce;
+    }
+
+    .pagenation .pagesubbtn.active {
+      background: #f5f5f5;
+    }
+
+    .pagenation .pagesubbtn a {
+      color: #999;
+    }*/
+    /*分页的样式结束*/
+    #biuuu_city{
+      text-align: center;
+      color:white;
+    }
   </style>
 </head>
 
@@ -236,15 +362,131 @@
             </div>
           </div>
           <!--分页的实现-->
-          <div class="">  
-
+          <div class="paging">
+            <ul id="biuuu_city_list"></ul>
+            <!--展示数据的地方-->
+            <div id="biuuu_city"></div>
+            <!--展示分页的地方-->
           </div>
         </div>
       </div>
     </div>
 
   </div>
-  <script src="./js/dynamic.js"></script>
+  <script src="./js/dynamic.js"></script>、
+  <script>
+    //分页的JS代码
+    /*
+      var options = {
+        list: ".list", 
+        currentPage: 1, 
+        pageSize: 5,
+        listTotal: 31,
+        callback: function (currentPage) { 
+          loadData(ajaxDemo(currentPage))
+        }
+      }
+      $("#pageBox").paging(options)
+  
+      function ajaxDemo(page, pageSize) {
+        if (!pageSize) var pageSize = 5;
+        var data = {},
+          arr = [];
+        for (var i = 1; i <= 31; i++) {
+          arr.push(i);
+          if (i == pageSize) {
+            data[1] = arr;
+            arr = [];
+          } else if (i == pageSize * 2) {
+            data[2] = arr;
+            arr = [];
+          } else if (i == pageSize * 3) {
+            data[3] = arr;
+            arr = [];
+          } else if (i == pageSize * 4) {
+            data[4] = arr;
+            arr = [];
+          } else if (i == pageSize * 5) {
+            data[5] = arr;
+            arr = [];
+          } else if (i == pageSize * 6) {
+            data[6] = arr;
+            arr = [];
+          } else if (i == 31) {
+            data[7] = arr;
+            arr = [];
+          }
+        }
+        return data[page];
+      }
+  
+      function loadData(data) {
+        console.log("callback")
+        $("#pageBox").empty();
+        for (var i = 0; i < data.length; i++) {
+          $("#pageBox").append("<li class='list'>" + data[i] + "</li>");
+        }
+      }*/
+    /*结束*/
+    var data = [
+      '北京',
+      '上海',
+      '广州',
+      '深圳',
+      '杭州',
+      '长沙',
+      '合肥',
+      '宁夏',
+      '成都',
+      '西安',
+      '南昌',
+      '上饶',
+      '沈阳',
+      '济南',
+      '厦门',
+      '福州',
+      '九江',
+      '宜春',
+      '赣州',
+      '宁波',
+      '绍兴',
+      '无锡',
+      '苏州',
+      '徐州',
+      '东莞',
+      '佛山',
+      '中山',
+      '成都',
+      '武汉',
+      '青岛',
+      '天津',
+      '重庆',
+      '南京',
+      '九江',
+      '香港',
+      '澳门',
+      '台北'
+    ];
+    var nums = 5;
+    var pages = Math.ceil(data.length / nums);
+    var thisDate = function (curr) {
+      var str = '',
+        last = curr * nums - 1;
+      last = last >= data.length ? (data.length - 1) : last;
+      for (var i = (curr * nums - nums); i <= last; i++) {
+        // str += '<li>' + data[i] + '</li>';
+      }
+      return str;
+    };
+    //调用分页
+    laypage({
+      cont: 'biuuu_city',
+      pages: pages,
+      jump: function (obj) {
+        document.getElementById('biuuu_city_list').innerHTML = thisDate(obj.curr);
+      }
+    })
+  </script>
 </body>
 
 </html>
