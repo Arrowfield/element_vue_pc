@@ -1,23 +1,25 @@
 $(function () {
-  $('<link rel="stylesheet" href="./css/header.css">').appendTo("head")//CSS文件
+  $('<link rel="stylesheet" href="./css/header.css">').appendTo("head") //CSS文件
   //使用AJAX加载头部
   $.ajax({
-    url:"../sub/header.html",
-    type:"GET",
-    success:function(result){
+    url: "../sub/header.html",
+    type: "GET",
+    success: function (result) {
       $(result).replaceAll("header")
-      $('<script src="./js/header.js"></script>').appendTo("body")//JS文件
-      $(".home").css({color:"#00FFFF"})
+      //刷新时执行的事件
+      var width = $(".container").innerWidth()
+      $(".container").css({
+        "margin-left": -width / 2
+      });
+      $('<script src="./js/header.js"></script>').appendTo("body") //JS文件
+      $(".home").css({
+        color: "#00FFFF"
+      })
     },
-    error:function(err){
+    error: function (err) {
       console.log(err.statusText)
     }
   })
-  //刷新时执行的事件
-  var width = $(".container").innerWidth()
-  $(".container").css({
-    "margin-left": -width / 2
-  });
   //（1）轮播的事件
   var swiper = new Swiper('.swiper-container', {
     spaceBetween: 30,
@@ -84,4 +86,24 @@ function changeSize() {
   }, 1000, function () {
     canscroll = true;
   })
+}
+//（5）监听鼠标滚动事件
+$(document).on('mousewheel DOMMouseScroll', onMouseScroll);
+
+function onMouseScroll(e) {
+  e.preventDefault();
+  var wheel = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+  var delta = Math.max(-1, Math.min(1, wheel));
+  if (delta < 0) { //向下滚动
+    //获取当前的滚动条的高度
+    var heightD = $('body,html').height();
+    var height = $('body,html').scrollTop()
+    if(height == 0){
+      $('.down>li').fadeIn(3000)
+    }else{
+    }
+    console.log('向下滚动');
+  } else { //向上滚动
+    console.log('向上滚动');
+  }
 }

@@ -153,15 +153,14 @@
 }
 .row{
   margin:0 auto;
-  width:60%;
+  width:65%;
 }
 .row h3{
-  font-size:4rem;
+  font-size:3rem;
 }
 .row ul{
   list-style: circle;
-  padding:4rem;
-  padding-bottom:2rem;
+  padding:2rem 3rem;
 }
 .row ul li{
   font-size:2rem;
@@ -175,17 +174,27 @@
   color:white;
 }
 .row button:nth-child(1),.btn-left{
-  margin-left:4rem;
+  margin-left:3rem;
 }
 .row button:hover{
   background-color: rgb(52, 124, 95,.8);
 }
 .btn-left{
-  margin-left:4rem;
+  margin-left:3rem;
 }
 .dynamic{
   background-color: black;
 }
 .about{
   background-color: rgb(95, 88, 88);
+}
+/*APP下载时的样式*/
+.down li{
+  display: none;
+}
+.my-phone{
+  width:100%;
+  height:100%;
+  border:1px solid gray;
+  border-radius: 5px;
 }

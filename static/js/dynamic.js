@@ -7,6 +7,11 @@ $(function () {
     success: function (result) {
       $(result).replaceAll("header")
       $('<script src="./js/header.js"></script>').appendTo("body") //JS文件
+      //页面刷新时自动更新margin-left
+      var width = $(".container").innerWidth()
+      $(".container").css({
+        "margin-left": -width / 2
+      });
       $(".my-dynamic").css({color:"#00FFFF"})
       $("#marker").css({transform:"translate(360px,0)"})
     },

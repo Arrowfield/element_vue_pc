@@ -12,6 +12,7 @@ $(window).resize(function () {
   });
 })
 //（5）页面切换平滑过渡的JS代码
+
 //（6）导航悬停显示高亮
 $("#main").on("click", "LI", function () {
   var height = $(window).innerHeight();
