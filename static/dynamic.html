@@ -428,6 +428,9 @@
         }
       }*/
     /*结束*/
+    $(function(){
+      
+    })
     var data = [
       '北京',
       '上海',
@@ -471,7 +474,7 @@
     var pages = Math.ceil(data.length / nums);
     var thisDate = function (curr) {
       var str = '',
-        last = curr * nums - 1;
+      last = curr * nums - 1;
       last = last >= data.length ? (data.length - 1) : last;
       for (var i = (curr * nums - nums); i <= last; i++) {
         // str += '<li>' + data[i] + '</li>';

@@ -7,6 +7,7 @@ $(function () {
     success:function(result){
       $(result).replaceAll("header")
       $('<script src="./js/header.js"></script>').appendTo("body")//JS文件
+      $(".home").css({color:"#00FFFF"})
     },
     error:function(err){
       console.log(err.statusText)

@@ -7,6 +7,8 @@ $(function () {
     success: function (result) {
       $(result).replaceAll("header")
       $('<script src="./js/header.js"></script>').appendTo("body") //JS文件
+      $(".my-dynamic").css({color:"#00FFFF"})
+      $("#marker").css({transform:"translate(360px,0)"})
     },
     error: function (err) {
       console.log(err.statusText)
