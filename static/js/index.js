@@ -35,7 +35,7 @@ $(function () {
     },
   });
 })
-//（3）页面入场效果
+//（3）页面LOADING入场效果
 window.onload = function () {
   setTimeout(function () {
     $(".loading").animate({
@@ -43,7 +43,7 @@ window.onload = function () {
     }, "slow", function () {
       $(".loading").hide();
     })
-  }, 1500)
+  }, 1000)
 }
 //（4）页面切换的平滑过渡（使用的是鼠标滚动事件）
 var $key = 0;

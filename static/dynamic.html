@@ -9,7 +9,7 @@
   <!--icon-->
   <link rel="icon" href="./img/picture.ico" type="image/x-icon">
   <!--css-->
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/base.css">
   <!--水平导航-->
   <link rel="stylesheet" href="./css/index/style01.css">
@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="./css/index/style02.css">
   <!--垂直导航-->
   <link rel="stylesheet" href="./css/index/style03.css">
+  <!--LOADING样式-->
+  <link rel="stylesheet" href="./css/index/style04.css">
   <!--js-->
   <script src="./js/jquery-3.2.1.js"></script>
   <script src="./js/popper.js"></script>
@@ -61,10 +63,11 @@
     }
 
     .intro ul li {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       cursor: pointer;
     }
-    .intro ul li a{
+
+    .intro ul li a {
       cursor: pointer;
     }
 
@@ -123,16 +126,42 @@
       -webkit-line-clamp: 3;
       overflow: hidden;
     }
-    .next-ul{
-      padding-left:14px;
+
+    .next-ul {
+      padding-left: 1.4rem;
     }
-    .next-ul li{
-      margin-bottom:1rem !important;
+
+    .next-ul li {
+      margin: 1rem 0 !important;
     }
   </style>
 </head>
 
 <body>
+  <!--LOADING-->
+  <div class="loading">
+    <div class="spinner">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="my-container">
     <header></header>
     <div class="title">
@@ -145,11 +174,11 @@
           <div class="intro">
             <ul>
               <li><a href="#">快洽公告</a>
-                <ul class="next-ul">
+                <!-- <ul class="next-ul">
                   <li>快洽公告1</li>
                   <li>快洽公告2</li>
                   <li>快洽公告3</li>
-                </ul>
+                </ul> -->
               </li>
               <li><a href="#">产品公告</a>
                 <ul class="">
@@ -168,22 +197,19 @@
         </div>
         <div class="col-lg-8">
           <div class="detail row">
-            <div class="col-lg-3">
-              <img src="./img/dynamic/live.jpg">
-            </div>
-            <div class="my-intro col-lg-8" title="单击查看详情">
+            <div class="my-intro col-lg-8 col-sm-12" title="单击查看详情">
               <h4 class="">深圳市龙华区快洽直播间公告</h4>
               <p class="date">公告发布日期：2018年12月21号</p>
               <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
                 太阳渐渐升起来了，温暖的阳光照射在水面上，平和，静谧，也洒了我们一身，细细碎碎，恬淡清然。清晨的江风吹在我们的脸上，柔柔的，还带着浅浅的凉意。细长幽绿的水草缠绕在江水温暖的怀抱里，相悦，相惜。
                 天空中飞过几只江鸥，有些盘旋，有些眺望。江鸥是一种可以孤独也可以陪伴的生灵，这一点恰如我们人类。渴望陪伴是必然的，而心灵的某个角落，也在某些时候需要适时的孤独。这时的江水，
                 岸边的石头，被浪带到岸上的水草，看起来都是形单影只的，而谁又能断定它们不是彼此为伴的呢？</p><button class="btn btn-link">查看详情</button>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+              <img src="./img/dynamic/live.jpg">
             </div>
           </div>
           <div class="detail row">
-            <div class="col-lg-3">
-              <img src="./img/dynamic/live.jpg">
-            </div>
             <div class="my-intro col-lg-8" title="单击查看详情">
               <h4 class="">深圳市龙华区快洽直播间公告</h4>
               <p class="date">公告发布日期：2018年12月21号</p>
@@ -191,12 +217,12 @@
                 太阳渐渐升起来了，温暖的阳光照射在水面上，平和，静谧，也洒了我们一身，细细碎碎，恬淡清然。清晨的江风吹在我们的脸上，柔柔的，还带着浅浅的凉意。细长幽绿的水草缠绕在江水温暖的怀抱里，相悦，相惜。
                 天空中飞过几只江鸥，有些盘旋，有些眺望。江鸥是一种可以孤独也可以陪伴的生灵，这一点恰如我们人类。渴望陪伴是必然的，而心灵的某个角落，也在某些时候需要适时的孤独。这时的江水，
                 岸边的石头，被浪带到岸上的水草，看起来都是形单影只的，而谁又能断定它们不是彼此为伴的呢？</p><button class="btn btn-link">查看详情</button>
+            </div>
+            <div class="col-lg-3">
+              <img src="./img/dynamic/live.jpg">
             </div>
           </div>
           <div class="detail row">
-            <div class="col-lg-3">
-              <img src="./img/dynamic/live.jpg">
-            </div>
             <div class="my-intro col-lg-8" title="单击查看详情">
               <h4 class="">深圳市龙华区快洽直播间公告</h4>
               <p class="date">公告发布日期：2018年12月21号</p>
@@ -205,10 +231,18 @@
                 天空中飞过几只江鸥，有些盘旋，有些眺望。江鸥是一种可以孤独也可以陪伴的生灵，这一点恰如我们人类。渴望陪伴是必然的，而心灵的某个角落，也在某些时候需要适时的孤独。这时的江水，
                 岸边的石头，被浪带到岸上的水草，看起来都是形单影只的，而谁又能断定它们不是彼此为伴的呢？</p><button class="btn btn-link">查看详情</button>
             </div>
+            <div class="col-lg-3">
+              <img src="./img/dynamic/live.jpg">
+            </div>
+          </div>
+          <!--分页的实现-->
+          <div class="">  
+
           </div>
         </div>
       </div>
     </div>
+
   </div>
   <script src="./js/dynamic.js"></script>
 </body>
