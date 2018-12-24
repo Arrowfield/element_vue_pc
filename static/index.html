@@ -68,6 +68,7 @@
       padding-top:5rem;
       width:100%;
       padding-bottom: 1rem;
+      overflow: hidden;
     }
     .photo{
       background-color: white;
@@ -120,7 +121,9 @@
       display: flex;
       flex-wrap: nowrap; 
       width:300%;
+      height:100%;
       transition: all .3s linear;
+      overflow: hidden;
     }
     .car-item{
       height:100%;
@@ -165,6 +168,14 @@
       font-size:2.2rem;
       margin-left:3rem;
       margin-top:2rem;
+    }
+    .my-img-bg1{
+      width:90%;
+      height:60%;
+    }
+    .my-iframe{
+      width:100%;
+      height:80%;
     }
   </style>
 </head>
@@ -280,8 +291,8 @@
           <div class="car-item">
             <!--公司简介-->
             <div class="team">
-              <h2>公司简介</h2>
-              <p class="m-0">SYNOPSIS</p>
+              <h2>公司简介/核心团队/企业文化</h2>
+              <p class="m-0">COMPANY</p>
             </div>
             <!--文字-->
             <div class="row p-margin">
@@ -300,14 +311,14 @@
                 <p class="my-text-1">当今最领先的响应式自助建站平台，可视化图文内容编辑模式让网站制作和维护成为一件轻松惬意的事。</p>
               </div>
               <div class="col-lg-6">
-                <img src="./img/about/bg1.jpg">
+                <img src="./img/about/bg1.jpg" class="my-img-bg1">
               </div>
             </div>
           </div>
           <div class="car-item">
             <!--核心团队-->
             <div class="team">
-              <h2>核心团队</h2>
+              <h2>公司简介/核心团队/企业文化</h2>
               <p class="m-0">TEAM</p>
             </div>
             <div class="forbg">
@@ -360,7 +371,7 @@
           <div class="car-item">
             <!--企业文化-->
             <div class="team">
-              <h2>企业文化</h2>
+              <h2>公司简介/核心团队/企业文化</h2>
               <p class="m-0">TEAM</p>
             </div>
             <div class="forbg">
@@ -416,9 +427,8 @@
       </div>
       <!--动态-->
       <div class="dynamic">
-        <iframe src="./dynamic.html" width="100%"  frameborder="0" scrolling="no">
-          <p>Your browser does not support iframes.</p>
-        </iframe>
+        <div id="dynamic">
+        </div>
       </div>
       <!--联系-->
       <div id="help" class="second">

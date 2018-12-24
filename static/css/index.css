@@ -69,6 +69,8 @@
 .thrid{
   background: url("../img/index/bg3.jpg") no-repeat center center;
   background-size: cover;
+  overflow: hidden;
+  position: relative;
 }
 /*为视频背景设置样式*/
 .my-video video{
@@ -141,9 +143,6 @@
   font-size:1.1rem;
   text-align: center;
 }
-.thrid{
-  position: relative;
-}
 .downapp{
   position: absolute;
   top:22%;
@@ -197,7 +196,7 @@
 }
 .my-phone{
   width:24rem;
-  height:42rem;
+  height:41rem;
   margin:0 auto;
   border:1px solid gray;
   border-radius: 5px;
