@@ -157,7 +157,7 @@
 .row h3{
   font-size:3rem;
 }
-.row ul{
+.row ul:not(.dynamic ul){
   list-style: circle;
   padding:2rem 3rem;
 }
@@ -165,7 +165,7 @@
   font-size:2rem;
   margin-bottom:2rem;
 }
-.row button{
+.row button:not(.btn-link){
   padding:1.2rem 3rem;
   border-radius: 0.3rem;
   background-color: #317B5E;
@@ -175,7 +175,7 @@
 .row button:nth-child(1),.btn-left{
   margin-left:3rem;
 }
-.row button:hover{
+.row button:hover:not(.btn-link){
   background-color: rgb(52, 124, 95,.8);
 }
 .btn-left{

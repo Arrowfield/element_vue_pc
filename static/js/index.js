@@ -67,13 +67,11 @@ $(function () {
 })
 //（3）页面LOADING入场效果
 window.onload = function () {
-  setTimeout(function () {
-    $(".loading").animate({
-      "opacity": 0
-    }, "slow", function () {
-      $(".loading").hide();
-    })
-  }, 1000)
+  $(".loading").animate({
+    "opacity": 0
+  }, "slow", function () {
+    $(".loading").hide();
+  })
 }
 //（4）页面切换的平滑过渡（使用的是鼠标滚动事件）
 var $key = 0;
