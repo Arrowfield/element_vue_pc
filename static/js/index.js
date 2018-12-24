@@ -132,36 +132,34 @@ function onMouseScroll(e) {
         marginLeft: 0
       }, 1000)
       //滑动高亮
-      changeMarsk(1)
+      changeMarsk(1,"+")
     } else if (height == heightD) {
       $(".d-flex").animate({
         marginTop: 0
       }, 1000)
       //滑动高亮
-      changeMarsk(2)
+      changeMarsk(2,"+")
     } else if (height == 2 * heightD) {
       //滑动高亮
-      changeMarsk(3)
+      changeMarsk(3,"+")
     } else if (height == 3 * heightD) {
       //滑动高亮
-      changeMarsk(4)
+      changeMarsk(4,"+")
     } else if (height == 4 * heightD) {
       //滑动高亮
-      changeMarsk(5)
+      changeMarsk(5,"+")
     }
-    console.log('向下滚动');
   } else { //向上滚动
     //滑动高亮
     switch(height){
       case 0: changeMarsk(0); break;
-      //case heightD: changeMarsk(2); break; 
-      //case 2 * heightD: changeMarsk(3); break; 
-      //case 3 * heightD: changeMarsk(4); break; 
-      //case 4 * heightD: changeMarsk(3); break;
-      
+      case heightD: changeMarsk(0,"-"); break; 
+      case 2 * heightD: changeMarsk(1,"+"); break; 
+      case 3 * heightD: changeMarsk(2,"+"); break; 
+      case 4 * heightD: changeMarsk(3,"+"); break;
+      case 5 * heightD: changeMarsk(4,"+"); break;
       default:return;
     }
-    console.log('向上滑动');
   }
   //鼠标悬停在my-intro上
   $(".my-intro").hover(function () {
@@ -174,9 +172,11 @@ function onMouseScroll(e) {
     })
   })
   //偏移调用的方法
-  function changeMarsk(i) {
+  function changeMarsk(i,f) {
+    $(`#main>li:nth-child(${i+1})`).children("a").css({color:"#00ffff"})
+    $(`#main>li:nth-child(${i+1})`).siblings("li").children("a").css({color:"white"})
     $("#marker").css({
-      "transform": `translate(${i*120}px, 0)`
+      "transform": `translate(${f}${i*120}px, 0)`
     })
   }
 }
