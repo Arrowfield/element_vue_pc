@@ -11,6 +11,7 @@
   <!--css-->
   <link rel="stylesheet" href="./css/bootstrap.css">
   <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_874155_5l2btdtoswv.css">
   <!--插件的CSS样式-->
   <!--SVG按钮-->
   <!-- <link rel="stylesheet" href="./css/index/style.css"> -->
@@ -31,6 +32,141 @@
   <!--页面滚动平滑过渡JS-->
   <script src="./js/jquery.mousewheel.js"></script>
   <link rel="stylesheet" href="./css/index.css">
+  <style>
+    .about{
+      text-align: center;
+      background-color: black;
+      position: relative;
+    }
+    .about::before{
+      content: "";
+      display: table;
+    }
+    .team{
+      /* border-top:1px solid gray; */
+      padding:5rem 0;
+      background: url("./img/about/bg.jpg") no-repeat;
+      /* margin-top:8rem; */
+    }
+    .about p{
+      color:gray;
+
+    }
+    .p-img{
+      width:16.5rem;
+      height:16.5rem;
+      cursor: pointer;
+    }
+    .p-margin{
+      margin:0 auto;
+      width:65%;
+      padding-bottom:1.5rem;
+      text-align: left
+    }
+    .forbg{
+      background-color: #212121;
+      padding-top:5rem;
+      width:100%;
+      padding-bottom: 1rem;
+    }
+    .photo{
+      background-color: white;
+      color: black;
+      /* float: left; */
+      text-align: left;
+      width:16.5rem;
+    }
+    .photo p{
+      margin-left:2rem;
+    }
+    .p-f{
+      font-size:2.0rem;
+      color:black !important;
+    }
+    .my-intro{
+      font-size:1.3rem;
+      color:white !important;
+      margin-left:2rem;
+      cursor: pointer;
+      text-align: left;
+    }
+    .my-intro:hover{
+      text-decoration: underline;
+    }
+    .d-flex{
+      align-items: center;
+      margin-top:40rem; 
+    }
+    .my-mark{
+      width:0;
+      height:1px;
+      background-color: white;
+      transition: all .3s linear;
+    }
+    .my-btn{
+      text-align: center;
+    }
+    .my-btn button{
+      width:3rem;
+      height:3rem;
+      color:white;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    /*轮播*/
+    .my-carousel{
+      position: relative;
+      padding-top:8rem;
+      display: flex;
+      flex-wrap: nowrap; 
+      width:300%;
+      transition: all .3s linear;
+    }
+    .car-item{
+      height:100%;
+      width:100%;
+    }
+    .car-prev,.car-next{
+      position: absolute;
+      top:50%;
+      width:50px;
+      height:50px;
+      border:1px solid gray;
+      border-radius:50%;
+      background-color: rgba(12, 12, 12,.5);
+      margin-top:-25px;
+      cursor: pointer;
+      transition: all .2s linear;
+    }
+    .car-prev:hover,.car-next:hover{
+      background-color: rgba(12, 12, 12,.9);
+    }
+    .car-prev{
+      left:10px;
+    }
+    .car-next{
+      right: 10px;
+    }
+    .sm-left{
+      font-size:3rem;
+    }
+    .my-text{
+      text-align: left;
+      padding:5rem 0;
+      border-bottom:1px solid white;
+      font-size:1.4rem;
+    }
+    .my-text-1{
+      text-align: left;
+      font-size:1.4rem;
+    }
+    .my-font{
+      font-family: logo;
+      font-size:2.2rem;
+      margin-left:3rem;
+      margin-top:2rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -73,6 +209,7 @@
                 <p>SEEING IS NOT ALWAYS TRUE.</p>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="notice">
                 <p>打造虚拟世界</p>
@@ -112,6 +249,7 @@
           <p>扫描二维码下载客户端</p>
         </div>
       </div>
+      <!--app下载-->
       <div id="app" class="thrid">
         <!--使用插件-->
         <!-- <iframe src="./plugins/appdownload/index.html" frameborder="0" width="100%" height="100%"></iframe> -->
@@ -127,6 +265,8 @@
               </ul>
               <button class="btn-left">安卓客户端下载</button>
               <button>IOS客户端下载</button>
+              <p class="my-font">Tell the world about the story behind the app</p>
+              <p class="my-font">Tell the world about </p>
             </div>
             <div class="col-lg-4">
               <div class="my-phone"></div>
@@ -134,8 +274,153 @@
           </div>
         </div>
       </div>
-      <div class="about"></div>
-      <div class="dynamic"></div>
+      <!--关于我们-->
+      <div class="about">
+        <div class="my-carousel">
+          <div class="car-item">
+            <!--公司简介-->
+            <div class="team">
+              <h2>公司简介</h2>
+              <p class="m-0">SYNOPSIS</p>
+            </div>
+            <!--文字-->
+            <div class="row p-margin">
+              <div class="col-lg-12">
+                <p class="my-text">当今最领先的响应式自助建站平台，可视化图文内容编辑模式让网站制作和维护成为一件轻松惬意的事。无论您是普通互联网用户， 
+                还是专业网站制作人员，都能使用起飞页设计出最具专业水准的网站。想创建一个简单的单页式站点，还是一个专业的公司网站，
+                亦或是一个别具一格的博客？起飞页可以满足您的所有需求。我们是响应式网站的倡导者，所有前端页面代码均采用HMLT5和CSS3实现。
+                起飞页提供了海量精美网站模板和成品网站，几乎覆 盖了当今各个行业，您只需在模板上进行少量修改，即可完成自己的网站，
+                这一切都是免费的。</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <p class="my-text-1">无论您是普通互联网用户， 还是专业网站制作人员，都能使用起飞页设计出最
+                具专业水准的网站。想创建一个简单的单页式站点，还是一个专业的公司网站，亦或是一个别具一格的博客？起飞页可以满足您的所有需求。</p>
+                <p class="my-text-1">当今最领先的响应式自助建站平台，可视化图文内容编辑模式让网站制作和维护成为一件轻松惬意的事。</p>
+              </div>
+              <div class="col-lg-6">
+                <img src="./img/about/bg1.jpg">
+              </div>
+            </div>
+          </div>
+          <div class="car-item">
+            <!--核心团队-->
+            <div class="team">
+              <h2>核心团队</h2>
+              <p class="m-0">TEAM</p>
+            </div>
+            <div class="forbg">
+              <div class="row p-margin">
+                <div class="col-lg-6 d-flex">
+                  <div class="photo">
+                    <img src="./img/about/p1.jpg" class="p-img">
+                    <p class="p-f">创始人</p>
+                    <p class="ceo">CEO凯俪</p>
+                  </div>
+                  <p class="my-mark"></p>
+                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
+                </div>
+                <div class="col-lg-6 d-flex">
+                  <div class="photo">
+                    <img src="./img/about/p4.jpg" class="p-img">
+                    <p class="p-f">创始人</p>
+                    <p class="ceo">CEO凯俪</p>
+                  </div>
+                  <p class="my-mark"></p>
+                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
+                </div>
+              </div>
+              <div class="row p-margin">
+                <div class="col-lg-6 d-flex">
+                  <div class="photo">
+                    <img src="./img/about/p2.jpg" class="p-img">
+                    <p class="p-f">创始人</p>
+                    <p class="ceo">CEO凯俪</p>
+                  </div>
+                  <p class="my-mark"></p>
+                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
+                </div>
+                <div class="col-lg-6 d-flex">
+                  <div class="photo">
+                    <img src="./img/about/p3.jpg" class="p-img">
+                    <p class="p-f">创始人</p>
+                    <p class="ceo">CEO凯俪</p>
+                  </div>
+                  <p class="my-mark"></p>
+                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
+                </div>
+              </div>
+              <div class="my-btn">
+                <button><i class="iconfont icon-left"></i></button>
+                <button><i class="iconfont icon-right"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="car-item">
+            <!--企业文化-->
+            <div class="team">
+              <h2>企业文化</h2>
+              <p class="m-0">TEAM</p>
+            </div>
+            <div class="forbg">
+              <div class="row p-margin">
+                <div class="col-lg-6 d-flex">
+                  <div class="photo">
+                    <img src="./img/about/p1.jpg" class="p-img">
+                    <p class="p-f">创始人</p>
+                    <p class="ceo">CEO凯俪</p>
+                  </div>
+                  <p class="my-mark"></p>
+                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
+                </div>
+                <div class="col-lg-6 d-flex">
+                  <div class="photo">
+                    <img src="./img/about/p4.jpg" class="p-img">
+                    <p class="p-f">创始人</p>
+                    <p class="ceo">CEO凯俪</p>
+                  </div>
+                  <p class="my-mark"></p>
+                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
+                </div>
+              </div>
+              <div class="row p-margin">
+                <div class="col-lg-6 d-flex">
+                  <div class="photo">
+                    <img src="./img/about/p2.jpg" class="p-img">
+                    <p class="p-f">创始人</p>
+                    <p class="ceo">CEO凯俪</p>
+                  </div>
+                  <p class="my-mark"></p>
+                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
+                </div>
+                <div class="col-lg-6 d-flex">
+                  <div class="photo">
+                    <img src="./img/about/p3.jpg" class="p-img">
+                    <p class="p-f">创始人</p>
+                    <p class="ceo">CEO凯俪</p>
+                  </div>
+                  <p class="my-mark"></p>
+                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
+                </div>
+              </div>
+              <div class="my-btn">
+                <button><i class="iconfont icon-left"></i></button>
+                <button><i class="iconfont icon-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="car-prev"><i class="iconfont icon-left sm-left"></i></button>
+        <button class="car-next"><i class="iconfont icon-right sm-left"></i></button>
+      </div>
+      <!--动态-->
+      <div class="dynamic">
+        <iframe src="./dynamic.html" width="100%"  frameborder="0" scrolling="no">
+          <p>Your browser does not support iframes.</p>
+        </iframe>
+      </div>
+      <!--联系-->
       <div id="help" class="second">
         <div class="second-body">
           <p>一切来自未来，一切为了未来</p>
@@ -154,6 +439,9 @@
             图片、视频为网站模板演示数据，如有涉及侵犯版权，请联系我们提供书面反馈，我们核实后会立即删除。</p>
           <p>Powered by MetInfo 6.1.3 ©2008-2018 MetInfo Inc.</p>
         </div>
+      </div>
+      <!--用户手册-->
+      <div class="user">
       </div>
     </div>
     <!--页面切换时的特效-->

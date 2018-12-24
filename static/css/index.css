@@ -188,13 +188,20 @@
 .about{
   background-color: rgb(95, 88, 88);
 }
+.user{
+  background-color: black;
+}
 /*APP下载时的样式*/
 .down li{
   display: none;
 }
 .my-phone{
-  width:100%;
-  height:100%;
+  width:24rem;
+  height:42rem;
+  margin:0 auto;
   border:1px solid gray;
   border-radius: 5px;
+  background-color: white;
+  opacity: 0;
+  margin-left:40;
 }

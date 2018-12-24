@@ -86,7 +86,7 @@ a,a:active,a:visited,a:hover{
     width:100% !important;
     text-align: center;
   }
-  .row button:nth-child(1),.btn-left{
+  .row button:nth-child(1),.btn-left,.my-font{
     margin-left:0 !important;
   }
   /*下面都是dynamic中的类样式*/
@@ -95,5 +95,8 @@ a,a:active,a:visited,a:hover{
   }
   .row{
     margin-left:0 !important;
+  }
+  .my-phone{
+    display: none;
   }
 }

@@ -28,7 +28,7 @@ $("#main").on("click", "LI", function () {
   })
   $(this).children("a").css({color:"#00ffff"});
   $(this).siblings().children("a").css({color:"white"});
-  console.log($(this))
+  //console.log($(this))
   $("#marker").css({
     "transform": `translate(${i*120}px, 0)`
   })
