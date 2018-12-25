@@ -38,33 +38,12 @@ $(function () {
       prevEl: '.swiper-button-prev',
     },
   })
-  //（2）轮播切换
-  var moved = 0;
-  $(".car-next").click(function () {
-    var w = $('body,html').width()
-    if (moved == 2) {
-      $(this).prop("disabled", true)
-      return;
-    }
-    moved++;
-    $(".car-prev").removeAttr("disabled")
-    $('.my-carousel').css({
-      marginLeft: -w * moved
-    })
+  //（2）切换
+  $('.my-choice>i').click(function(){
+    var i = $(this).index()
+    $(this).addClass("active").siblings().removeClass("active")
+    $(`.all>div:nth-child(${i+1})`).show().siblings().hide();
   })
-  $(".car-prev").click(function () {
-    var w = $('body,html').width()
-    if (moved == 0) {
-      $(this).prop("disabled", true)
-      return;
-    }
-    moved--;
-    $(".car-next").removeAttr("disabled")
-    $('.my-carousel').css({
-      marginLeft: -w * moved
-    })
-  })
-  //（3）轮播切换
 })
 //（3）页面LOADING入场效果
 window.onload = function () {
