@@ -191,6 +191,10 @@
   background-color: black;
 }
 /*APP下载时的样式*/
+.down{
+  padding-left:3rem;
+  margin-top:2rem;
+}
 .down li{
   display: none;
 }

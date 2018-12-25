@@ -120,9 +120,7 @@
     .my-carousel{
       position: relative;
       padding-top:8rem;
-      display: flex;
-      flex-wrap: nowrap; 
-      width:300%;
+      width:100%;
       height:100%;
       transition: all .3s linear;
       overflow: hidden;
@@ -172,8 +170,8 @@
       margin-top:2rem;
     }
     .my-img-bg1{
-      width:90%;
-      height:60%;
+      width:80%;
+      height:69%;
     }
     .my-iframe{
       width:100%;
@@ -187,6 +185,9 @@
     .my-container::before{
       content: "";
       display: table;
+    }
+    .dynamic{
+      overflow: hidden;
     }
     .title {
       margin-top: 10rem;
@@ -203,8 +204,8 @@
     }
 
     .section.row {
-      width: 1310px;
-      margin: 0 auto;
+      /* width: 1310px; */
+      /* margin: 0 auto; */
       margin-top: 5rem;
     }
 
@@ -237,7 +238,7 @@
     }
 
     .detail {
-      margin-bottom: 5rem;
+      margin-bottom: 3rem;
     }
 
     .detail h4 {
@@ -260,7 +261,7 @@
 
     .my-intro {
       float: left;
-      margin-left: 3rem;
+      /* margin-left: 3rem; */
       cursor: pointer;
     }
 
@@ -277,7 +278,7 @@
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       overflow: hidden;
     }
 
@@ -302,6 +303,29 @@
     }
     /*头部背景颜色的定义*/
     .header{
+    }
+    .my-notice{
+      width: 100% !important;
+    }
+    .btn-link{
+      padding-left:0;
+    }
+    .shangbiao {
+      display: flex;
+      justify-content: space-between;
+      padding:0 15px;
+    }
+    .shangbiao li img{
+      width:88px;
+      height:71px;
+    }
+    .my-choice i{
+      cursor: pointer;
+      font-size:2rem;
+      font-style: normal;
+    }
+    .my-choice i:hover{
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -330,13 +354,13 @@
       </div>
     </div>
   </div>
-
+  <!--头部-->
+  <header></header>
+  <!--主体-->
   <div>
     <div class="main-box">
+      <!--轮播-->
       <div id="home" class="first">
-        <!--头部-->
-        <header></header>
-        <!--轮播-->
         <div class="swiper-container">
           <!-- Add Swiper-->
           <div class="swiper-wrapper">
@@ -417,7 +441,7 @@
           <div class="car-item">
             <!--公司简介-->
             <div class="team">
-              <h2>公司简介/核心团队/企业文化</h2>
+              <h2 class="my-choice"><i class="active">公司简介</i>/<i>核心团队</i>/<i>企业文化</i></h2>
               <p class="m-0">COMPANY</p>
             </div>
             <!--文字-->
@@ -440,116 +464,24 @@
                 <img src="./img/about/bg1.jpg" class="my-img-bg1">
               </div>
             </div>
+            <ul class="shangbiao row">
+              <li><img src="./img/about/1.png"></li>
+              <li><img src="./img/about/2.png"></li>
+              <li><img src="./img/about/3.png"></li>
+              <li><img src="./img/about/4.png"></li>
+              <li><img src="./img/about/5.png"></li>
+              <li><img src="./img/about/6.png"></li>
+              <li><img src="./img/about/7.png"></li>
+              <li><img src="./img/about/8.png"></li>
+            </ul>
           </div>
           <div class="car-item">
             <!--核心团队-->
-            <div class="team">
-              <h2>公司简介/核心团队/企业文化</h2>
-              <p class="m-0">TEAM</p>
-            </div>
-            <div class="forbg">
-              <div class="row p-margin">
-                <div class="col-lg-6 d-flex">
-                  <div class="photo">
-                    <img src="./img/about/p1.jpg" class="p-img">
-                    <p class="p-f">创始人</p>
-                    <p class="ceo">CEO凯俪</p>
-                  </div>
-                  <p class="my-mark"></p>
-                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
-                </div>
-                <div class="col-lg-6 d-flex">
-                  <div class="photo">
-                    <img src="./img/about/p4.jpg" class="p-img">
-                    <p class="p-f">创始人</p>
-                    <p class="ceo">CEO凯俪</p>
-                  </div>
-                  <p class="my-mark"></p>
-                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
-                </div>
-              </div>
-              <div class="row p-margin">
-                <div class="col-lg-6 d-flex">
-                  <div class="photo">
-                    <img src="./img/about/p2.jpg" class="p-img">
-                    <p class="p-f">创始人</p>
-                    <p class="ceo">CEO凯俪</p>
-                  </div>
-                  <p class="my-mark"></p>
-                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
-                </div>
-                <div class="col-lg-6 d-flex">
-                  <div class="photo">
-                    <img src="./img/about/p3.jpg" class="p-img">
-                    <p class="p-f">创始人</p>
-                    <p class="ceo">CEO凯俪</p>
-                  </div>
-                  <p class="my-mark"></p>
-                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
-                </div>
-              </div>
-              <div class="my-btn">
-                <button><i class="iconfont icon-left"></i></button>
-                <button><i class="iconfont icon-right"></i></button>
-              </div>
-            </div>
           </div>
           <div class="car-item">
             <!--企业文化-->
-            <div class="team">
-              <h2>公司简介/核心团队/企业文化</h2>
-              <p class="m-0">TEAM</p>
-            </div>
-            <div class="forbg">
-              <div class="row p-margin">
-                <div class="col-lg-6 d-flex">
-                  <div class="photo">
-                    <img src="./img/about/p1.jpg" class="p-img">
-                    <p class="p-f">创始人</p>
-                    <p class="ceo">CEO凯俪</p>
-                  </div>
-                  <p class="my-mark"></p>
-                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
-                </div>
-                <div class="col-lg-6 d-flex">
-                  <div class="photo">
-                    <img src="./img/about/p4.jpg" class="p-img">
-                    <p class="p-f">创始人</p>
-                    <p class="ceo">CEO凯俪</p>
-                  </div>
-                  <p class="my-mark"></p>
-                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
-                </div>
-              </div>
-              <div class="row p-margin">
-                <div class="col-lg-6 d-flex">
-                  <div class="photo">
-                    <img src="./img/about/p2.jpg" class="p-img">
-                    <p class="p-f">创始人</p>
-                    <p class="ceo">CEO凯俪</p>
-                  </div>
-                  <p class="my-mark"></p>
-                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
-                </div>
-                <div class="col-lg-6 d-flex">
-                  <div class="photo">
-                    <img src="./img/about/p3.jpg" class="p-img">
-                    <p class="p-f">创始人</p>
-                    <p class="ceo">CEO凯俪</p>
-                  </div>
-                  <p class="my-mark"></p>
-                  <p class="my-intro">在企业级产品技术研发具有十多年的经验，曾开发多款百万级企业产品</p>
-                </div>
-              </div>
-              <div class="my-btn">
-                <button><i class="iconfont icon-left"></i></button>
-                <button><i class="iconfont icon-right"></i></button>
-              </div>
-            </div>
           </div>
         </div>
-        <button class="car-prev"><i class="iconfont icon-left sm-left"></i></button>
-        <button class="car-next"><i class="iconfont icon-right sm-left"></i></button>
       </div>
       <!--动态-->
       <div class="dynamic">
@@ -586,7 +518,7 @@
                 <!--快洽公告-->
                 <div id="notice">
                   <div class="detail row my-notice">
-                    <div class="my-intro col-lg-8 col-sm-12" title="单击查看详情">
+                    <div class="my-intro-d col-lg-9 col-sm-12" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -599,7 +531,7 @@
                     </div>
                   </div>
                   <div class="detail row my-notice">
-                    <div class="my-intro col-lg-8" title="单击查看详情">
+                    <div class="my-intro-d col-lg-9" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -612,7 +544,7 @@
                     </div>
                   </div>
                   <div class="detail row my-notice">
-                    <div class="my-intro col-lg-8" title="单击查看详情">
+                    <div class="my-intro-d col-lg-9" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -627,7 +559,7 @@
                   <div id="product">
                     <!--产品公告-->
                     <div class="detail row product">
-                      <div class="my-intro col-lg-8" title="单击查看详情">
+                      <div class="my-intro-d col-lg-9" title="单击查看详情">
                         <h4 class="">深圳市龙华区快洽直播间公告</h4>
                         <p class="date">公告发布日期：2018年12月21号</p>
                         <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -645,7 +577,7 @@
                 <div id="product">
 
                   <div class="detail row media">
-                    <div class="my-intro col-lg-8" title="单击查看详情">
+                    <div class="my-intro-d col-lg-8" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -661,7 +593,7 @@
                 <!--媒体报道-->
                 <div id="media">
                   <div class="detail row media">
-                    <div class="my-intro col-lg-8" title="单击查看详情">
+                    <div class="my-intro-d col-lg-8" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -677,7 +609,7 @@
                 <!--行业动态-->
                 <div id="industry">
                   <div class="detail row industry">
-                    <div class="my-intro col-lg-8" title="单击查看详情">
+                    <div class="my-intro-d col-lg-8" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。

@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left:-655px;
 }
 .container::before{
   content: "";

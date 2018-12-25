@@ -7,6 +7,7 @@ $('.btn-nav').on('click tap', function () {
 //（4）通过JS控制container的margin-left
 $(window).resize(function () {
   var width = $(".container").innerWidth()
+  var widthD = $("html,body").width()
   $(".container").css({
     "margin-left": -width / 2
   });

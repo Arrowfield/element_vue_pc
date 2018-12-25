@@ -10,7 +10,7 @@ $(function () {
       //刷新时执行的事件
       var width = $(".container").innerWidth()
       $(".container").css({
-        "margin-left": -width / 2
+        "margin-left": -width / 2,
       });
       $('<script src="./js/header.js"></script>').appendTo("body") //JS文件
       $(".home").css({
@@ -64,6 +64,7 @@ $(function () {
       marginLeft: -w * moved
     })
   })
+  //（3）轮播切换
 })
 //（3）页面LOADING入场效果
 window.onload = function () {

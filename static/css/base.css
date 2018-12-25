@@ -34,6 +34,10 @@ a,a:active,a:visited,a:hover{
   height:100%;
   background: black;
 }
+.active{
+  color:#00ffff;
+  text-decoration: underline;
+}
 /*此处添加媒体查询*/
 /*超大屏*/
 @media screen and (min-width: 1600px){
@@ -98,5 +102,8 @@ a,a:active,a:visited,a:hover{
   }
   .my-phone{
     display: none;
+  }
+  .down{
+    padding-left:0 !important;
   }
 }
