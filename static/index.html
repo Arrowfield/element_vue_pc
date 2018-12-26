@@ -242,7 +242,12 @@
       color:#00FFFF;
     }
 
-    .intro ul li::before {
+    #show{
+      height:500px;
+      overflow-y: scroll;
+    }
+
+    /*.intro ul li::before {
       content: "";
       display: inline-block;
       width: 0;
@@ -251,7 +256,7 @@
       border-width: 0.4rem 0 0.4rem 0.4rem;
       border-color: transparent transparent transparent gray;
       margin-right: 0.5rem;
-    }
+    }*/
 
     .detail {
       margin-bottom: 3rem;
@@ -330,6 +335,7 @@
       display: flex;
       justify-content: space-between;
       padding:0 15px;
+      list-style: none;
     }
     .shangbiao li img{
       width:88px;
@@ -342,6 +348,66 @@
     }
     .my-choice i:hover{
       text-decoration: underline;
+    }
+    /*用户帮助中心相关的样式*/
+    .user::before{
+      content: "";
+      display: table;
+    }
+    .user .row{
+      /* width:100%; */
+      margin-top:16rem;
+    }
+    .my-help{
+      /* border-bottom:1px solid gray; */
+      margin-bottom:3rem;
+      font-weight: bold;
+      color:white;
+      font-size:3rem;
+    }
+    .user ul li{
+      margin-bottom: 1rem;
+      color:gray;
+      font-size: 1.5rem;
+    }
+    .user .shuoming{
+      margin-left:1.5rem;
+    }
+    .user .shuoming li{
+      margin:0.5rem 0;
+    }
+    .user-shou{
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .user-detail {
+      font-size:1.5rem;
+      overflow: auto;
+      height: 700px;
+    }
+    .sub-title{
+      margin:3rem 0;
+    }
+    .user-show{
+      font-weight: bold;
+    }
+    .user-first{
+      list-style-type: disc;
+    }
+    .user-first li{
+      margin:1.5rem 0;
+    }
+    .user-second{
+      margin-left:1.5rem;
+    }
+    .user-second li{
+      margin:1rem 0;
+    }
+    .liebiao ul{
+      list-style: none;
+    }
+    .liebiao ul li{
+      cursor: pointer;
     }
   </style>
 </head>
@@ -482,14 +548,14 @@
                   </div>
                 </div>
                 <ul class="shangbiao row">
-                  <li><img src="./img/about/1.png"></li>
+                  <li><img src="./img/about/8.png"></li>
                   <li><img src="./img/about/2.png"></li>
                   <li><img src="./img/about/3.png"></li>
                   <li><img src="./img/about/4.png"></li>
                   <li><img src="./img/about/5.png"></li>
                   <li><img src="./img/about/6.png"></li>
                   <li><img src="./img/about/7.png"></li>
-                  <li><img src="./img/about/8.png"></li>
+                  <li><img src="./img/about/1.png"></li>
                 </ul>
               </div>
               <!--核心团队-->
@@ -516,7 +582,7 @@
               <div class="col-lg-3">
                 <div class="intro dynamic">
                   <ul>
-                    <li><a href="javascript:">快洽公告</a>
+                    <li><a href="javascript:" style="color:#00FFFF">快洽公告</a>
                       <ul class="">
                       </ul>
                     </li>
@@ -535,11 +601,11 @@
                   </ul>
                 </div>
               </div>
-              <div id="show" class="col-lg-8">
+              <div id="show" class="col-lg-8 my-scroll">
                 <!--快洽公告-->
                 <div id="notice">
                   <div class="detail row my-notice">
-                    <div class="my-intro-d col-lg-9 col-sm-12" title="单击查看详情">
+                    <div class="my-intro-d col-lg-8 col-sm-12" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -552,7 +618,7 @@
                     </div>
                   </div>
                   <div class="detail row my-notice">
-                    <div class="my-intro-d col-lg-9" title="单击查看详情">
+                    <div class="my-intro-d col-lg-8" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -565,7 +631,7 @@
                     </div>
                   </div>
                   <div class="detail row my-notice">
-                    <div class="my-intro-d col-lg-9" title="单击查看详情">
+                    <div class="my-intro-d col-lg-8" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
                       <p class="article">夏天，在江边等待日出，是头等惬意的事情了。江面上漫漫的水意，三三两两的大船，还有不时跃起的江豚。岸边有着苍灰色的石壁，绿色的苔藓，白色的水纹，仿佛都在等待，等待着故事，等待着新生。
@@ -579,7 +645,7 @@
                   </div>
                   <div id="product">
                     <!--产品公告-->
-                    <div class="detail row product">
+                    <div class="detail row product my-notice">
                       <div class="my-intro-d col-lg-9" title="单击查看详情">
                         <h4 class="">深圳市龙华区快洽直播间公告</h4>
                         <p class="date">公告发布日期：2018年12月21号</p>
@@ -596,8 +662,7 @@
                 </div>
                 <!--产品公告-->
                 <div id="product">
-
-                  <div class="detail row media">
+                  <div class="detail row media my-notice">
                     <div class="my-intro-d col-lg-8" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
@@ -613,7 +678,7 @@
                 </div>
                 <!--媒体报道-->
                 <div id="media">
-                  <div class="detail row media">
+                  <div class="detail row media my-notice">
                     <div class="my-intro-d col-lg-8" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
@@ -629,7 +694,7 @@
                 </div>
                 <!--行业动态-->
                 <div id="industry">
-                  <div class="detail row industry">
+                  <div class="detail row industry my-notice">
                     <div class="my-intro-d col-lg-8" title="单击查看详情">
                       <h4 class="">深圳市龙华区快洽直播间公告</h4>
                       <p class="date">公告发布日期：2018年12月21号</p>
@@ -677,6 +742,69 @@
       </div>
       <!--用户手册-->
       <div class="user">
+        <div class="row" div>
+          <div class="col-lg-3">
+            <div class="liebiao">
+              <h2 class="my-help">帮助中心</h2>
+              <ul id="user-main">
+                <li style="color:#00FFFF">用户手册
+                  <ul class="shuoming">
+                    <li>用户手册介绍</li>
+                    <li>用户手册说明</li>
+                  </ul>
+                </li>
+                <li>主播手册</li>
+                <li>直播公会</li>
+                <li>代理推广</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9 user-detail my-scroll">
+            <div id="user">
+              <h2 class="user-shou">用户手册</h2>
+              <p class="sub-title">这是用户手册相关的内容...</p>
+              <h2 class="user-show">用户手册介绍</h2>
+              <hr color="gray">
+              <div style="margin-bottom:2.5rem">
+                <ul class="user-first">
+                  <li>基于Auth验证的权限管理系统
+                    <ul class="user-second">
+                      <li>支持无限级父子级权限继承，父级的管理员可任意增删改子级管理员及权限设置</li>
+                      <li>支持单管理员多角色</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <h2 class="user-show">用户手册说明</h2>
+              <hr color="gray">
+              <div style="margin-bottom:2.5rem">
+                <ul class="user-first">
+                  <li>基于Auth验证的权限管理系统
+                    <ul class="user-second">
+                      <li>支持无限级父子级权限继承，父级的管理员可任意增删改子级管理员及权限设置</li>
+                      <li>支持单管理员多角色</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="zhubo" style="display: none">
+              <h2 class="user-shou">主播手册</h2>
+              <p class="sub-title">这是主播手册相关的内容...</p>
+              <h2 class="user-show">主播手册介绍</h2>
+            </div>
+            <div id="gonghui" style="display: none">
+              <h2 class="user-shou">直播公会</h2>
+              <p class="sub-title">这是用户直播公会相关的内容...</p>
+              <h2 class="user-show">直播公会介绍</h2>
+            </div>
+            <div id="daili" style="display: none">
+              <h2 class="user-shou">代理推广</h2>
+              <p class="sub-title">这是代理推广相关的内容...</p>
+              <h2 class="user-show">代理推广介绍</h2>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!--页面切换时的特效-->

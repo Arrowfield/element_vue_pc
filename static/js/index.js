@@ -44,6 +44,20 @@ $(function () {
     $(this).addClass("active").siblings().removeClass("active")
     $(`.all>div:nth-child(${i+1})`).show().siblings().hide();
   })
+  //intro dynamic
+  $(".intro.dynamic>ul>li").click(function(){
+    $(this).children("a").css({"color":"#00ffff"})
+    $(this).siblings().children("a").css({"color":"white"})
+  })
+  //（3）用户手册绑定
+  $('#user-main>li').click(function(){
+    //console.log()
+    var i = $(this).index()
+    $(this).css({"color":"#00ffff"}).siblings().css({"color":"white"})
+    $(this).children("ul").show();
+    $(this).siblings().children("ul").hide();
+    $(`.user-detail>div:nth-child(${i+1})`).show().siblings().hide();
+  })
 })
 //（3）页面LOADING入场效果
 window.onload = function () {

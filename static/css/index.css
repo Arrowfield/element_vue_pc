@@ -30,6 +30,9 @@
 .swiper-button-next,.swiper-button-prev{
   color:white !important;
 }
+.my-video{
+  height: 100%;
+}
 .notice{
   border-top:0.1rem solid white;
   border-bottom: 0.1rem solid white;
@@ -116,6 +119,7 @@
   width:20%;
   display: flex;
   justify-content: space-between;
+  list-style: none;
 }
 .contact li{
   width:5rem;
@@ -162,7 +166,7 @@
   padding:2rem 3rem;
 }
 .row ul li{
-  font-size:2rem;
+  font-size:1rem;
   margin-bottom:2rem;
 }
 .row button:not(.btn-link){
