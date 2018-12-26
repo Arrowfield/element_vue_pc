@@ -65,7 +65,7 @@ a,a:active,a:visited,a:hover{
     display: none;
   }
   .container{
-    width:300px;
+    width:345px;
   }
   .notice p:nth-child(1){
     font-size:3rem !important;
@@ -107,6 +107,8 @@ a,a:active,a:visited,a:hover{
     padding-left:0 !important;
     list-style: none;
   }
+  .down li{
+  }
   /*帮助中心的样式（移动端）*/
   .user-detail{
     text-align: left !important;
@@ -119,5 +121,12 @@ a,a:active,a:visited,a:hover{
   }
   .dynamic ul{
     list-style: none !important;
+  }
+  #user-main{
+    list-style: none;
+    display: none;
+  }
+  .hideDiv{
+    display: block !important;
   }
 }

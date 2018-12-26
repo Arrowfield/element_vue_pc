@@ -95,6 +95,10 @@ $(document).ready(function () {
       })
     }
   })
+  $('#last,.user-detail').click(function(){
+    $("#user-main").toggleClass("isHide");
+  })
+
 })
 //定义函数动态改变页面大小
 function changeSize() {
@@ -118,11 +122,11 @@ function onMouseScroll(e) {
   if (delta < 0) { //向下滚动
     //获取当前的滚动条的高度
     if (height == 0) {
-      $('.down>li').fadeIn(3000) //文字
+      $('.down>li').fadeIn(1000) //文字
       $('.my-phone').animate({
         opacity: 1,
         marginLeft: 0
-      }, 1000)
+      }, 500)
       //滑动高亮
       changeMarsk(1,"+")
     } else if (height == heightD) {
