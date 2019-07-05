@@ -8,7 +8,7 @@
       <el-input
           placeholder="请输入用户名"
           suffix-icon="fa fa-user"
-          v-model="userNmae"
+          v-model="userName"
           style="margin-bottom: 18px"
       >
       </el-input>
@@ -30,7 +30,7 @@
       >登录
       </el-button>
       <div>
-        <el-checkbox v-model="Remenber"> 记住密码</el-checkbox>
+        <el-checkbox v-model="Remember"> 记住密码</el-checkbox>
         <a href="javascript:;" style="float: right;color: #3C8DBC;font-size: 14px">注册</a>
       </div>
 
@@ -45,27 +45,32 @@
   export default {
     data() {
       return {
-        userNmae: '',
+        userName: '',
         password: '',
-        Remenber: true,
+        Remember: true,
         loginLoading: false
       }
     },
     methods: {
-      login() {
-        return;
+      async login() {
         this.loginLoading = true;
-        //loginApi({userNmae:this.userNmae,password:this.password}).then(r=>{}).catch(_=>{})
-        setTimeout(() => {
+	      let res = await loginApi({phone:this.userName,password:this.password}).catch((err)=>{if(err) return false})
+	      console.log(res)
+        this.loginLoading = false;
+        /*setTimeout(() => {
           setToken('123456789');
           this.$notify({
             title: '登录成功',
             message: '很高兴你使用ElementUIAdmin！别忘了给个Star哦。',
             type: 'success'
           });
+          
           this.loginLoading = false;
           this.$router.push({path: '/'});
-        }, 1000);
+          
+        }, 1000);*/
+	      
+	      
       }
     }
   }

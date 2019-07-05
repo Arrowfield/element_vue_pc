@@ -1,7 +1,7 @@
 import localKey from './localKey'
 
 
-const devApiUrl = 'http://192.168.1.92:9088';//本地开发环境
+const devApiUrl = 'http://admin.plus2.com';//本地开发环境
 const buildDevApiUrl = 'http://192.168.1.92:9088';//打包开发环境
 const buildTestApiUrl = 'http://192.168.1.92:6906';//打包测试环境
 const buildProApiUrl = 'http://192.168.1.92:9088';//打包正式环境
@@ -29,7 +29,7 @@ export default {
   apiUrl: useApiUrl,
   siteName: '后台管理系统',
   minSiteMame: 'EUI',
-  apiPrefix: "",
+  apiPrefix: "admin",//前缀
   timeout: 5000,
   cookiesExpires: 7,
   requestRetry: 4,
@@ -37,6 +37,6 @@ export default {
   tokenKey: 'ACCESS_TOKEN',
   userInfoKey: 'USER_INFO',
   permissionsKey:'PERMISSION_ARRAY',
-  gitHub: 'https://github.com/xusenlin/ElementUIAdmin2',
+  gitHub: 'https://gitee.com/mcan/kuaiqia-offical-website.git',
   ...localKey
 }

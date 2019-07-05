@@ -3,27 +3,19 @@ import Config from '../config/app.js'
 import { Notification,Loading  } from 'element-ui';
 import {getToken,removeToken} from '../utils/dataStorage.js'
 
-const service = Axios.create({
-    baseURL: Config.apiUrl + '/' + Config.apiPrefix,
-    headers: {
-        'Accept': '*/*'
-    },
-    timeout: Config.timeout
-})
+const config = {
+  baseURL: Config.apiUrl + '/' + Config.apiPrefix,
+  timeout: Config.timeout,
+  withCredentials: false, // Check cross-site Access-Control
+  crossDomain: false//通常适用于jsonp
+}
+
+const service = Axios.create(config)//创建实例
+
 service.defaults.retry = Config.requestRetry;
 service.defaults.retryDelay = Config.requestRetryDelay;
 
-service.interceptors.request.use(
-    config => {
-
-        if(!config.closeLoading){
-            window.loadingInstance = Loading.service();
-        }
-
-        let noParameters = config.url.indexOf('?')  == -1;
-        //config.headers['X-Token'] = getToken() //
-        config.url = noParameters ? config.url+'?access_token=' + getToken(): config.url+'&access_token='+ getToken();
-
+service.interceptors.request.use(config => {
         return config
     },
     error => {
@@ -37,8 +29,8 @@ service.interceptors.response.use(
     response => {//Grade
 
         if(!response.config.closeLoading){
-            setTimeout(_=>{
-                window.loadingInstance.close();
+            setTimeout(()=>{
+                //window.loadingInstance.close();
             },400);
         }
 
@@ -55,12 +47,12 @@ service.interceptors.response.use(
                 return res.data
             }
 
-            if(res.data.resultCode != 200){
+            if(res.data.resultCode !== 200){
                 Notification({
                     title:res.data.message,
                     type:'warning'
                 });
-                if(res.data.resultCode == 402){//登录状态失效
+                if(res.data.resultCode === 402){//登录状态失效
                     removeToken();
                     setTimeout(_=>{
                         window.location.href = './login.html';
@@ -73,8 +65,8 @@ service.interceptors.response.use(
     },
     error => {
         console.log(error)
-        setTimeout(_=>{
-            window.loadingInstance.close();
+        setTimeout(()=>{
+            //window.loadingInstance.close();
         },300)
         Notification({
             title:"请求未响应",

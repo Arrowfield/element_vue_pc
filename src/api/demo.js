@@ -1,11 +1,7 @@
 import request from '../utils/request.js'
 
 export function login(params) {
-  return request({
-    url: '/pc/user/login',
-    method: 'post',
-    data: params
-  })
+  return request.post("/auth/login",params)
 }
 
 export function sendSMS(params) {
