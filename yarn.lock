@@ -2420,9 +2420,10 @@ electron-to-chromium@^1.3.116:
   version "1.3.116"
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.116.tgz#1dbfee6a592a0c14ade77dbdfe54fef86387d702"
 
-element-ui@^2.5.4:
-  version "2.6.1"
-  resolved "http://registry.npm.taobao.org/element-ui/download/element-ui-2.6.1.tgz#86db79ff5de9b1bcc3187b65b3772b0c54074718"
+element-ui@^2.10.0:
+  version "2.10.1"
+  resolved "https://registry.npm.taobao.org/element-ui/download/element-ui-2.10.1.tgz?cache=0&sync_timestamp=1562053824530&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felement-ui%2Fdownload%2Felement-ui-2.10.1.tgz#1011016e50e76f5dae6fbf9c86e53b6e53fcb9eb"
+  integrity sha1-EBEBblDnb12ub7+chuU7blP8ues=
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"

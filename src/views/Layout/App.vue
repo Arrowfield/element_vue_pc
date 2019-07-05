@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+	  
     <div class="header">
       <div class="logo">
         <span class="big">{{ $Config.siteName }}</span>
@@ -81,7 +82,9 @@
         </el-dropdown>
       </div>
     </div>
+	  
     <div class="app">
+	    
       <div class="aside">
         <div class="menu">
           <el-menu
@@ -116,6 +119,7 @@
           </div>
         </div>
       </div>
+	    
       <div class="app-body">
         <NavBar id="nav-bar" v-if="switchTabBar" :style="fixedTabBar && switchTabBar?'position: fixed;top: 0;':''"></NavBar>
         <div v-else style="margin-top: 50px;"></div>

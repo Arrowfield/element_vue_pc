@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "element-ui": "^2.5.4",
+    "element-ui": "^2.10.0",
     "good-storage": "^1.1.0",
     "lodash": "^4.17.11",
     "screenfull": "^3.3.3",

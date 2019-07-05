@@ -16,6 +16,7 @@ let RouteList = [
       title: '首页',
       keepAlive: false,
     },
+
     children: [
       {
         path: '/',
@@ -100,6 +101,7 @@ let RouteList = [
       title: '后台登录',
       keepAlive: false
     },
+
     components: {
       blank: resolve => require(['@/views/login/Login.vue'], resolve),
     }
