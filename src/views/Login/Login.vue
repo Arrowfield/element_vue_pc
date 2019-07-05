@@ -30,8 +30,8 @@
       >登录
       </el-button>
       <div>
-        <el-checkbox v-model="Remenber"> Remenber</el-checkbox>
-        <a href="javascript:;" style="float: right;color: #3C8DBC;font-size: 14px">Register</a>
+        <el-checkbox v-model="Remenber"> 记住密码</el-checkbox>
+        <a href="javascript:;" style="float: right;color: #3C8DBC;font-size: 14px">注册</a>
       </div>
 
     </div>
@@ -53,6 +53,7 @@
     },
     methods: {
       login() {
+        return;
         this.loginLoading = true;
         //loginApi({userNmae:this.userNmae,password:this.password}).then(r=>{}).catch(_=>{})
         setTimeout(() => {

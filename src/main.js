@@ -15,12 +15,13 @@ Vue.use(ElementUI)
 router.beforeEach((to, from, next) => {
   window.document.title = to.meta.title ? to.meta.title + '-' + Config.siteName : Config.siteName;
 
-  if (!isLogin() && to.path != '/login') {
+  if (!isLogin() && to.path !== '/login') {
     next({path: '/login'});
   } else {
     next();
   }
 });
+
 router.afterEach(transition => {
 
 });

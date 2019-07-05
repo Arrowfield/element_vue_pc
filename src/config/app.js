@@ -27,7 +27,7 @@ switch (process.env.NODE_ENV) {
 export default {
   nodeDevEnv: process.env.NODE_ENV == 'development',
   apiUrl: useApiUrl,
-  siteName: 'Element UI Admin模板',
+  siteName: '后台管理系统',
   minSiteMame: 'EUI',
   apiPrefix: "",
   timeout: 5000,
