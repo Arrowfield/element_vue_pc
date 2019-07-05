@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 #本项目已经废弃 新版本已经使用了最新的vue-cli3重构
 https://github.com/xusenlin/ElementUIAdmin2
@@ -87,6 +86,4 @@ npm run build
 
 这个是基于Element UI的后台单页应用模板。点击连接预览http://xusenlin.com/works/eui/
 
-=======
 #### element-ui的学习
->>>>>>> 6e4adc810d00eebde5729b067a280f9d84f92b77
