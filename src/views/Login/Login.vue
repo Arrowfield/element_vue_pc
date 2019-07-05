@@ -53,29 +53,10 @@
     },
     methods: {
       async login() {
-        this.loginLoading = true;
+        this.loginLoading = true
 	      let res = await loginApi({phone:this.userName,password:this.password}).catch((err)=>{if(err) return false})
-	      //console.log(res)
-       
-	      if(res){
-	        setToken(res.token)
-	        this.$router.push("/")
-	      }
-        this.loginLoading = false;
-        /*setTimeout(() => {
-          setToken('123456789');
-          this.$notify({
-            title: '登录成功',
-            message: '很高兴你使用ElementUIAdmin！别忘了给个Star哦。',
-            type: 'success'
-          });
-          
-          this.loginLoading = false;
-          this.$router.push({path: '/'});
-          
-        }, 1000);*/
-	      
-	      
+	      if(res){setToken(res.token);this.$router.push("/")}
+        this.loginLoading = false
       }
     }
   }
