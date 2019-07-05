@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import HelpHint from '~/components/HelpHint/HelpHint.vue';
+  import HelpHint from '@/components/HelpHint.vue';
 
   export default {
     data() {
@@ -40,7 +40,7 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="scss">
   .tools{
 
   }

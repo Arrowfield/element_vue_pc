@@ -9,7 +9,7 @@ Vue.use(Router)
 let RouteList = [
   {
     path: '/',
-    component: resolve => require(['~/views/Layout/App.vue'], resolve),
+    component: resolve => require(['@/views/layout/App.vue'], resolve),
     meta: {
       title: '首页',
       keepAlive: false,
@@ -20,9 +20,9 @@ let RouteList = [
         name: 'Dashboard',
         meta: {
           title: '首页',
-          keepAlive: false
+          keepAlive: true
         },
-        component: resolve => require(['~/views/Home/Index.vue'], resolve),
+        component: resolve => require(['@/views/home/Index.vue'], resolve),
       },
       {
         path: '/font_awesome',
@@ -31,7 +31,7 @@ let RouteList = [
           title: 'FontAwesome 图标',
           keepAlive: false
         },
-        component: resolve => require(['~/views/Icon/FontAwesome.vue'], resolve),
+        component: resolve => require(['@/views/icon/FontAwesome.vue'], resolve),
       },
       {
         path: '/element_icon',
@@ -40,7 +40,7 @@ let RouteList = [
           title: 'Element 图标',
           keepAlive: false
         },
-        component: resolve => require(['~/views/Icon/ElementIcon.vue'], resolve),
+        component: resolve => require(['@/views/icon/ElementIcon.vue'], resolve),
       },
       {
         path: '/post_manage',
@@ -49,7 +49,7 @@ let RouteList = [
           title: '文章管理',
           keepAlive: false
         },
-        component: resolve => require(['~/views/ContentManage/Index.vue'], resolve),
+        component: resolve => require(['@/views/contentManage/Index.vue'], resolve),
       },
       {
         path: '/user_manage',
@@ -58,7 +58,7 @@ let RouteList = [
           title: '用户列表',
           keepAlive: true
         },
-        component: resolve => require(['~/views/UserManage/Index.vue'], resolve),
+        component: resolve => require(['@/views/userManage/Index.vue'], resolve),
       },
       {
         path: '/category_manage',
@@ -67,7 +67,7 @@ let RouteList = [
           title: '分类列表',
           keepAlive: true
         },
-        component: resolve => require(['~/views/CategoryManage/Index.vue'], resolve),
+        component: resolve => require(['@/views/categoryManage/Index.vue'], resolve),
       },
       {
         path: '/role_manage',
@@ -76,7 +76,7 @@ let RouteList = [
           title: '角色列表',
           keepAlive: true
         },
-        component: resolve => require(['~/views/PermissionManage/Role/Role.vue'], resolve),
+        component: resolve => require(['@/views/permissionManage/role/Role.vue'], resolve),
       },
       {
         path: '/permission_list',
@@ -85,10 +85,10 @@ let RouteList = [
           title: '权限列表',
           keepAlive: true
         },
-        component: resolve => require(['~/views/PermissionManage/Permission/Index.vue'], resolve),
+        component: resolve => require(['@/views/permissionManage/permission/Index.vue'], resolve),
       },
       //个人中心，可能有修改密码，头像修改等路由
-      Personal.index,
+      Personal
     ]
   },
   {
@@ -99,7 +99,7 @@ let RouteList = [
       keepAlive: false
     },
     components: {
-      blank: resolve => require(['~/views/Login/Login.vue'], resolve),
+      blank: resolve => require(['@/views/login/Login.vue'], resolve),
     }
   },
 
@@ -113,7 +113,7 @@ RouteList[0].children.push({
     title: '构建代码',
     keepAlive: true
   },
-  component: resolve => require(['~/views/DevelopmentTool/Build.vue'], resolve),
+  component: resolve => require(['@/views/developmentTool/Build.vue'], resolve),
 });
 
 export default new Router({routes: RouteList})

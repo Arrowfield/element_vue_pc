@@ -73,8 +73,8 @@
 </template>
 
 <script>
-  import ToolBar from '~/components/ToolBar/ToolBar.vue';
-  import HelpHint from '~/components/HelpHint/HelpHint.vue';
+  import ToolBar from '@/components/ToolBar.vue';
+  import HelpHint from '@/components/HelpHint.vue';
 
   export default {
     data() {
@@ -147,6 +147,6 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="scss">
 
 </style>

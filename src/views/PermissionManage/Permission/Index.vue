@@ -37,8 +37,8 @@
 </template>
 
 <script>
-  import ToolBar from '~/components/ToolBar/ToolBar.vue';
-  import AllRouter from '~/router/'
+  import ToolBar from '@/components/ToolBar.vue';
+  import AllRouter from '@/router/'
 
   export default {
     data() {

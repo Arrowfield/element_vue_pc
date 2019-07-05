@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import ToolBar from '~/components/ToolBar/ToolBar.vue';
+  import ToolBar from '@/components/ToolBar.vue';
   import TreeDetails from './TreeDetails.vue';
   import CategoryEdit from './CategoryEdit.vue'
   export default {
@@ -183,7 +183,7 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="scss">
   .category{
     .el-tree-node__content {
       height: 40px;

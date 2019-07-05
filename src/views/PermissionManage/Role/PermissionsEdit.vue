@@ -44,7 +44,7 @@
 </template>
 
 <script>
-  import AllRouter from '~/router/'
+  import AllRouter from '@/router/'
 
   export default {
     name: 'PermissionsEdit',
@@ -160,7 +160,7 @@
     components: {}
   }
 </script>
-<style lang="less">
+<style lang="scss">
   .permissions-dialog {
 
   }

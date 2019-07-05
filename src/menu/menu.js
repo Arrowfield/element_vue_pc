@@ -103,7 +103,7 @@ PermissionManage.permission = {
 
 export default menu;
 
-if(__DEV__){
+if(process.env.NODE_ENV=='development'){
 
   menu.development_tools = {
     name: '开发工具',
