@@ -55,7 +55,12 @@
       async login() {
         this.loginLoading = true;
 	      let res = await loginApi({phone:this.userName,password:this.password}).catch((err)=>{if(err) return false})
-	      console.log(res)
+	      //console.log(res)
+       
+	      if(res){
+	        setToken(res.token)
+	        this.$router.push("/")
+	      }
         this.loginLoading = false;
         /*setTimeout(() => {
           setToken('123456789');

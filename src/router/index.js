@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Personal from './personal'
+import Config from "@/config/app";
+import {isLogin} from "@/utils/dataStorage";
 
 Vue.use(Router)
 
@@ -114,8 +116,26 @@ RouteList[0].children.push({
     keepAlive: true
   },
   component: resolve => require(['@/views/developmentTool/Build.vue'], resolve),
-});
+})
 
-export default new Router({routes: RouteList})
+const router = new Router({routes: RouteList})
+
+router.beforeEach((to, from, next) => {
+
+  window.document.title = to.meta.title ? to.meta.title + '-' + Config.siteName : Config.siteName
+
+  if (!isLogin() && to.path !== '/login') {
+    next({path: '/login'})
+  } else {
+    next()
+  }
+
+})
+
+router.afterEach(transition => {
+
+})
+
+export default router
 
 
