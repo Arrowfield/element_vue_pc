@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>快洽-公告详情</title>
+	<link rel="icon" href="./img/picture.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/base.css">
+	<style>
+		.dt-floor-noe{
+			padding:0 120px;
+			width:1440px;
+			margin:0 auto;
+		}
+		.dt-floor-noe ul{
+			margin-top:30px;
+			margin-bottom: 50px;
+		}
+		.dt-floor-noe ul li{
+			font-size:14px;
+			color:rgba(51,51,51,1);
+			float: left;
+		}
+		.dt-header{
+			background: url("./img/detail/tangle_header.png") no-repeat center;
+			height:98px;
+			background-size: cover;
+		}
+		.dt-title{
+			font-size:42px;
+			color:rgba(17,17,17,1);
+		}
+		.dt-date{
+			margin:20px 0 40px 0;
+			color:rgba(85,85,85,1);
+		}
+		.dt-act{
+			width: 1202px;
+			margin-bottom: 123px;
+			color:rgba(85,85,85,1);
+			font-size:14px;
+			line-height:24px;
+		}
+		.dt-act p{
+			text-indent: 28px;
+		}
+	</style>
+</head>
+
+<body>
+<div class="container-fluid p-0">
+	<div class="dt-header"><header></header></div>
+	<div class="dt-floor-noe">
+		<ul class="clearfix">
+			<li>首页 ></li>
+			<li>新闻 ></li>
+			<li>详情 ></li>
+		</ul>
+		<p class="dt-title">表面肌电在运动科学中的应用</p>
+		<p class="dt-date">2017-05-08</p>
+		<div class="dt-act">
+			<p>你拥有了BodyPlus智能压缩衣以后，首先，你需要明白你并不只是拥有了一件只是看着炫酷的衣服，更重要的是你同时拥有了为这套衣<br>服提供数据分析与展示的配套APP及大数据分析的云平台服务。BodyPlus智能系统通过体能评估，计划制定，训练监测，效果评估，四个环节科学而系统化的实现了“评估，计划，监测，反馈”的闭环。帮助你能更好的管理自己的运动锻炼行为，达到预期的锻炼效果。 此款智能运动压缩衣最大的特色：“监测人体肌电信号” <br>主打功能：“用肌电数据直观的展示出锻炼行为中如：</p>
+			<p>动力链错误，发力不均衡，非目标肌肉发力等错误动作，从而借此纠正自己的锻炼动作” 除了主打的核心功能外，正如上面提及训练的闭环理念，BodyPlus智能压缩衣和智能系统还提供以下的功能： 1. 心肺功能评估：服装里有专门的传感器可以实时采集心率和呼吸率，通过12分钟竭力跑或者400米冲刺跑，对包含静息心率，最大心率和最大摄氧量的监测分析生成分析报告。 2. 自定义模板与训练计划：通过自己体能和身体实际情况制定专属于您自己的锻炼计划和运动模板，无论是单日模板还是周模板皆可自己定制</p>
+			<p>（或是由您的专属教练下发，后面会讲到这个功能） 3. 独一无二的分析报告：每一次训练计划完成后，会生成一份独一无二专属于你的训练分析报告，包含的信息有训练过程的心率，呼吸率曲线，全身主要锻炼肌肉的激活报告，在数据分析帮助下，让你发现每次训练的不足与进步，乃至可以在更长的时间维度上见证自己日积月累的锻炼成果。 4. 户外运动功能：我们的APP中有户外运动的功能，完全可以满足除了健身同时也热爱跑步的您，运动轨迹，卡路里，步频，速度，甚至是海拔等数据都尽掌于您手。</p>
+			<p>（PS：不穿智能压缩衣虽然也可以使用此功能，但运动结束后的分析报告没有心率和呼吸数据的，毕竟传感器是在衣服里的呀你应该懂的。 5. 丰富的模板素材与健身知识：对于健身小白我们也是非常照顾的，小白们甚至连健身房里摆设的各种器械连名字都叫不全，就不用说会使用它们了，也就谈不上自己给自己制定训练计划和专属自己的模板，如果你还处于小白阶段那就可以使用APP中丰富的训练模板，减脂，增肌，塑形…应有尽有，而且还会定期不断的更新和完善。 6. 学员端与教练端的未来式： </p>
+			<p>除了所有人都可以下载使用学员端APP外，我们还开发了专门给将来BodyPlus认证教练使用的教练端APP，在不久的将来，越来越多的健身房，私教中心与BodyPlus签署合作协议共同努力打造健身行业科学化规范化体系，就此解决教练约课难，派课没有针对性，学员训练效果无法具体评估，等等行业里目前存在的问题，甚至可以远程督促和指导学员出差时的锻炼情况。</p>
+		</div>
+	</div>
+	<div class="my-footer"></div>
+</div>
+<script src="./js/jquery-3.2.1.js"></script>
+<script>
+  $(function () {
+    $('<link rel="stylesheet" href="./css/header.css">').appendTo("head");
+    $.ajax({
+      url: "./doc/header.html",
+      type: "GET",
+      success: function (res) {
+        $(res).replaceAll("header");
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+    $('<link rel="stylesheet" href="./css/footer.css">').appendTo("head");
+    $.ajax({
+      url: "./doc/footer.html",
+      type: "GET",
+      success: function (res) {
+        $(res).replaceAll(".my-footer");
+      }
+    });
+  })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+.h-my-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    min-width: 1440px;
+    margin:0 auto;
+    padding:30px 120px;
+}
+.h-my-container ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 312px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.h-my-container ul li a{
+    text-decoration: none;
+    font-size:16px;
+    color:rgba(255,255,255,1);
+}
+.h-my-container ul li a:hover{
+    text-decoration: none;
+}
+.h-my-container ul li.mask{
+    position: absolute;
+    bottom:-1px;
+    left:1.5px;
+    width:30px;
+    height:2px;
+    background:rgba(255,255,255,1);
+    border-radius:1px;
+}
