@@ -6,9 +6,13 @@ Vue.use(Router)
 
 let RouteList = [
   {path:"/",redirect:"/login"},
-  {path: 'home', component: resolve => require(['@/views/layout/App.vue'], resolve), meta: {auth:true},
+  {path: '/home', component: resolve => require(['@/views/layout/App.vue'], resolve),
     children: [
-      {path: '/', name: 'Dashboard', meta: {}, component: resolve => require(['@/views/home/Index.vue'], resolve)}
+      {
+        path: '/', name: 'Dashboard',
+        component: resolve => require(['@/views/home/Index.vue'], resolve),
+        meta: {auth:true,title:"首页"}
+      }
     ]
   },
   {path: '/login', name: 'Login', components: {login: resolve => require(['@/views/login/Login.vue'], resolve)},meta:{title:"后台登录"}},
