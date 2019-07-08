@@ -15,11 +15,18 @@ let RouteList = [
       }
     ]
   },
-  {path: '/login', name: 'Login', components: {login: resolve => require(['@/views/login/Login.vue'], resolve)},meta:{title:"后台登录"}},
+  {
+    path: '/login', name: 'Login',
+    components: {login: resolve => require(['@/views/login/Login.vue'], resolve)},
+    meta:{title:"后台登录"},
+    beforeEnter:(to,form,next)=>{if(isLogin()){next('/home')}else{next()}}
+  },
   {path:"**",redirect:"/login"}
 ]
 
 const router = new Router({routes: RouteList})
+
+
 
 router.beforeEach((to, from, next) => {
   window.document.title = to.meta.title ? to.meta.title + '-' + Config.siteName : Config.siteName
