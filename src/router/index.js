@@ -2,6 +2,19 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Config from "../config/app.js"
 import {isLogin} from "../utils/dataStorage"
+
+
+import Main from '../views/system/Main'
+import Role from '../views/system/Role'
+var SystemRouter = {
+  path:"system",
+  component:Main,
+  children:[
+    {path:"",redirect:'role'},
+    {path:"role",component:Role,meta:{title:'角色管理'}}
+  ]
+}
+
 Vue.use(Router)
 
 let RouteList = [
@@ -12,7 +25,8 @@ let RouteList = [
         path: '/', name: 'Dashboard',
         component: resolve => require(['@/views/home/Index.vue'], resolve),
         meta: {auth:true,title:"首页"}
-      }
+      },
+      SystemRouter
     ]
   },
   {
