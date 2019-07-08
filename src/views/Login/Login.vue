@@ -40,7 +40,7 @@
 
 <script>
   import {setToken} from '../../utils/dataStorage'
-  import {login as loginApi} from '../../api/demo'
+  import {login as loginApi} from '../../api/'
 
   export default {
     data() {
