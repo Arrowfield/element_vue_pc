@@ -37,7 +37,7 @@ let RouteList = [
     meta:{title:"后台登录"},
     beforeEnter:(to,form,next)=>{if(isLogin()){next('/home')}else{next()}}
   },
-  {path:"**",redirect:"/login"}
+  {path:"**",redirect:"/login"}//也可以定义一个路径错误的组件代替
 ]
 
 const router = new Router({routes: RouteList})
@@ -53,6 +53,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 //（1）登录状态下，用户无法进入登录界面
+//(2) 路径输入错误，用户登录，进入首页；用户未登录，进入登录页面
 
   router.afterEach(transition => {
 
