@@ -6,12 +6,14 @@ import {isLogin} from "../utils/dataStorage"
 
 import Main from '../views/system/Main'
 import Role from '../views/system/Role'
+import Icon from '../views/system/Icon'
 var SystemRouter = {
   path:"system",
   component:Main,
   children:[
     {path:"",redirect:'role'},
-    {path:"role",component:Role,meta:{title:'角色管理'}}
+    {path:"role",component:Role,meta:{title:'角色管理'}},
+    {path:"icon",component:Icon,meta:{title:'图标管理'}}
   ]
 }
 
