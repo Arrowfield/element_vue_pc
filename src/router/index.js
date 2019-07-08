@@ -6,15 +6,13 @@ import {isLogin} from "@/utils/dataStorage";
 
 Vue.use(Router)
 
-
-
-let RouteList = [
-  {
+let RouteList = [{
     path: '/',
     component: resolve => require(['@/views/layout/App.vue'], resolve),
     meta: {
       title: '首页',
       keepAlive: false,
+      auth:false
     },
 
     children: [
@@ -23,7 +21,8 @@ let RouteList = [
         name: 'Dashboard',
         meta: {
           title: '首页',
-          keepAlive: true
+          keepAlive: true,
+          auth:true
         },
         component: resolve => require(['@/views/home/Index.vue'], resolve),
       },
@@ -32,7 +31,8 @@ let RouteList = [
         name: 'FontAwesome',
         meta: {
           title: 'FontAwesome 图标',
-          keepAlive: false
+          keepAlive: false,
+          auth:true
         },
         component: resolve => require(['@/views/icon/FontAwesome.vue'], resolve),
       },
@@ -94,50 +94,40 @@ let RouteList = [
       Personal
     ]
   },
+
   {
     path: '/login',
     name: 'Login',
     meta: {
       title: '后台登录',
-      keepAlive: false
+      keepAlive: false,
+      auth:false
     },
 
     components: {
-      blank: resolve => require(['@/views/login/Login.vue'], resolve),
+      login: resolve => require(['@/views/login/Login.vue'], resolve),//组件属性配置成对象
     }
-  },
+  }
 
 ]
 
 
-RouteList[0].children.push({
-  path: '/build_code',
-  name: 'BuildCode',
-  meta: {
-    title: '构建代码',
-    keepAlive: true
-  },
-  component: resolve => require(['@/views/developmentTool/Build.vue'], resolve),
-})
-
 const router = new Router({routes: RouteList})
 
 router.beforeEach((to, from, next) => {
-
   window.document.title = to.meta.title ? to.meta.title + '-' + Config.siteName : Config.siteName
-
   if (!isLogin() && to.path !== '/login') {
-    next({path: '/login'})
-  } else {
+    next('/login')
+  }else{
     next()
   }
-
 })
+//（1）登录状态下，用户无法进入登录界面
 
-router.afterEach(transition => {
+  router.afterEach(transition => {
 
-})
+  })
 
-export default router
+  export default router
 
 

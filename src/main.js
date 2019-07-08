@@ -4,15 +4,11 @@ import ElementUI from 'element-ui'
 import './assets/css/style.scss'
 import router from './router/'
 import Config from './config/app'
-import {isLogin} from './utils/dataStorage'
 import App from './App.vue'
 
 
-Vue.prototype.$Config = Config;
-
+Vue.prototype.$Config = Config
 Vue.use(ElementUI)
-
-
 
 new Vue({
   el: '#app',

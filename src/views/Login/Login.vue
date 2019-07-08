@@ -45,8 +45,8 @@
   export default {
     data() {
       return {
-        userName: '',
-        password: '',
+        userName: '15118099616',
+        password: '123456',
         Remember: true,
         loginLoading: false
       }
@@ -54,7 +54,7 @@
     methods: {
       async login() {
         this.loginLoading = true
-	      let res = await loginApi({phone:this.userName,password:this.password}).catch((err)=>{if(err) return false})
+	      let res = await loginApi({phone:this.userName,password:this.password}).catch((err)=>{if(err) if(err) return false})
 	      if(res){setToken(res.token);this.$router.push("/")}
         this.loginLoading = false
       }

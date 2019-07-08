@@ -13,6 +13,7 @@ const config = {
 const service = Axios.create(config)//创建实例
 
 service.defaults.retry = Config.requestRetry;
+
 service.defaults.retryDelay = Config.requestRetryDelay;
 
 service.interceptors.request.use(config => {
@@ -25,7 +26,7 @@ service.interceptors.request.use(config => {
 
 
 service.interceptors.response.use(
-  response => {//Grade
+  response => {
 
     const res = response
 
@@ -38,8 +39,8 @@ service.interceptors.response.use(
     }
   },
   error => {
-    Message.error("服务器可能出了点问题")
-    return Promise.reject(error)
+    Message.error(error.response.data.message)
+    return Promise.reject(error.response.data)
   }
 )
 
