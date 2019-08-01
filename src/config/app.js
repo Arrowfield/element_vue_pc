@@ -29,7 +29,7 @@ export default {
   apiUrl: useApiUrl,
   siteName: '且听风吟-后台管理系统',
   minSiteMame: 'EUI',
-  apiPrefix: "api",//前缀
+  apiPrefix: "",//前缀
   timeout: 5000,
   cookiesExpires: 7,
   requestRetry: 4,

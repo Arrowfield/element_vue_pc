@@ -29,13 +29,16 @@ service.interceptors.response.use(
   response => {
 
     const res = response
-
     if (res.status !== 200) {
       Message.error("数据返回错误")
       return false
     } else {
-      Message.success(res.data.message)
-      return res.data.data
+      if(res.data.code == 200){
+        Message.success(res.data.msg)
+        return res.data
+      }else{
+        Message.error(res.data.msg)
+      }
     }
   },
   error => {
