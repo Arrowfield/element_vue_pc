@@ -1,7 +1,7 @@
 import localKey from './localKey'
 
 
-const devApiUrl = 'http://kqapi.kuaiqia.net';//本地开发环境
+const devApiUrl = 'http://127.0.0.1:5050';//本地开发环境
 const buildDevApiUrl = 'http://192.168.1.92:9088';//打包开发环境
 const buildTestApiUrl = 'http://192.168.1.92:6906';//打包测试环境
 const buildProApiUrl = 'http://192.168.1.92:9088';//打包正式环境
