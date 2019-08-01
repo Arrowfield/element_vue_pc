@@ -7,6 +7,7 @@ import {isLogin} from "../utils/dataStorage"
 import Main from '../views/system/Main'
 import Role from '../views/system/Role'
 import Icon from '../views/system/Icon'
+
 var SystemRouter = {
   path:"system",
   component:Main,
@@ -21,11 +22,11 @@ Vue.use(Router)
 
 let RouteList = [
   {path:"/",redirect:"/login"},
-  {path: '/home', component: resolve => require(['@/views/layout/App.vue'], resolve),
+  {path: '/home', component: resolve => require(['@/views/Layout/App.vue'], resolve),
     children: [
       {
         path: '/', name: 'Dashboard',
-        component: resolve => require(['@/views/home/Index.vue'], resolve),
+        component: resolve => require(['@/views/Home/Index.vue'], resolve),
         meta: {auth:true,title:"首页"}
       },
       SystemRouter
@@ -33,7 +34,7 @@ let RouteList = [
   },
   {
     path: '/login', name: 'Login',
-    components: {login: resolve => require(['@/views/login/Login.vue'], resolve)},
+    components: {login: resolve => require(['@/views/Login/Login.vue'], resolve)},
     meta:{title:"后台登录"},
     beforeEnter:(to,form,next)=>{if(isLogin()){next('/home')}else{next()}}
   },

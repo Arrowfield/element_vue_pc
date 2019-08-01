@@ -27,7 +27,7 @@ switch (process.env.NODE_ENV) {
 export default {
   nodeDevEnv: process.env.NODE_ENV == 'development',
   apiUrl: useApiUrl,
-  siteName: '后台管理系统',
+  siteName: '且听风吟-后台管理系统',
   minSiteMame: 'EUI',
   apiPrefix: "api",//前缀
   timeout: 5000,
