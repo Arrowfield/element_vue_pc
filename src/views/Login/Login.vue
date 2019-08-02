@@ -56,7 +56,7 @@
         this.loginLoading = true
 	      let res = await loginApi({uname:this.userName,upwd:this.password}).catch((err)=>{if(err) if(err) return false})
         //if(res){setToken(res.token);this.$router.push("/home")}
-        console.log(res)
+
         if(res.code == 200){
           this.$router.push("/home")
         }
