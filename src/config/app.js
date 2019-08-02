@@ -1,10 +1,10 @@
 import localKey from './localKey'
 
 
-const devApiUrl = 'http://127.0.0.1:5050';//本地开发环境
-const buildDevApiUrl = 'http://192.168.1.92:9088';//打包开发环境
-const buildTestApiUrl = 'http://192.168.1.92:6906';//打包测试环境
-const buildProApiUrl = 'http://192.168.1.92:9088';//打包正式环境
+const devApiUrl = 'http://127.0.0.1:7001';//本地开发环境
+const buildDevApiUrl = '';//打包开发环境
+const buildTestApiUrl = '';//打包测试环境
+const buildProApiUrl = '';//打包正式环境
 
 
 let useApiUrl;
@@ -29,7 +29,7 @@ export default {
   apiUrl: useApiUrl,
   siteName: '且听风吟-后台管理系统',
   minSiteMame: 'EUI',
-  apiPrefix: "",//前缀
+  apiPrefix: "api",//前缀
   timeout: 5000,
   cookiesExpires: 7,
   requestRetry: 4,
