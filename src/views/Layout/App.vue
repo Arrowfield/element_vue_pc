@@ -94,7 +94,7 @@
               :default-active="$route.path" class="menu" @open="handleOpen" @close="handleClose"
               :collapse="isCollapse">
             <template v-for="(menu_v,menu_k) in menu">
-              <el-submenu v-if="menu_v.children" :index="menu_k">
+              <el-submenu v-if="menu_v.children" :index="menu_k" :key="menu_k">
                 <template slot="title">
                   <i :class="menu_v.icon"></i>
                   <span slot="title">{{ menu_v.name }}</span>
@@ -106,7 +106,7 @@
                   <span slot="title">{{ menuChildren_v.name }}</span>
                 </el-menu-item>
               </el-submenu>
-              <el-menu-item v-else :index="menu_v.path">
+              <el-menu-item v-else :index="menu_v.path" :key="menu_v">
                 <i :class="menu_v.icon"></i>
                 <span slot="title">{{ menu_v.name }}</span>
               </el-menu-item>

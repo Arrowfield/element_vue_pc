@@ -1,21 +1,5 @@
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run dev
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-+ 项目参考地址<https://github.com/xusenlin/ElementUIAdminTool>
-
-## 目录结构介绍 ##
+## 目录结构介绍 
 
 	|-- dist                             // 打包目录
 	|-- src                              // 源码目录
@@ -48,4 +32,4 @@ npm run build
 
 #### 项目总结
 
-1、Vue的版本使用的2.6.6
+1、Vue的版本使用的2.6.6,element-ui版本2.10
