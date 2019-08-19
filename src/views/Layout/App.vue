@@ -106,7 +106,7 @@
                   <span slot="title">{{ menuChildren_v.name }}</span>
                 </el-menu-item>
               </el-submenu>
-              <el-menu-item v-else :index="menu_v.path" :key="menu_v">
+              <el-menu-item v-else :index="menu_v.path" :key="menu_v.path">
                 <i :class="menu_v.icon"></i>
                 <span slot="title">{{ menu_v.name }}</span>
               </el-menu-item>
