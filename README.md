@@ -45,3 +45,7 @@ npm run build
 	|-- package.json                     // 项目及工具的依赖配置文件
 	|-- vue.config.js                    // vue cli 配置
 	|-- README.md                        // 说明
+
+#### 项目总结
+
+1、Vue的版本使用的2.6.6
