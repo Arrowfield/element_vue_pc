@@ -55,9 +55,9 @@
       async login() {
         this.loginLoading = true
 	      let res = await loginApi({uname:this.userName,upwd:this.password}).catch((err)=>{if(err) if(err) return false})
-        //if(res){setToken(res.token);this.$router.push("/home")}
-
+   
         if(res.code == 200){
+          setToken(res.token)
           this.$router.push("/home")
         }
         this.loginLoading = false
