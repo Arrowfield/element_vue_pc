@@ -9,4 +9,7 @@
   export default {name: 'app'}
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+  *{box-sizing: border-box;}
+  body,html{margin:0;padding:0}
+</style>
