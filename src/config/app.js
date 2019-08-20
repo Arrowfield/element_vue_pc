@@ -9,6 +9,6 @@ export default {
   timeout: 5000,
   cookiesExpires: 7,
   requestRetry: 4,
-  requestRetryDelay: 800
-
+  requestRetryDelay: 800,
+  version:"1.0"
 }

@@ -126,7 +126,9 @@
         <div id="mainContainer" :style="fixedTabBar && switchTabBar?'margin-top: 88px;':''" class="main-container">
             <router-view></router-view>
         </div>
+
         <EuiFooter></EuiFooter>
+        
       </div>
     </div>
   </div>

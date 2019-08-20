@@ -18,7 +18,7 @@
 </script>
 <style lang="scss">
 	.footer {
-		width: 100%;
+		width: calc(100% - 230px);
 		font-size: 14px;
 		background: #fff;
 		line-height: 50px;
@@ -26,7 +26,9 @@
 		height: 50px;
 		color: #444;
 		border-top: 1px solid #d2d6de;
-		
+		position: fixed;
+		bottom:0;
+		left:230px;
 		.version {
 			float: right;
 			
