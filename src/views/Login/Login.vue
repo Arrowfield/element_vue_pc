@@ -2,7 +2,7 @@
   <div class="login">
     <div class="login-panel">
       <!-- <fl-button>123</fl-button> -->
-      <fl-avatar></fl-avatar>
+      <fl-avatar :src="'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'" :size="100"></fl-avatar>
     </div>
   </div>
 </template>
@@ -14,10 +14,7 @@
   export default {
     data() {
       return {
-        userName: 'admin',
-        password: 'admin',
-        Remember: true,
-        loginLoading: false
+        avatarSrc:""
       }
     },
     methods: {

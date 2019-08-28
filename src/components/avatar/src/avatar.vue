@@ -33,9 +33,64 @@
         isImageExist:true
       }
     },
+    computed:{
+      avatarClass(){
+        const { size,icon,shape } = this
+        let classList = ['fl-avatar']
+
+        if(size && typeof size === 'string'){
+          classList.push(`fl-avatar--${size}`)
+        }
+        if(icon){
+          classList.push('fl-avatar--icon')
+        }
+        if(shape){
+          classList.push(`fl-avatar--${shape}`)
+        }
+
+        return classList.join(' ')
+      }
+    },
+    methods:{
+      handleError(){
+        const { error } = this
+        const errorFlag = error ? error() : undefined
+        if(errorFlag !== false){
+          this.isImageExist = false
+        }
+      },
+      renderAvatar(){
+        const { icon,src,alt,isImageExist,srcSet,fit } = this
+        if(isImageExist && src){
+          return <img src={src}
+            onError = {this.handleError}
+            alt={alt}
+            srcSet = {srcSet}
+            style = {{ 'object-fit':fit }}
+          />
+        }
+        if(icon){
+          return (<i class={icon} />)
+        }
+
+        return this.$slots.default
+        //语法jsx
+      }
+    },
     render(){
+      const { avatarClass,size } = this
+      
+      const sizeStyle = typeof size === 'number' ? {
+        height:`${size}px`,
+        width:`${size}px`,
+        lineHeight:`${size}px`
+      } : {}
       return (
-        <span>123</span>
+        <span class={ avatarClass } style={ sizeStyle }>
+          {
+            this.renderAvatar()
+          }
+        </span>
       )
     }
 
