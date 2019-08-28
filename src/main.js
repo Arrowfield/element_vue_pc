@@ -9,10 +9,12 @@ import App from './App.vue'
 
 //导入自定义组件
 
-import Button from './components/button/index.js'
+import Button from './components/button'
+import Avatar from './components/avatar'
 
 const components = [
-  Button
+  Button,
+  Avatar
 ]
 
 
