@@ -1,15 +1,38 @@
 import Vue from 'vue'
 import store from './store/'
-import ElementUI from 'element-ui'
-//import './assets/css/style.scss'
+
 import router from './router/'
 import Config from './config/app'
 import App from './App.vue'
 
 
-Vue.prototype.$Config = Config
 
-Vue.use(ElementUI)
+//导入自定义组件
+
+import Button from './components/button'
+
+const components = [
+  Button
+]
+
+const install = function(Vue,opts = {}){
+
+  components.forEach(component =>{
+    Vue.component(component.name,component)
+  })
+
+  Vue.prototype.$Config = Config
+}
+
+if(typeof window !== 'undefined' && window.Vue){
+  install(window.Vue)
+}
+
+
+
+
+
+
 
 new Vue({
   el: '#app',
