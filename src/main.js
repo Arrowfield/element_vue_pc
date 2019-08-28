@@ -11,12 +11,13 @@ import App from './App.vue'
 
 import Button from './components/button'
 import Avatar from './components/avatar'
+import Input from './components/input'
 
 const components = [
   Button,
-  Avatar
+  Avatar,
+  Input 
 ]
-
 
 
 const install = function(Vue,opts = {}){
