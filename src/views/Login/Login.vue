@@ -1,6 +1,8 @@
 <template>
   <div class="login">
-    <div class="login-panel"></div>
+    <div class="login-panel">
+      <fl-button>123</fl-button>
+    </div>
   </div>
 </template>
 

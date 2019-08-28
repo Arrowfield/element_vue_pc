@@ -9,11 +9,13 @@ import App from './App.vue'
 
 //导入自定义组件
 
-import Button from './components/button'
+import Button from './components/button/index.js'
 
 const components = [
   Button
 ]
+
+
 
 const install = function(Vue,opts = {}){
 
@@ -24,14 +26,9 @@ const install = function(Vue,opts = {}){
   Vue.prototype.$Config = Config
 }
 
-if(typeof window !== 'undefined' && window.Vue){
-  install(window.Vue)
+if(typeof window !== 'undefined' ){
+  install(Vue)
 }
-
-
-
-
-
 
 
 new Vue({
