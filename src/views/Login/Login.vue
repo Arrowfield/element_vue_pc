@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    
+    <div class="login-panel"></div>
   </div>
 </template>
 
@@ -32,6 +32,4 @@
   }
 </script>
 
-<style lang="scss">
-  @import "Login.scss";
-</style>
+<style src="./Login.scss" lang="scss" scoped></style>
