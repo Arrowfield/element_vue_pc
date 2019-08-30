@@ -1,9 +1,9 @@
 <template>
   <div class="login">
-    <video autoplay muted loop>
+    <!-- <video autoplay muted loop>
       <source src="../../assets/media/riverside.mp4" type="video/mp4">
       您的浏览器不支持 video 标签
-    </video>
+    </video> -->
     <div class="login-panel">
       <!-- <fl-button>123</fl-button> -->
       <fl-avatar src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" :size="100"></fl-avatar>
