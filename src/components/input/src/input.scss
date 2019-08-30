@@ -31,3 +31,9 @@
         flex:1 1 auto;
     }
 }
+
+@media screen and (max-width: 767px){
+    .fl-input{
+        width:250px;
+    }
+}
