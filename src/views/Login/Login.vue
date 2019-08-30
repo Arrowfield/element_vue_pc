@@ -4,6 +4,14 @@
       <source src="../../assets/media/riverside.mp4" type="video/mp4">
       您的浏览器不支持 video 标签
     </video>
+    <div class="login-panel">
+      <!-- <fl-button>123</fl-button> -->
+      <fl-avatar src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" :size="100"></fl-avatar>
+      <p class="login-notice" style="line-height:26px;">用户名:admin 密码:123456</p>
+      <fl-input style="margin:15px 0" icon="user" placeholder="用户名" type="text"></fl-input>
+      <fl-input icon="lock" placeholder="密码" type="password"></fl-input>
+      <fl-button style="margin-top:20px">登录</fl-button>
+    </div>
   </div>
 </template>
 
@@ -14,10 +22,7 @@
   export default {
     data() {
       return {
-        userName: 'admin',
-        password: 'admin',
-        Remember: true,
-        loginLoading: false
+        avatarSrc:""
       }
     },
     methods: {
@@ -35,6 +40,4 @@
   }
 </script>
 
-<style lang="scss">
-  @import "Login.scss";
-</style>
+<style src="./Login.scss" lang="scss" scoped></style>

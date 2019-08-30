@@ -6,11 +6,29 @@
 </template>
 
 <script>
-  export default {name: 'app'}
+  export default {
+    name: 'app'
+  }
 </script>
 
 <style lang="scss">
-  *{box-sizing: border-box;}
-  body,html{margin:0;padding:0}
-  a{text-decoration: none;}
+  * {
+    box-sizing: border-box;
+  }
+
+  body,html {
+    margin: 0;
+    padding: 0
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  body {
+    font-size: 13px;
+    font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight:400;
+    color:#999;
+  }
 </style>

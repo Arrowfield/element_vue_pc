@@ -1,0 +1,33 @@
+.fl-input {
+    background: white;
+    height: 30px;
+    line-height: 30px;
+   
+    width: 360px;
+    border: 1px solid transparent;
+    
+    &.fl-input-focus{
+        border-color:#3c8dbc;
+    }
+    i {
+      
+        text-align: center;
+        font-size: 22px;
+        float: left;
+        width:37px;
+    }
+
+    input {
+        border: none;
+        font-size: 12px;
+        float: left;
+        width: calc(100% - 39px);
+        padding-top:2px;
+        height:28px;
+        &:focus {
+            outline: none;
+        }
+
+        flex:1 1 auto;
+    }
+}

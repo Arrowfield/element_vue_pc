@@ -14,7 +14,7 @@ Vue.use(Router)
 
 let RouteList = [
   {path:"/",redirect:"/login"},
-  {path:"/login",name:"",component:LoginView},
+  {path:"/login",name:"",component:LoginView,meta:{title:"登录"}},
   {path:"**",redirect:"/login"}//也可以定义一个路径错误的组件代替
 ]
 
