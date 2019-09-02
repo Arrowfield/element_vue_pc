@@ -6,7 +6,7 @@
     width: 358px;
     border: 1px solid transparent;
     
-    &.fl-input-focus{
+    &.fl-input-focus,&:hover{
         border-color:#3c8dbc;
     }
     i {

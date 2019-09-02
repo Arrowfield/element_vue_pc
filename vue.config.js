@@ -9,5 +9,9 @@ module.exports = {
         // remove the prefetch plugin
         config.plugins.delete('prefetch')
 
+    },
+    devServer:{
+        host:"dev.admin.com",
+        port:"80"
     }
 }
