@@ -13,23 +13,51 @@
                 <th width="120">操作</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>520</td>
-                <td>张三</td>
-                <td>优秀</td>
-                <td>25</td>
-                <td>男</td>
-                <td>良好</td>
-                <td><button>加入对比</button></td>
-            </tr>
-            </tbody>
+            <transition-group name="list-compare" tag="tbody">
+                <tr class="list-compare-item" v-for="(item,index) in list" :key="index">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.target }}</td>
+                    <td>{{ item.age }}</td>
+                    <td>{{ item.sex }}</td>
+                    <td>{{ item.property }}</td>
+                    <td>
+                        <button class="btn-primary" @click="addCompare($event,index)">加入对比</button>
+                    </td>
+                </tr>
+            </transition-group>
         </table>
     </div>
 </template>
 
 <script>
-    export default {}
+    export default {
+        data() {
+            return {
+                flag: true,
+                list: [
+                    {id: "250", name: "张三", target: "优秀", age: 25, sex: "男", property: "良"},
+                    {id: "251", name: "李四", target: "良", age: 25, sex: "女", property: "良"}
+                ]
+            }
+        },
+        methods: {
+            addCompare(el,index) {
+                //this.list.splice(index+1,0,this.list[index])
+                this.list.splice(index,1)
+                let parent = el.target
+                while (parent.tagName !== "TR"){
+                    parent = el.target.parentNode
+                }
+                let obj = parent.getBoundingClientRect()
+                console.log(obj)
+            },
+            leave(el,done){
+                console.log(el)
+                done()
+            }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -48,6 +76,20 @@
             border-bottom: 1px solid #ddd;
             height: 40px;
             padding: 0 10px;
+            vertical-align: middle;
+
+            .btn-primary {
+                background: #409eff;
+                color: white;
+                border-radius: 4px;
+                border: none;
+                padding: 6px;
+                cursor: pointer;
+
+                &:hover {
+                    background: #66b1ff;
+                }
+            }
         }
 
         tr:hover td {
@@ -57,12 +99,28 @@
 
     .compare-panel {
         width: 120px;
-        height: 40px;
-        line-height: 40px;
+        height: 30px;
+        line-height: 30px;
+        cursor: pointer;
         text-align: center;
         border-radius: 40px;
         margin-left: 80px;
-        border: 1px solid #ddd;
+        /*border: 1px solid #ddd;*/
         margin-top: 10px;
+        background: #409eff;
+        color: white;
+
+        &:hover {
+            background: #66b1ff;
+        }
+    }
+
+    .list-compare-item{
+        transition: all 10s;
+    }
+    .list-compare-leave-to{
+        opacity: 0;
+        transform: translate(-1000px,-800px) scale(0);
+
     }
 </style>
