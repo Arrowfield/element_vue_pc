@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <transition-group name="list-compare" tag="tbody">
-                <tr class="list-compare-item" v-for="(item,index) in list" :key="index">
+                <tr class="list-compare-item" v-for="(item,index) in list" :key="item.id">
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.target }}</td>
@@ -44,17 +44,19 @@
         methods: {
             addCompare(el,index) {
                 //this.list.splice(index+1,0,this.list[index])
-                this.list.splice(index,1)
+
                 let parent = el.target
+                console.log(parent)
                 while (parent.tagName !== "TR"){
-                    parent = el.target.parentNode
+                    parent = parent.parentNode
                 }
                 let obj = parent.getBoundingClientRect()
                 console.log(obj)
+                this.list.splice(index,1)
             },
             leave(el,done){
-                console.log(el)
-                done()
+                // console.log(el)
+                // done()
             }
         }
     }
@@ -116,11 +118,14 @@
     }
 
     .list-compare-item{
-        transition: all 10s;
+        transition: all 1s;
     }
     .list-compare-leave-to{
         opacity: 0;
-        transform: translate(-1000px,-800px) scale(0);
+        transform: translate(60px,-260px) ;
 
     }
+
+    //x = 60
+    //y - 20
 </style>

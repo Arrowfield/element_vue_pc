@@ -12,11 +12,13 @@ import App from './App.vue'
 import Button from './components/button'
 import Avatar from './components/avatar'
 import Input from './components/input'
+import Checkbox from './components/checkbox'
 
 const components = [
   Button,
   Avatar,
-  Input 
+  Input,
+  Checkbox 
 ]
 
 

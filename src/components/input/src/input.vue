@@ -1,7 +1,14 @@
 <template>
     <div :class="['fl-input',focus ? 'fl-input-focus':'']">
         <i :class="['iconfont', 'icon'+icon]"></i>
-        <input ref="input" @focus="focus = true" @blur="focus = false" :type="type" :placeholder="placeholder" v-bind="$attrs"
+        <input ref="input" 
+            :value="value" 
+            @focus="focus = true" 
+            @blur="focus = false" 
+            :type="type" 
+            :placeholder="placeholder" 
+            v-bind="$attrs"
+            @input="$emit('input',$event.target.value)"
             v-focus />
     </div>
 </template>
@@ -15,7 +22,9 @@
             }
         },
         props: {
-            value: [String, Number],
+            value: {
+                type:[String, Number],
+            },
             type: {
                 type: String,
                 default: "text"
@@ -38,7 +47,7 @@
         methods: {
             setNativeInputValue() {
                 const input = this.getInput();
-                console.log(input)
+                
                 if (!input) return;
                 if (input.value === this.nativeInputValue) return;
                 input.value = this.nativeInputValue;
@@ -48,7 +57,7 @@
             },
         },
         mounted() {
-            this.setNativeInputValue()
+            //this.setNativeInputValue()
         }
 
     }

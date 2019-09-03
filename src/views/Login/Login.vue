@@ -10,7 +10,8 @@
       <p class="login-notice" style="line-height:26px;">用户名:admin 密码:123456</p>
       <fl-input style="margin:15px 0" icon="user" placeholder="用户名" type="text" v-model="user"></fl-input>
       <fl-input icon="lock" placeholder="密码" type="password" v-model="upwd"></fl-input>
-      <fl-button style="margin-top:20px">登录</fl-button>
+      <fl-checkbox v-model="checked" style="margin-top:15px"></fl-checkbox>
+      <fl-button @click="handleClick" style="margin-top:15px">登录</fl-button>
     </div>
   </div>
 </template>
@@ -24,7 +25,8 @@
       return {
         avatarSrc:"",
         user:"admin",
-        upwd:"123456"
+        upwd:"123456",
+        checked:true
       }
     },
     methods: {
@@ -37,6 +39,9 @@
           this.$router.push("/home")
         }
         this.loginLoading = false
+      },
+      handleClick(){
+        console.log(this.user,this.upwd)
       }
     }
   }
