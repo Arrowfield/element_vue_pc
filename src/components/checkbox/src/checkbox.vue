@@ -2,6 +2,7 @@
     <div class="fl-checkbox">
 
         <input type="checkbox" v-model="value">
+        <label>保持会话</label>
     </div>
 </template>
 <script>
