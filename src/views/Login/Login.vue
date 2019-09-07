@@ -26,7 +26,7 @@
         avatarSrc:"",
         user:"admin",
         upwd:"123456",
-        checked:true
+        checked:false
       }
     },
     methods: {
