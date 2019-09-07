@@ -64,8 +64,8 @@
                 x = right1 - right2 - dom.offsetWidth / 2 + el.offsetWidth / 2
                 y = top2 - top1 + el.offsetHeight / 2 - dom.offsetHeight / 2
                 //console.log(x)
-                el.style.transform = `translate(${x}px,-${y}px) scale(.4)`
-                el.style.opacity = 0
+                el.style.transform = `translate(${x}px,-${y}px) scale(.2)`
+                el.style.opacity = .4
                done()
                 //默认以中心为原点
             },
