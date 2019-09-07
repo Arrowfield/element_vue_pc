@@ -1,7 +1,8 @@
 <template>
     <!--加减商品-->
     <div class="cartControl-wrapper">
-        <button @click="handleClick">加入购物车</button>
+
+        <!--button @click="handleClick">加入购物车</button>
 
         <div class="compare">加入对比</div>
 
@@ -10,9 +11,6 @@
                 v-on:enter="enter"
                 v-on:after-enter="afterEnter"
         >
-            <!--            <div-->
-            <!--                    v-if="flag" class="ball">-->
-            <!--            </div>-->
             <table v-if="flag" cellspacing="0" cellpadding="0">
                 <thead>
                 <tr>
@@ -29,9 +27,9 @@
                 </tr>
                 </tbody>
             </table>
-        </transition>
+        </transition-->
 
-        <div class="drop">
+        <!--div class="drop">
             <div v-for="(item) in items" class="drop-item" draggable
                  v-on:dragstart="dragStart"
                  v-on:drag="drag"
@@ -42,47 +40,47 @@
             >{{ item.num }}
             </div>
 
-            <!--            <div class="drop-item" draggable-->
-            <!--                 v-on:dragstart="dragStart"-->
-            <!--                 v-on:drag="drag"-->
-            <!--                 v-on:dragend="dragEnd"-->
-            <!--                 v-on:dragenter="dragEnter"-->
-            <!--                 v-on:dragover="dragOver"-->
-            <!--                 v-on:drop="drop"-->
-            <!--            >2-->
-            <!--            </div>-->
-            <!--            <div class="drop-item" draggable-->
-            <!--                 v-on:dragstart="dragStart"-->
-            <!--                 v-on:drag="drag"-->
-            <!--                 v-on:dragend="dragEnd"-->
-            <!--                 v-on:dragenter="dragEnter"-->
-            <!--                 v-on:dragover="dragOver"-->
-            <!--                 v-on:drop="drop"-->
-            <!--            >3-->
-            <!--            </div>-->
-            <!--            <div class="drop-item" draggable-->
-            <!--                 v-on:dragstart="dragStart"-->
-            <!--                 v-on:drag="drag"-->
-            <!--                 v-on:dragend="dragEnd"-->
-            <!--                 v-on:dragenter="dragEnter"-->
-            <!--                 v-on:dragover="dragOver"-->
-            <!--                 v-on:drop="drop"-->
-            <!--            >4-->
-            <!--            </div>-->
-        </div>
+            <div class="drop-item" draggable
+                 v-on:dragstart="dragStart"
+                 v-on:drag="drag"
+                 v-on:dragend="dragEnd"
+                 v-on:dragenter="dragEnter"
+                 v-on:dragover="dragOver"
+                 v-on:drop="drop"
+            >2
+            </div>
+            <div class="drop-item" draggable
+                 v-on:dragstart="dragStart"
+                 v-on:drag="drag"
+                 v-on:dragend="dragEnd"
+                 v-on:dragenter="dragEnter"
+                 v-on:dragover="dragOver"
+                 v-on:drop="drop"
+            >3
+            </div>
+            <div class="drop-item" draggable
+                 v-on:dragstart="dragStart"
+                 v-on:drag="drag"
+                 v-on:dragend="dragEnd"
+                 v-on:dragenter="dragEnter"
+                 v-on:dragover="dragOver"
+                 v-on:drop="drop"
+            >4
+            </div>
+        </div-->
 
-        <div id="move" class="move-item"></div>
+        <!--        <div id="move" class="move-item"></div>-->
 
-        <div
-             @dragover="handleImageOver"
-             @dragenter="handleImage"
-             @drop="handleImageDrop"
-             @click="handleUpload" class="dragImage">+
-        </div>
-        <input hidden type="file" name="file" @change="handleChange" accept="image/*">
-        <div class="image-parent">
-            <img src="" alt="" id="showImage">
-        </div>
+        <!--        <div-->
+        <!--             @dragover="handleImageOver"-->
+        <!--             @dragenter="handleImage"-->
+        <!--             @drop="handleImageDrop"-->
+        <!--             @click="handleUpload" class="dragImage">+-->
+        <!--        </div>-->
+        <!--        <input hidden type="file" name="file" @change="handleChange" accept="image/*">-->
+        <!--        <div class="image-parent">-->
+        <!--            <img src="" alt="" id="showImage">-->
+        <!--        </div>-->
     </div>
 </template>
 <script>
@@ -204,7 +202,7 @@
                 // console.log("image drop")
                 var reader = new FileReader()
                 reader.readAsDataURL(file)
-                reader.onload = function(e){
+                reader.onload = function (e) {
                     var img = document.getElementById('showImage')
                     img.src = e.target.result
                 }
