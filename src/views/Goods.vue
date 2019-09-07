@@ -32,42 +32,43 @@
         </transition>
 
         <div class="drop">
-            <div class="drop-item" draggable
+            <div v-for="(item) in items" class="drop-item" draggable
                  v-on:dragstart="dragStart"
                  v-on:drag="drag"
                  v-on:dragend="dragEnd"
                  v-on:dragenter="dragEnter"
                  v-on:dragover="dragOver"
                  v-on:drop="drop"
-            >1
+            >{{ item.num }}
             </div>
-            <div class="drop-item" draggable
-                 v-on:dragstart="dragStart"
-                 v-on:drag="drag"
-                 v-on:dragend="dragEnd"
-                 v-on:dragenter="dragEnter"
-                 v-on:dragover="dragOver"
-                 v-on:drop="drop"
-            >2
-            </div>
-            <div class="drop-item" draggable
-                 v-on:dragstart="dragStart"
-                 v-on:drag="drag"
-                 v-on:dragend="dragEnd"
-                 v-on:dragenter="dragEnter"
-                 v-on:dragover="dragOver"
-                 v-on:drop="drop"
-            >3
-            </div>
-            <div class="drop-item" draggable
-                 v-on:dragstart="dragStart"
-                 v-on:drag="drag"
-                 v-on:dragend="dragEnd"
-                 v-on:dragenter="dragEnter"
-                 v-on:dragover="dragOver"
-                 v-on:drop="drop"
-            >4
-            </div>
+
+<!--            <div class="drop-item" draggable-->
+<!--                 v-on:dragstart="dragStart"-->
+<!--                 v-on:drag="drag"-->
+<!--                 v-on:dragend="dragEnd"-->
+<!--                 v-on:dragenter="dragEnter"-->
+<!--                 v-on:dragover="dragOver"-->
+<!--                 v-on:drop="drop"-->
+<!--            >2-->
+<!--            </div>-->
+<!--            <div class="drop-item" draggable-->
+<!--                 v-on:dragstart="dragStart"-->
+<!--                 v-on:drag="drag"-->
+<!--                 v-on:dragend="dragEnd"-->
+<!--                 v-on:dragenter="dragEnter"-->
+<!--                 v-on:dragover="dragOver"-->
+<!--                 v-on:drop="drop"-->
+<!--            >3-->
+<!--            </div>-->
+<!--            <div class="drop-item" draggable-->
+<!--                 v-on:dragstart="dragStart"-->
+<!--                 v-on:drag="drag"-->
+<!--                 v-on:dragend="dragEnd"-->
+<!--                 v-on:dragenter="dragEnter"-->
+<!--                 v-on:dragover="dragOver"-->
+<!--                 v-on:drop="drop"-->
+<!--            >4-->
+<!--            </div>-->
         </div>
 
         <div id="move" class="move-item"></div>
@@ -81,7 +82,10 @@
     export default {
         data() {
             return {
-                flag: false
+                flag: false,
+                dom:"",
+                domElse:"",
+                items:[{num:1},{num:2},{num:3},{num:4}]
             }
         },
         components: {},
@@ -116,7 +120,8 @@
             },
             dragStart(el) {
                 console.log('dragstart...')
-                el.target.style.borderRight = "1px solid #ddd"
+                //el.target.style.borderRight = "1px solid #ddd"
+                this.dom = el.target.innerHTML
             },
             drag(el) {
                 //el.target.style.borderRight = "1px solid #ddd"
@@ -125,9 +130,16 @@
 
                 console.log('dragend...')
                 if (el.target.innerHTML != 4) {
-                    el.target.style.borderRight = "none"
+                    //el.target.style.borderRight = "none"
                 }
                 //当源对象进入目标对象的宽度超过一伴是就进行交换
+                console.log(this.dom,this.domElse)
+
+                //如果在外部进行放下时
+                if(this.domElse) {
+                    el.target.innerHTML = this.domElse
+                }
+                this.domElse = ""
             },
 
             //目标
@@ -139,7 +151,12 @@
                 console.log('dragOver...')
             },
             drop(el) {
+
                 console.log('drop...')
+                this.domElse = el.target.innerHTML
+                el.target.innerHTML = this.dom
+
+
             },
             mouseDown(evR) {
 
@@ -170,9 +187,9 @@
         mounted() {
             var dom = document.getElementById('move')
 
-            dom.addEventListener('mousedown', drag)
-            document.addEventListener('mousemove', drag)
-            document.addEventListener('mouseup', drag)
+            //dom.addEventListener('mousedown', drag)
+            //document.addEventListener('mousemove', drag)
+            //document.addEventListener('mouseup', drag)
 
             let toggle = false
             let mouseX, mouseY, offsetX, offsetY
@@ -256,15 +273,15 @@
 
         .drop-item {
             width: 25%;
-            border: 1px solid #ddd;
-            border-right: 0;
+            border: 1px solid red;
+            /*border-right: 0;*/
             height: 300px;
             line-height: 300px;
             font-size: 80px;
             text-align: center;
 
             &:last-child {
-                border-right: 1px solid #ddd;
+                /*border-right: 1px solid #ddd;*/
             }
         }
     }
