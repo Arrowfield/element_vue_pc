@@ -72,6 +72,12 @@
         </div>
 
         <div id="move" class="move-item"></div>
+
+        <div @click="handleUpload" class="dragImage">+</div>
+        <input hidden type="file" name="file" @change="handleChange" accept="image/*">
+        <div class="image-parent">
+            <img src="" alt="" id="showImage">
+        </div>
     </div>
 </template>
 <script>
@@ -90,6 +96,20 @@
         },
         components: {},
         methods: {
+            handleChange(e){
+                var file = e.target.files[0]
+                console.log(file)
+                let reader = new FileReader()
+                reader.readAsDataURL(file)
+                reader.onload = function(e){
+                    var img = document.getElementById('showImage')
+                    img.src = e.target.result
+                }
+            },
+            handleUpload(){
+                var dom = document.getElementsByTagName('input')[0]
+                dom.click()
+            },
             handleClick() {
                 this.flag = !this.flag
             },
@@ -231,7 +251,7 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .ball {
         width: 15px;
         height: 15px;
@@ -293,6 +313,20 @@
         top: 500px;
         left: 500px;
         background: bisque;
+        cursor: pointer;
+    }
+    .image-parent{
+        padding:10px;
+    }
+    .dragImage{
+        width:120px;
+        height:120px;
+        font-size: 50px;
+        color: #333;
+        line-height: 120px;
+        text-align: center;
+        border:1px dotted #ddd;
+        margin:50px;
         cursor: pointer;
     }
 </style>
