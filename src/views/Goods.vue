@@ -30,11 +30,53 @@
                 </tbody>
             </table>
         </transition>
+
+        <div class="drop">
+            <div class="drop-item" draggable
+                 v-on:dragstart="dragStart"
+                 v-on:drag="drag"
+                 v-on:dragend="dragEnd"
+                 v-on:dragenter="dragEnter"
+                 v-on:dragover="dragOver"
+                 v-on:drop="drop"
+            >1
+            </div>
+            <div class="drop-item" draggable
+                 v-on:dragstart="dragStart"
+                 v-on:drag="drag"
+                 v-on:dragend="dragEnd"
+                 v-on:dragenter="dragEnter"
+                 v-on:dragover="dragOver"
+                 v-on:drop="drop"
+            >2
+            </div>
+            <div class="drop-item" draggable
+                 v-on:dragstart="dragStart"
+                 v-on:drag="drag"
+                 v-on:dragend="dragEnd"
+                 v-on:dragenter="dragEnter"
+                 v-on:dragover="dragOver"
+                 v-on:drop="drop"
+            >3
+            </div>
+            <div class="drop-item" draggable
+                 v-on:dragstart="dragStart"
+                 v-on:drag="drag"
+                 v-on:dragend="dragEnd"
+                 v-on:dragenter="dragEnter"
+                 v-on:dragover="dragOver"
+                 v-on:drop="drop"
+            >4
+            </div>
+        </div>
+
+        <div id="move" class="move-item"></div>
     </div>
 </template>
 <script>
     import CartControl from './CartControl'
     import ShopCart from './ShopCart'
+
 
     export default {
         data() {
@@ -54,7 +96,7 @@
             enter(el, done) {
                 el.offsetWidth
                 el.style.transition = "all 3s ease"
-                let x,y
+                let x, y
                 let dom = document.getElementsByClassName('compare')[0]
                 let right1 = dom.getBoundingClientRect().right
                 let right2 = el.getBoundingClientRect().right
@@ -66,16 +108,113 @@
                 //console.log(x)
                 el.style.transform = `translate(${x}px,-${y}px) scale(.2)`
                 el.style.opacity = .4
-               done()
+                done()
                 //默认以中心为原点
             },
             afterEnter(el) {
                 this.flag = !this.flag
+            },
+            dragStart(el) {
+                console.log('dragstart...')
+                el.target.style.borderRight = "1px solid #ddd"
+            },
+            drag(el) {
+                //el.target.style.borderRight = "1px solid #ddd"
+            },
+            dragEnd(el) {
+
+                console.log('dragend...')
+                if (el.target.innerHTML != 4) {
+                    el.target.style.borderRight = "none"
+                }
+                //当源对象进入目标对象的宽度超过一伴是就进行交换
+            },
+
+            //目标
+            dragEnter(el) {
+                console.log('dragEnter...')
+            },
+            dragOver(el) {
+                el.preventDefault()
+                console.log('dragOver...')
+            },
+            drop(el) {
+                console.log('drop...')
+            },
+            mouseDown(evR) {
+
+
+            },
+            getScrollOffsets(w) {
+                w = w || window
+                console.log(w.pageXOffset)
+                if (w.pageXOffset != null)
+
+                    return {
+                        x: w.pageXOffset,
+                        y: w.pageYOffset
+                    }
+                var d = w.document
+                if (document.compatMode == "CSS1Compat")
+                    return {
+                        x: d.documentElement.srcollLeft,
+                        y: d.documentElement.srcollTop
+                    }
+                return {
+                    x: d.body.srcollLeft,
+                    y: d.body.srcollTop
+                }
             }
+
+            //滚动事件
+        },
+        mounted() {
+            var dom = document.getElementById('move')
+            console.log(dom)
+            dom.addEventListener('mousedown', drag)
+            document.addEventListener('mousemove', drag)
+            document.addEventListener('mouseup', drag)
+
+            //console.log(mouseX,mouseY)
+            let toggle = false
+            let mouseX, mouseY, offsetX, offsetY
+
+            let _that = this
+            function drag(ev) {
+                ev.preventDefault()
+                var scroll = _that.getScrollOffsets()
+                let type = ev.type
+                switch (type) {
+                    case 'mousedown' :
+                        toggle = true
+                        //获取鼠标当前位置
+                        mouseX = ev.clientX + scroll.x, mouseY = ev.clientY + scroll.y
+                        //获取元素的偏移量
+                        offsetX = dom.offsetLeft, offsetY = dom.offsetTop
+
+                        break;
+                    case "mousemove" :
+                        if (toggle) {
+                            var x1 = ev.clientX + scroll.x, y1 = ev.clientY + scroll.x
+                            var nowX = offsetX + x1 - mouseX, nowY = offsetY + y1 - mouseY
+                            console.log('move...')
+                            dom.style.left = nowX + 'px'
+                            dom.style.top = nowY + 'px'
+                        }
+                        break;
+                    case "mouseup":
+                        toggle = false
+                        //document.removeEventListener('mousemove',drag)
+                        //document.removeEventListener('mouseup',drag)
+
+                        break;
+                }
+            }
+
         }
     }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     .ball {
         width: 15px;
         height: 15px;
@@ -83,16 +222,17 @@
         background: red;
     }
 
-    table{
+    table {
         table-layout: fixed;
-        width:600px;
+        width: 600px;
         position: fixed;
-        top:400px;
-        right:500px;
-        th,td{
-            padding:10px 0;
+        top: 400px;
+        right: 500px;
+
+        th, td {
+            padding: 10px 0;
             text-align: center;
-            border-bottom:1px solid #ddd;
+            border-bottom: 1px solid #ddd;
         }
     }
 
@@ -107,5 +247,35 @@
         top: 0;
         right: 120px;
         color: white;
+    }
+
+    .drop {
+        width: 1200px;
+        margin: 50px auto;
+        display: flex;
+
+        .drop-item {
+            width: 25%;
+            border: 1px solid #ddd;
+            border-right: 0;
+            height: 300px;
+            line-height: 300px;
+            font-size: 80px;
+            text-align: center;
+
+            &:last-child {
+                border-right: 1px solid #ddd;
+            }
+        }
+    }
+
+    .move-item {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        top: 500px;
+        left: 500px;
+        background: bisque;
+        cursor: pointer;
     }
 </style>
