@@ -147,7 +147,6 @@
             },
             getScrollOffsets(w) {
                 w = w || window
-                console.log(w.pageXOffset)
                 if (w.pageXOffset != null)
 
                     return {
@@ -170,22 +169,22 @@
         },
         mounted() {
             var dom = document.getElementById('move')
-            console.log(dom)
+
             dom.addEventListener('mousedown', drag)
             document.addEventListener('mousemove', drag)
             document.addEventListener('mouseup', drag)
 
-            //console.log(mouseX,mouseY)
             let toggle = false
             let mouseX, mouseY, offsetX, offsetY
 
             let _that = this
             function drag(ev) {
                 ev.preventDefault()
-                var scroll = _that.getScrollOffsets()
+
                 let type = ev.type
                 switch (type) {
                     case 'mousedown' :
+                        var scroll = _that.getScrollOffsets()
                         toggle = true
                         //获取鼠标当前位置
                         mouseX = ev.clientX + scroll.x, mouseY = ev.clientY + scroll.y
@@ -195,9 +194,10 @@
                         break;
                     case "mousemove" :
                         if (toggle) {
+                            var scroll = _that.getScrollOffsets()
                             var x1 = ev.clientX + scroll.x, y1 = ev.clientY + scroll.x
                             var nowX = offsetX + x1 - mouseX, nowY = offsetY + y1 - mouseY
-                            console.log('move...')
+
                             dom.style.left = nowX + 'px'
                             dom.style.top = nowY + 'px'
                         }
@@ -270,8 +270,8 @@
     }
 
     .move-item {
-        width: 400px;
-        height: 400px;
+        width: 200px;
+        height: 200px;
         position: absolute;
         top: 500px;
         left: 500px;
