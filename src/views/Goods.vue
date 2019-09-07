@@ -42,38 +42,43 @@
             >{{ item.num }}
             </div>
 
-<!--            <div class="drop-item" draggable-->
-<!--                 v-on:dragstart="dragStart"-->
-<!--                 v-on:drag="drag"-->
-<!--                 v-on:dragend="dragEnd"-->
-<!--                 v-on:dragenter="dragEnter"-->
-<!--                 v-on:dragover="dragOver"-->
-<!--                 v-on:drop="drop"-->
-<!--            >2-->
-<!--            </div>-->
-<!--            <div class="drop-item" draggable-->
-<!--                 v-on:dragstart="dragStart"-->
-<!--                 v-on:drag="drag"-->
-<!--                 v-on:dragend="dragEnd"-->
-<!--                 v-on:dragenter="dragEnter"-->
-<!--                 v-on:dragover="dragOver"-->
-<!--                 v-on:drop="drop"-->
-<!--            >3-->
-<!--            </div>-->
-<!--            <div class="drop-item" draggable-->
-<!--                 v-on:dragstart="dragStart"-->
-<!--                 v-on:drag="drag"-->
-<!--                 v-on:dragend="dragEnd"-->
-<!--                 v-on:dragenter="dragEnter"-->
-<!--                 v-on:dragover="dragOver"-->
-<!--                 v-on:drop="drop"-->
-<!--            >4-->
-<!--            </div>-->
+            <!--            <div class="drop-item" draggable-->
+            <!--                 v-on:dragstart="dragStart"-->
+            <!--                 v-on:drag="drag"-->
+            <!--                 v-on:dragend="dragEnd"-->
+            <!--                 v-on:dragenter="dragEnter"-->
+            <!--                 v-on:dragover="dragOver"-->
+            <!--                 v-on:drop="drop"-->
+            <!--            >2-->
+            <!--            </div>-->
+            <!--            <div class="drop-item" draggable-->
+            <!--                 v-on:dragstart="dragStart"-->
+            <!--                 v-on:drag="drag"-->
+            <!--                 v-on:dragend="dragEnd"-->
+            <!--                 v-on:dragenter="dragEnter"-->
+            <!--                 v-on:dragover="dragOver"-->
+            <!--                 v-on:drop="drop"-->
+            <!--            >3-->
+            <!--            </div>-->
+            <!--            <div class="drop-item" draggable-->
+            <!--                 v-on:dragstart="dragStart"-->
+            <!--                 v-on:drag="drag"-->
+            <!--                 v-on:dragend="dragEnd"-->
+            <!--                 v-on:dragenter="dragEnter"-->
+            <!--                 v-on:dragover="dragOver"-->
+            <!--                 v-on:drop="drop"-->
+            <!--            >4-->
+            <!--            </div>-->
         </div>
 
         <div id="move" class="move-item"></div>
 
-        <div @click="handleUpload" class="dragImage">+</div>
+        <div
+             @dragover="handleImageOver"
+             @dragenter="handleImage"
+             @drop="handleImageDrop"
+             @click="handleUpload" class="dragImage">+
+        </div>
         <input hidden type="file" name="file" @change="handleChange" accept="image/*">
         <div class="image-parent">
             <img src="" alt="" id="showImage">
@@ -89,24 +94,24 @@
         data() {
             return {
                 flag: false,
-                dom:"",
-                domElse:"",
-                items:[{num:1},{num:2},{num:3},{num:4}]
+                dom: "",
+                domElse: "",
+                items: [{num: 1}, {num: 2}, {num: 3}, {num: 4}]
             }
         },
         components: {},
         methods: {
-            handleChange(e){
+            handleChange(e) {
                 var file = e.target.files[0]
                 console.log(file)
                 let reader = new FileReader()
                 reader.readAsDataURL(file)
-                reader.onload = function(e){
+                reader.onload = function (e) {
                     var img = document.getElementById('showImage')
                     img.src = e.target.result
                 }
             },
-            handleUpload(){
+            handleUpload() {
                 var dom = document.getElementsByTagName('input')[0]
                 dom.click()
             },
@@ -153,10 +158,10 @@
                     //el.target.style.borderRight = "none"
                 }
                 //当源对象进入目标对象的宽度超过一伴是就进行交换
-                console.log(this.dom,this.domElse)
+                console.log(this.dom, this.domElse)
 
                 //如果在外部进行放下时
-                if(this.domElse) {
+                if (this.domElse) {
                     el.target.innerHTML = this.domElse
                 }
                 this.domElse = ""
@@ -181,6 +186,28 @@
             mouseDown(evR) {
 
 
+            },
+            handleImage(el) {
+
+                el.target.style.border = "1px solid red"
+            },
+            handleImageOver(el) {
+                el.preventDefault()
+                console.log('image over')
+            },
+            handleImageDrop(el) {
+
+                el.preventDefault()
+                var file = el.dataTransfer.files[0]
+                //
+                el.target.style.border = "1px solid #ddd"
+                // console.log("image drop")
+                var reader = new FileReader()
+                reader.readAsDataURL(file)
+                reader.onload = function(e){
+                    var img = document.getElementById('showImage')
+                    img.src = e.target.result
+                }
             },
             getScrollOffsets(w) {
                 w = w || window
@@ -215,6 +242,7 @@
             let mouseX, mouseY, offsetX, offsetY
 
             let _that = this
+
             function drag(ev) {
                 ev.preventDefault()
 
@@ -315,18 +343,20 @@
         background: bisque;
         cursor: pointer;
     }
-    .image-parent{
-        padding:10px;
+
+    .image-parent {
+        padding: 10px;
     }
-    .dragImage{
-        width:120px;
-        height:120px;
+
+    .dragImage {
+        width: 120px;
+        height: 120px;
         font-size: 50px;
         color: #333;
         line-height: 120px;
         text-align: center;
-        border:1px dotted #ddd;
-        margin:50px;
+        border: 1px dotted #ddd;
+        margin: 50px;
         cursor: pointer;
     }
 </style>
