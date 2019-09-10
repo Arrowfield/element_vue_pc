@@ -7,14 +7,16 @@ import {isLogin} from "../utils/dataStorage"
 const LoginView = () => import("../views/Login/Login.vue")
 const TestDemo = () => import("../views/TestDemo.vue")
 const Goods = () => import("../views/Goods.vue")
+const DashboardView = () => import('../views/Dashboard/Dashboard.vue')
 
 Vue.use(Router)
 
 let RouteList = [
     {path: "/", redirect: "/login"},
-    {path: "/test", name: "", component: TestDemo},
+    //{path: "/test", name: "", component: TestDemo},
     {path: "/login", name: "", component: LoginView, meta: {title: "登录"}},
-    {path:"/goods",name:"",component:Goods},
+    //{path:"/goods",name:"",component:Goods},
+    {path:"/dashboard",component:DashboardView},
     {path: "**", redirect: "/login"}//也可以定义一个路径错误的组件代替
 ]
 
