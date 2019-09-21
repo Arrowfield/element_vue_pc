@@ -1,6 +1,6 @@
 //面向对象 封装 继承 多态
 
-export default class LineItem{
+/*export default class LineItem{
     constructor(options){
         this.options = options
         this.init()
@@ -26,4 +26,15 @@ export default class LineItem{
     filter(){
         
     }
+}*/
+
+function LineItem(options){
+    //this
+}
+
+LineItem.prototype.show = function(){
+
+}
+LineItem.prototype.draw = function(){
+
 }
