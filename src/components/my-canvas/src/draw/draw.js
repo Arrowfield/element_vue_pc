@@ -53,8 +53,8 @@ export default {
                 ctx.lineTo(originX + i * baseX + .5, originY + pointWidth)
                 if (i <= axisX.length - 1) {
                     ctx.fillText(axisX[i], originX + i * baseX + baseX / 2, originY + pointWidth + font + 5)
-                    var item = new LineItem(this.axis.data[i])
-                    item.draw()
+                    // var item = new LineItem(this.axis.data[i])
+                    // item.draw()
                 }
                 
             }
