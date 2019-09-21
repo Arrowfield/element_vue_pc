@@ -11,7 +11,7 @@ module.exports = {
 
     },
     devServer:{
-        host:"dev.admin.com",
+        host:process.env.UI_BASE_URL,
         port:"80"
     }
 }
