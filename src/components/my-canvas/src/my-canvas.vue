@@ -17,6 +17,7 @@
 <script>
     import drawMixin from './draw/draw.js'
     import { eventBus } from '@/eventBus.js'
+    import LineItem from './draw/line.js'
     export default {
         name: "my-canvas",
         mixins:[drawMixin],
