@@ -35,7 +35,10 @@ export default {
                 originY = 470,
                 axisX = this.axis.xAxis,
                 axisY = this.axis.yAxis,
-                font = 12;
+                options = this.axis.data,
+                font = 12,
+                average = baseY / 10,
+                strokeColor = "black";
             ctx.lineWidth = 1
             //绘制竖线
             ctx.moveTo(originX + .5, originY)
@@ -53,13 +56,34 @@ export default {
                 ctx.lineTo(originX + i * baseX + .5, originY + pointWidth)
                 if (i <= axisX.length - 1) {
                     ctx.fillText(axisX[i], originX + i * baseX + baseX / 2, originY + pointWidth + font + 5)
-                    // var item = new LineItem(this.axis.data[i])
-                    // item.draw()
                 }
-                
+                /*
+                if(i < axisX.length){
+                    //console.log(originY - options[i-1][3],originY - options[i-1][4])
+                    ctx.moveTo(originX + baseX / 2 + baseX * i + .5,originY - options[i][2] * average)
+                    ctx.lineTo(originX + baseX / 2 + baseX * i + .5,originY - options[i][3] * average)
+                    //绘制坐标显示的矩形
+                    //(x,y,width,height) options[i][0] options[i][1]
+                    //起始点将它移到最高点
+                    
+                    var rectX = originX + baseX / 2 +  baseX * i - 50 + .5
+                    var rectY = originY - options[i][1] * 5 
+                    var rectWidth = 100
+                    var rectHeight = (options[i][1] - options[i][0]) * average 
+                    if(rectHeight == 0){
+                        rectHeight = 1.5
+                    }
+                    //ctx.fillStyle = "#C23531"
+                    ctx.fillRect(rectX,rectY,rectWidth,rectHeight)
+                }*/
             }
-            ctx.stroke()
-            ctx.beginPath()
+
+            //ctx.strokeStyle = strokeColor
+
+            
+            
+            //ctx.strokeStyle = "black"
+            //ctx.fillStyle = "black"
             ctx.textBaseline = "middle" //垂直方向
             for (let i = 0; i <= axisY.length; i++) {
                 ctx.moveTo(originX, originY - i * baseY + .5)
@@ -68,7 +92,9 @@ export default {
                     ctx.fillText(axisY[i], originX - (pointWidth + font + 5), originY - i * baseY + .5)
                 }
             }
-            ctx.strokeStyle = "black"
+
+
+            
             ctx.stroke()
 
             ctx.beginPath()
@@ -79,6 +105,42 @@ export default {
             }
             ctx.stroke()
 
+            ctx.beginPath()
+            //ctx.fillStyle = "#C23531"
+            //ctx.strokeStyle = "#C23531"
+
+            //314656
+            for (let i = 0; i <= axisX.length; i++) {
+                 
+                if(i < axisX.length){
+                    //console.log(originY - options[i-1][3],originY - options[i-1][4])
+                    ctx.moveTo(originX + baseX / 2 + baseX * i + .5,originY - options[i][2] * average)
+                    ctx.lineTo(originX + baseX / 2 + baseX * i + .5,originY - options[i][3] * average)
+                    //绘制坐标显示的矩形
+                    //(x,y,width,height) options[i][0] options[i][1]
+                    //起始点将它移到最高点
+                    if(i == 2){
+                        //ctx.fillStyle = "#314656"
+                        //ctx.strokeStyle = "#314656"
+                    }else{
+                        ctx.fillStyle = "#C23531"
+                        ctx.strokeStyle = "#C23531"
+                    }
+                    
+                    var rectX = originX + baseX / 2 +  baseX * i - 50 + .5
+                    var rectY = originY - options[i][1] * 5 
+                    var rectWidth = 100
+                    var rectHeight = (options[i][1] - options[i][0]) * average 
+                    if(rectHeight == 0){
+                        rectHeight = 1.5
+                    }
+                    //ctx.fillStyle = "#C23531"
+                    ctx.fillRect(rectX,rectY,rectWidth,rectHeight)
+                }
+
+                ctx.stroke()
+            }
+            
         }
     }
 }
