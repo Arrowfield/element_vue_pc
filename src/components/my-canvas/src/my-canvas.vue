@@ -54,7 +54,7 @@
             dom.style.width = canvas.offsetWidth + "px"
             dom.style.height = canvas.offsetHeight + "px"
             window.addEventListener('resize',function(e){
-                console.log(e)
+                //console.log(e)
             })
             this.productPop()
         }
