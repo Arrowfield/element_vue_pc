@@ -34,3 +34,8 @@
 
 + 1、Vue的版本使用的2.6.6,element-ui版本2.10
 + 2、数据可视化
++ 3、使用.env.local
+```
+UI_BASE_URL=dev.admin.com
+SERVER_BASE_URL=http://127.0.0.1
+```
