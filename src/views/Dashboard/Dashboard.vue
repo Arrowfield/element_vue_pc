@@ -1,36 +1,6 @@
 <template>
     <div>
-        <div class="fl-select">
-            <label>用例</label>
-            <select name="caseName" v-model="caseName" @focus="handleFocus('caseName')">
-                <option value="王者荣耀">王者荣耀</option>
-            </select>
-        </div>
-        <div class="fl-select">
-            <label>项目</label>
-            <select name="projectName" v-model="projectName" @focus="handleFocus('caseName')">
-                <option value="安卓1小时">安卓1小时</option>
-                <option value="安卓0.5小时">安卓0.5小时</option>
-                <option value="安卓2小时">安卓2小时</option>
-                <option value="安卓1小时">安卓1小时</option>
-            </select>
-        </div>
-        <div class="fl-select">
-            <label>任务</label>
-            <select name="taskName" v-model="taskName" @focus="handleFocus('caseName')">
-                <option value="111">111</option>
-                <option value="222">222</option>
-                <option value="111">111</option>
-                <option value="123">123</option>
-            </select>
-        </div>
-        <div class="fl-select">
-            <label>创建者</label>
-            <select name="creatorName" v-model="creatorName" @focus="handleFocus('caseName')">
-                <option value="小蓝">小蓝</option>
-                <option value="张三">张三</option>
-            </select>
-        </div>
+        <my-canvas></my-canvas>
     </div>
 </template>
 
@@ -81,7 +51,7 @@
             }
         },
         mounted() {
-            console.log(data.data)
+
             data.data.forEach((item) => {
 
             })

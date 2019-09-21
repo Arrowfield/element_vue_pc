@@ -13,12 +13,14 @@ import Button from './components/button'
 import Avatar from './components/avatar'
 import Input from './components/input'
 import Checkbox from './components/checkbox'
+import MyCanvas from './components/my-canvas'
 
 const components = [
   Button,
   Avatar,
   Input,
-  Checkbox 
+  Checkbox,
+  MyCanvas
 ]
 
 
