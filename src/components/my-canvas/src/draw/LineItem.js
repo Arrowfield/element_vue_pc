@@ -11,8 +11,8 @@ export default class LineItem {
 
     render(ctx) {
         ctx.beginPath()
-        ctx.strokeStyle = "red"
-        ctx.fillStyle = "red"
+        ctx.strokeStyle = "#C23531"
+        ctx.fillStyle = "#C23531"
         for (let i = 0; i <= this.axisX.length; i++) {
             if (i < this.axisX.length) {
                 ctx.moveTo(this.originX + this.baseX / 2 + this.baseX * i + .5, this.originY - this.options[i][2] * this.average)
