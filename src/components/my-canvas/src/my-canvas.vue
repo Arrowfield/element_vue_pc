@@ -6,10 +6,10 @@
             </canvas>
         </div>
         <div>
-            <button v-on:click="dirIndex = 0">↑</button>
-            <button v-on:click="dirIndex = 1">←</button>
-            <button v-on:click="dirIndex = 2">→</button>
-            <button v-on:click="dirIndex = 3">↓</button>
+            <button v-on:click="s.changeDir('left')">↑</button>
+            <button v-on:click="s.changeDir('right')">←</button>
+            <button v-on:click="s.changeDir('up')">→</button>
+            <button v-on:click="s.changeDir('down')">↓</button>
         </div>
     </div>
 </template>
@@ -17,7 +17,7 @@
 <script>
     import drawMixin from './draw/draw.js'
     import { eventBus } from '@/eventBus.js'
-    import LineItem from './draw/line.js'
+
     export default {
         name: "my-canvas",
         mixins:[drawMixin],
@@ -41,7 +41,8 @@
                         [33,38,33,40],
                         [40,40,32,42]
                     ]
-                }
+                },
+                s:null
             }
         },
         methods: {

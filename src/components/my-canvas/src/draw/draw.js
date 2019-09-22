@@ -1,10 +1,22 @@
-import LineItem from "./line.js";
 
+import Sprite from './Sprite.js'
 export default {
     methods: {
         productPop() {
             let canvas = document.getElementById('canvas')
             let ctx = canvas.getContext('2d')
+
+            this.s = new Sprite({
+                x:300,
+                y:300,
+                w:80,
+                h:65 * 2,
+                fps:10,
+                originX:40,
+                originY:65,
+                imgSrc:this.imageUrl,
+            })
+            this.s.render(ctx)
             //let image = new Image()
             //image.src = this.imageUrl
             /*image.onload = () => {
@@ -80,8 +92,7 @@ export default {
 
             //ctx.strokeStyle = strokeColor
 
-            
-            
+
             //ctx.strokeStyle = "black"
             //ctx.fillStyle = "black"
             ctx.textBaseline = "middle" //垂直方向
@@ -94,7 +105,6 @@ export default {
             }
 
 
-            
             ctx.stroke()
 
             ctx.beginPath()
@@ -111,36 +121,36 @@ export default {
 
             //314656
             for (let i = 0; i <= axisX.length; i++) {
-                 
-                if(i < axisX.length){
+
+                if (i < axisX.length) {
                     //console.log(originY - options[i-1][3],originY - options[i-1][4])
-                    ctx.moveTo(originX + baseX / 2 + baseX * i + .5,originY - options[i][2] * average)
-                    ctx.lineTo(originX + baseX / 2 + baseX * i + .5,originY - options[i][3] * average)
+                    ctx.moveTo(originX + baseX / 2 + baseX * i + .5, originY - options[i][2] * average)
+                    ctx.lineTo(originX + baseX / 2 + baseX * i + .5, originY - options[i][3] * average)
                     //绘制坐标显示的矩形
                     //(x,y,width,height) options[i][0] options[i][1]
                     //起始点将它移到最高点
-                    if(i == 2){
+                    if (i == 2) {
                         //ctx.fillStyle = "#314656"
                         //ctx.strokeStyle = "#314656"
-                    }else{
+                    } else {
                         ctx.fillStyle = "#C23531"
                         ctx.strokeStyle = "#C23531"
                     }
-                    
-                    var rectX = originX + baseX / 2 +  baseX * i - 50 + .5
-                    var rectY = originY - options[i][1] * 5 
+
+                    var rectX = originX + baseX / 2 + baseX * i - 50 + .5
+                    var rectY = originY - options[i][1] * 5
                     var rectWidth = 100
-                    var rectHeight = (options[i][1] - options[i][0]) * average 
-                    if(rectHeight == 0){
+                    var rectHeight = (options[i][1] - options[i][0]) * average
+                    if (rectHeight == 0) {
                         rectHeight = 1.5
                     }
                     //ctx.fillStyle = "#C23531"
-                    ctx.fillRect(rectX,rectY,rectWidth,rectHeight)
+                    ctx.fillRect(rectX, rectY, rectWidth, rectHeight)
                 }
 
                 ctx.stroke()
             }
-            
+
         }
     }
 }
