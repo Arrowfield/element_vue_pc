@@ -1,7 +1,7 @@
 <template>
     <div>
         <my-canvas></my-canvas>
-        <button @click="handleFilter">操作过滤</button>
+        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>
     </div>
 </template>
 
@@ -61,6 +61,7 @@
                 }, []);
             },
             handleFilter(obj) {
+                console.log(obj)
                 this.selected = Object.assign(obj, this.selected)
                 this.options = filterArray(this.options, this.array, this.selected)
             }

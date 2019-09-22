@@ -84,11 +84,13 @@ export default {
             var stage = new Konva.Stage({
                 container:"chart-panel",
                 width:800,
-                height:510
+                height:510,
             })
             var layer = new Konva.Layer()
             stage.add(layer)
-            var rect = new Konva.Rect({
+            var canX = stage.width() / 2
+            var canY = stage.height() / 2
+            /*var rect = new Konva.Rect({
                 x:100,
                 y:100,
                 opacity:.4,
@@ -99,9 +101,42 @@ export default {
                 scaleY:1.2,
                 draggable:true,
                 fill:'orange'
+            })*/
+
+            var height = 1 / 12 * stage.height()
+            var maxWidth = 3 / 4 * stage.width()
+            var x = 1/8 * stage.width()
+            var y = canY - height / 2
+            var innerRect = new Konva.Rect({
+                x:x,
+                y:y,
+                width:100,
+                height:height,
+                opacity:.7,
+                fill:"lightblue",
+                cornerRadius:height / 2
             })
-            layer.add(rect)
+            layer.add(innerRect)
+            var outRect = new Konva.Rect({
+                x:x,
+                y:y,
+                width:maxWidth,
+                height:height,
+                stroke:"blue",
+                strokeWidth:.5,
+                cornerRadius:height / 2
+            })
+            layer.add(outRect)
             layer.draw()
+
+            innerRect.to({
+                width:maxWidth,
+                duration:1.4,
+                easing:Konva.Easings.EaseOut,
+            })
+        },
+        drawRain(){
+
         }
     }
 }
