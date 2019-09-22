@@ -1,17 +1,32 @@
 //面向对象 封装 继承 多态
-export default class LineItem{
-    constructor(option){
-        this.x = option.x || 0
-        this.y = option.y || 0
-        this.w = option.w || 0
-        this.h = option.h || 0
-        this.fillStyle = option.fillStyle || 'black'
+export default class LineItem {
+    constructor(options) {
+        this.originX = options.originX || 0
+        this.originY = options.originY || 0
+        this.axisX = options.axisX || []
+        this.baseX = options.baseX || 0
+        this.average = options.average || 0
+        this.options = options.options || []
     }
-    render(ctx){
+
+    render(ctx) {
         ctx.beginPath()
-        ctx.fillStyle  = this.fillStyle
-        ctx.fillRect(this.x,this.y,this.w,this.h)
-        ctx.beginPath()
-        ctx.fillStyle = "black"
+        ctx.strokeStyle = "red"
+        ctx.fillStyle = "red"
+        for (let i = 0; i <= this.axisX.length; i++) {
+            if (i < this.axisX.length) {
+                ctx.moveTo(this.originX + this.baseX / 2 + this.baseX * i + .5, this.originY - this.options[i][2] * this.average)
+                ctx.lineTo(this.originX + this.baseX / 2 + this.baseX * i + .5, this.originY - this.options[i][3] * this.average)
+                var rectX = this.originX + this.baseX / 2 + this.baseX * i - 50 + .5
+                var rectY = this.originY - this.options[i][1] * 5
+                var rectWidth = 100
+                var rectHeight = (this.options[i][1] - this.options[i][0]) * this.average
+                if (rectHeight == 0) {
+                    rectHeight = 1.5
+                }
+                ctx.fillRect(rectX, rectY, rectWidth, rectHeight)
+            }
+        }
+        ctx.stroke()
     }
 }

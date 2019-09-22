@@ -20,7 +20,7 @@ export default {
             // })
             // this.s.render(ctx)
 
-            this.l = new LineItem({x:0, y:0, w:300, h:100,fillStyle:"red"})
+            //this.l = new LineItem({x:0, y:0, w:300, h:100,fillStyle:"red"})
             //this.l.render(ctx)
 
             var
@@ -44,41 +44,15 @@ export default {
             ctx.lineTo(originX + this.axis.xAxis.length * baseX, originY + .5)
 
             ctx.font = `${font}px sans-serif`
-            ctx.textAlign = "center" //水平方向
-            ctx.textBaseline = "bottom"
 
+            ctx.textAlign = "center" //水平方向
             for (let i = 0; i <= axisX.length; i++) {
                 ctx.moveTo(originX + i * baseX + .5, originY)
                 ctx.lineTo(originX + i * baseX + .5, originY + pointWidth)
                 if (i <= axisX.length - 1) {
                     ctx.fillText(axisX[i], originX + i * baseX + baseX / 2, originY + pointWidth + font + 5)
                 }
-                /*
-                if(i < axisX.length){
-                    //console.log(originY - options[i-1][3],originY - options[i-1][4])
-                    ctx.moveTo(originX + baseX / 2 + baseX * i + .5,originY - options[i][2] * average)
-                    ctx.lineTo(originX + baseX / 2 + baseX * i + .5,originY - options[i][3] * average)
-                    //绘制坐标显示的矩形
-                    //(x,y,width,height) options[i][0] options[i][1]
-                    //起始点将它移到最高点
-                    
-                    var rectX = originX + baseX / 2 +  baseX * i - 50 + .5
-                    var rectY = originY - options[i][1] * 5 
-                    var rectWidth = 100
-                    var rectHeight = (options[i][1] - options[i][0]) * average 
-                    if(rectHeight == 0){
-                        rectHeight = 1.5
-                    }
-                    //ctx.fillStyle = "#C23531"
-                    ctx.fillRect(rectX,rectY,rectWidth,rectHeight)
-                }*/
             }
-
-            //ctx.strokeStyle = strokeColor
-
-
-            //ctx.strokeStyle = "black"
-            //ctx.fillStyle = "black"
             ctx.textBaseline = "middle" //垂直方向
             for (let i = 0; i <= axisY.length; i++) {
                 ctx.moveTo(originX, originY - i * baseY + .5)
@@ -87,8 +61,6 @@ export default {
                     ctx.fillText(axisY[i], originX - (pointWidth + font + 5), originY - i * baseY + .5)
                 }
             }
-
-
             ctx.stroke()
 
             ctx.beginPath()
@@ -99,42 +71,15 @@ export default {
             }
             ctx.stroke()
 
-            ctx.beginPath()
-            //ctx.fillStyle = "#C23531"
-            //ctx.strokeStyle = "#C23531"
-
-            //314656
-            for (let i = 0; i <= axisX.length; i++) {
-
-                if (i < axisX.length) {
-                    //console.log(originY - options[i-1][3],originY - options[i-1][4])
-                    ctx.moveTo(originX + baseX / 2 + baseX * i + .5, originY - options[i][2] * average)
-                    ctx.lineTo(originX + baseX / 2 + baseX * i + .5, originY - options[i][3] * average)
-                    //绘制坐标显示的矩形
-                    //(x,y,width,height) options[i][0] options[i][1]
-                    //起始点将它移到最高点
-                    if (i == 2) {
-                        //ctx.fillStyle = "#314656"
-                        //ctx.strokeStyle = "#314656"
-                    } else {
-                        ctx.fillStyle = "#C23531"
-                        ctx.strokeStyle = "#C23531"
-                    }
-
-                    var rectX = originX + baseX / 2 + baseX * i - 50 + .5
-                    var rectY = originY - options[i][1] * 5
-                    var rectWidth = 100
-                    var rectHeight = (options[i][1] - options[i][0]) * average
-                    if (rectHeight == 0) {
-                        rectHeight = 1.5
-                    }
-                    //ctx.fillStyle = "#C23531"
-                    ctx.fillRect(rectX, rectY, rectWidth, rectHeight)
-                }
-
-                ctx.stroke()
-            }
-
+            this.lineItem = new LineItem({
+                originX,
+                originY,
+                axisX,
+                baseX,
+                average,
+                options
+            })
+            this.lineItem.render(ctx)
         }
     }
 }

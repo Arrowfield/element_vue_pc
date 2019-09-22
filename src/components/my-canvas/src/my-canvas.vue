@@ -43,7 +43,8 @@
                     ]
                 },
                 s:null,//精灵
-                l:null//长方形
+                l:null,//长方形
+                lineItem:null
             }
         },
         methods: {
