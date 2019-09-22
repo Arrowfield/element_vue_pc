@@ -1,12 +1,14 @@
 <template>
     <div>
         <my-canvas></my-canvas>
+        <button @click="handleFilter">操作过滤</button>
     </div>
 </template>
 
 <script>
 
     import data from './table_data_tbody.json'
+    import {filterArray} from '@/utils/index'
 
     export default {
         name: "Dashboard",
@@ -20,21 +22,30 @@
                 tasks: [],
                 taskName: "",
                 creators: [],
-                creatorName: ""
+                creatorName: "",
+                selected: {}
             }
         },
         watch: {
             caseName(val) {
-                //console.log(val)
+                if (val) {
+                    this.handleFilter({caseName: val})
+                }
             },
             projectName(val) {
-                //console.log(val)
+                if (val) {
+                    this.handleFilter({projectName: val})
+                }
             },
             taskName(val) {
-                //console.log(val)
+                if (val) {
+                    this.handleFilter({taskName: val})
+                }
             },
             creatorName(val) {
-                //console.log(val)
+                if (val) {
+                    this.handleFilter({creatorName: val})
+                }
             }
         },
         methods: {
@@ -48,6 +59,10 @@
                     obj[next.key] ? '' : obj[next.key] = true && item.push(next);
                     return item;
                 }, []);
+            },
+            handleFilter(obj) {
+                this.selected = Object.assign(obj, this.selected)
+                this.options = filterArray(this.options, this.array, this.selected)
             }
         },
         mounted() {
