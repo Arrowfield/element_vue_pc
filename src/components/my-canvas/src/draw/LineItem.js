@@ -1,29 +1,17 @@
 //面向对象 封装 继承 多态
-
 export default class LineItem{
-    constructor(options){
-        this.options = options
-        this.init()
-        this.num = options.length
-        this.x = []//最小值
-        this.y = []//最大值
-        this.start = []//长方形的底部
-        this.end = []//长方形的顶部
+    constructor(option){
+        this.x = option.x || 0
+        this.y = option.y || 0
+        this.w = option.w || 0
+        this.h = option.h || 0
+        this.fillStyle = option.fillStyle || 'black'
     }
-    init(){
-        // console.log(options)
-        // this.min = options[2] || 0
-        // this.max = options[3] || 0
-        for(var i = 0;i<this.num;i++){
-            this.x[i] = options[i][3]
-            this.y[i] = options[i][4]
-        }
-
-    }
-    draw(){
-
-    }
-    filter(){
-
+    render(ctx){
+        ctx.beginPath()
+        ctx.fillStyle  = this.fillStyle
+        ctx.fillRect(this.x,this.y,this.w,this.h)
+        ctx.beginPath()
+        ctx.fillStyle = "black"
     }
 }

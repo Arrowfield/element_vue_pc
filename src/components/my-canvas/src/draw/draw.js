@@ -20,6 +20,9 @@ export default {
             // })
             // this.s.render(ctx)
 
+            this.l = new LineItem({x:0, y:0, w:300, h:100,fillStyle:"red"})
+            this.l.render(ctx)
+
             var
                 baseX = 160,
                 baseY = 50,
