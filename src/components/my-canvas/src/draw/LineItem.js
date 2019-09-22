@@ -1,12 +1,12 @@
 //面向对象 封装 继承 多态
 export default class LineItem {
     constructor(options) {
-        this.originX = options.originX || 0
-        this.originY = options.originY || 0
-        this.axisX = options.axisX || []
-        this.baseX = options.baseX || 0
-        this.average = options.average || 0
-        this.options = options.options || []
+        // this.originX = options.originX || 0
+        // this.originY = options.originY || 0
+        // this.axisX = options.axisX || []
+        // this.baseX = options.baseX || 0
+        // this.average = options.average || 0
+        // this.options = options.options || []
     }
 
     render(ctx) {
@@ -32,5 +32,6 @@ export default class LineItem {
 
     hover(){
         //悬停变大
+        return "hello world"
     }
 }

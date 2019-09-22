@@ -136,7 +136,16 @@ export default {
             })
         },
         drawRain(){
+            var canvas = document.getElementById("canvas")
+            var w = canvas.width = window.innerWidth
+            var h = canvas.height = window.innerHeight
+            window.addEventListener('resize',function(e){
+                w = canvas.width = window.innerWidth
+                h = canvas.height = window.innerHeight
+            })
 
+            var lineItem = new LineItem()
+            console.log(lineItem.hover())
         }
     }
 }

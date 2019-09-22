@@ -31,4 +31,35 @@
     font-weight:400;
     color:#999;
   }
+/*
+  移动端：
+  DPR = 设备像素/CSS像素
+  android 1 css像素 360 GalaxyS5
+  iphone6/7/8 2 css像素 375
+  iphone8 3 css像素 375
+  PC端：
+  媒体查询至少适应这三种
+  web常见尺寸： 1366 * 768
+  大网页：1920 * 1080
+  最小尺寸：1024 * 768
+*/
+  @media screen and (max-width:1920px) {
+    html{
+      font-size:150px
+    }
+  }
+
+  @media screen and (max-width:1366px){
+    html{
+      font-size:100px
+    }
+  }
+  @media screen and (max-width:1024px){
+    html{
+      font-size:50px
+    }
+  }
+
 </style>
+
+

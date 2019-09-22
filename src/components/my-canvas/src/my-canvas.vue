@@ -1,17 +1,16 @@
 <template>
     <div>
         <div @mousemove="handleMoveData" id="chart-panel">
-            <canvas id="canvas" width="800" height="510" style="border:1px solid #ddd">
+            <canvas id="canvas">
                 你的浏览器不支持canvas，请升级浏览器
             </canvas>
         </div>
-        <div style="margin-top:10px">
-            <button v-on:click="s.changeDir('left')">↑</button>
-            <button v-on:click="s.changeDir('right')">←</button>
-            <button v-on:click="s.changeDir('up')">→</button>
-            <button v-on:click="s.changeDir('down')">↓</button>
-        </div>
-
+<!--        <div style="margin-top:10px">-->
+<!--            <button v-on:click="s.changeDir('left')">↑</button>-->
+<!--            <button v-on:click="s.changeDir('right')">←</button>-->
+<!--            <button v-on:click="s.changeDir('up')">→</button>-->
+<!--            <button v-on:click="s.changeDir('down')">↓</button>-->
+<!--        </div>-->
     </div>
 </template>
 
@@ -54,13 +53,6 @@
             }
         },
         mounted() {
-            //var dom = document.getElementById("chart-panel")
-            //var canvas = document.getElementById("canvas")
-            //dom.style.width = canvas.offsetWidth + "px"
-            //dom.style.height = canvas.offsetHeight + "px"
-            window.addEventListener('resize',function(e){
-                //console.log(e)
-            })
             //this.konvaDemo()
             //this.productPop()
             this.drawRain()
@@ -72,6 +64,7 @@
 <style scoped>
     #canvas{
         background: #F3F3F3;
+        vertical-align: top;
     }
 </style>
 

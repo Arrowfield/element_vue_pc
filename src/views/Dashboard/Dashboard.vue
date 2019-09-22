@@ -1,7 +1,7 @@
 <template>
     <div>
         <my-canvas></my-canvas>
-        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>
+<!--        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
     </div>
 </template>
 
