@@ -29,6 +29,7 @@ export default class LineItem {
         }
         ctx.stroke()
     }
+
     hover(){
         //悬停变大
     }
