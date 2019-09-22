@@ -1,44 +1,25 @@
 
 import Sprite from './Sprite.js'
+import LineItem from "@/components/my-canvas/src/draw/LineItem";
+
 export default {
     methods: {
         productPop() {
             let canvas = document.getElementById('canvas')
             let ctx = canvas.getContext('2d')
 
-            this.s = new Sprite({
-                x:300,
-                y:300,
-                w:80,
-                h:65 * 2,
-                fps:10,
-                originX:40,
-                originY:65,
-                imgSrc:this.imageUrl,
-            })
-            this.s.render(ctx)
-            //let image = new Image()
-            //image.src = this.imageUrl
-            /*image.onload = () => {
-                //ctx.drawImage(image,40,65,40,65,300,300,40,65)
-                let frameIndex = 0
-                setInterval(() => {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height)
-                    ctx.drawImage(
-                        image,
-                        frameIndex * 40,
-                        this.dirIndex * 65,
-                        40,
-                        65,
-                        200,
-                        200,
-                        80,
-                        130
-                    )
-                    frameIndex++
-                    frameIndex %= 4
-                }, 1000 / 10)
-            }*/
+            // this.s = new Sprite({
+            //     x:300,
+            //     y:300,
+            //     w:80,
+            //     h:65 * 2,
+            //     fps:10,
+            //     originX:40,
+            //     originY:65,
+            //     imgSrc:this.imageUrl,
+            // })
+            // this.s.render(ctx)
+
             var
                 baseX = 160,
                 baseY = 50,

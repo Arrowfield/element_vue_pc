@@ -43,8 +43,10 @@
                 }
                 this.loginLoading = false
             },
-            handleClick() {
+            async handleClick() {
                 //console.log(this.user, this.upwd)
+                //var res = await loginApi({})
+
                 if(this.user === "admin" && this.upwd === "123456"){
                   this.$router.push('/dashboard')
                 }else{

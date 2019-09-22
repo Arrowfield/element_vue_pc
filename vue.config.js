@@ -1,3 +1,4 @@
+//后端的配置
 module.exports = {
     publicPath: './',
     outputDir: undefined,
