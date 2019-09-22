@@ -32,10 +32,12 @@
 
 #### 项目总结
 
-+ 1、Vue的版本使用的2.6.6,element-ui版本2.10
++ 1、Vue的版本使用的2.6.6,element-ui版本2.10,vue-cli的版本3.8
 + 2、数据可视化
 + 3、使用.env.local
 ```
 UI_BASE_URL=dev.admin.com
-SERVER_BASE_URL=http://127.0.0.1
+# SERVER_BASE_URL=http://127.0.0.1:5000
+# dev product
+VUE_APP_URL=http://127.0.0.1:5000
 ```
