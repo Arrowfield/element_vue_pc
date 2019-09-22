@@ -7,7 +7,6 @@ export default {
         productPop() {
             let canvas = document.getElementById('canvas')
             let ctx = canvas.getContext('2d')
-
             // this.s = new Sprite({
             //     x:300,
             //     y:300,
@@ -80,6 +79,29 @@ export default {
                 options
             })
             this.lineItem.render(ctx)
+        },
+        konvaDemo(){
+            var stage = new Konva.Stage({
+                container:"chart-panel",
+                width:800,
+                height:510
+            })
+            var layer = new Konva.Layer()
+            stage.add(layer)
+            var rect = new Konva.Rect({
+                x:100,
+                y:100,
+                opacity:.4,
+                rotation:40,
+                width:100,
+                height:200,
+                scaleX:1.2,
+                scaleY:1.2,
+                draggable:true,
+                fill:'orange'
+            })
+            layer.add(rect)
+            layer.draw()
         }
     }
 }

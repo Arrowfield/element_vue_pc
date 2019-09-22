@@ -1,9 +1,9 @@
 <template>
     <div>
         <div @mousemove="handleMoveData" id="chart-panel">
-            <canvas id="canvas" width="800" height="510" style="border:1px solid #ddd">
-                你的浏览器不支持canvas，请升级浏览器
-            </canvas>
+<!--            <canvas id="canvas" width="800" height="510" style="border:1px solid #ddd">-->
+<!--                你的浏览器不支持canvas，请升级浏览器-->
+<!--            </canvas>-->
         </div>
         <div>
             <button v-on:click="s.changeDir('left')">↑</button>
@@ -53,14 +53,14 @@
             }
         },
         mounted() {
-            var dom = document.getElementById("chart-panel")
-            var canvas = document.getElementById("canvas")
-            dom.style.width = canvas.offsetWidth + "px"
-            dom.style.height = canvas.offsetHeight + "px"
+            //var dom = document.getElementById("chart-panel")
+            //var canvas = document.getElementById("canvas")
+            //dom.style.width = canvas.offsetWidth + "px"
+            //dom.style.height = canvas.offsetHeight + "px"
             window.addEventListener('resize',function(e){
                 //console.log(e)
             })
-            this.productPop()
+            this.konvaDemo()
         }
     }
     //svg可以直接绑定事件 canvas则不行
