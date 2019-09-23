@@ -1,7 +1,7 @@
 <template>
     <div>
         <div @mousemove="handleMoveData" id="chart-panel">
-            <canvas id="canvas">
+            <canvas id="canvas" width="450" height="450">
                 你的浏览器不支持canvas，请升级浏览器
             </canvas>
         </div>
@@ -31,6 +31,7 @@
                     {value: "0.02", title: "政治课", color: "yellow"}
                 ],
                 imageUrl: require('@/assets/images/boys.png'),
+                waterUrl: require('@/assets/images/watermark.png'),
                 dirIndex:0,
                 axis:{
                     yAxis:[0,10,20,30,40,50,60],
@@ -64,7 +65,9 @@
 <style scoped>
     #canvas{
         background: #F3F3F3;
-        vertical-align: top;
+        display:block;
+        margin:40px auto 0;
+        box-shadow: 10px 10px 15px #ddd;
     }
 </style>
 
