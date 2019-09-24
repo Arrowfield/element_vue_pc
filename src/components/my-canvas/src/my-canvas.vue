@@ -1,7 +1,7 @@
 <template>
     <div>
         <div @mousemove="handleMoveData" id="chart-panel">
-            <canvas id="canvas" width="800" height="510">
+            <canvas id="canvas">
                 你的浏览器不支持canvas，请升级浏览器
             </canvas>
         </div>
@@ -55,8 +55,8 @@
         },
         mounted() {
             //this.konvaDemo()
-            this.productPop()
-            //this.drawRain()
+            //this.productPop()
+            this.drawChess()
         }
     }
     //svg可以直接绑定事件 canvas则不行

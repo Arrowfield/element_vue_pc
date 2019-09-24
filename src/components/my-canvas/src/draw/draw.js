@@ -1,13 +1,17 @@
-
 import Sprite from './Sprite.js'
+import Chess from './Chress.js'
 import LineItem from "@/components/my-canvas/src/draw/LineItem";
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+import {
+    SSL_OP_SSLEAY_080_CLIENT_DH_BUG
+} from 'constants';
 
 export default {
     methods: {
         productPop() {
             let canvas = document.getElementById('canvas')
             let ctx = canvas.getContext('2d')
+            canvas.width = 800
+            canvas.height = 510
             // this.s = new Sprite({
             //     x:300,
             //     y:300,
@@ -81,15 +85,15 @@ export default {
             })
             this.lineItem.render(ctx)
             let _self = this
-            canvas.onmousemove = function(e){
-                _self.lineItem.hover(ctx,e.offsetX,e.offsetY)
+            canvas.onmousemove = function (e) {
+                _self.lineItem.hover(ctx, e.offsetX, e.offsetY)
             }
         },
-        konvaDemo(){
+        konvaDemo() {
             var stage = new Konva.Stage({
-                container:"chart-panel",
-                width:800,
-                height:510,
+                container: "chart-panel",
+                width: 800,
+                height: 510,
             })
             var layer = new Konva.Layer()
             stage.add(layer)
@@ -110,37 +114,37 @@ export default {
 
             var height = 1 / 12 * stage.height()
             var maxWidth = 3 / 4 * stage.width()
-            var x = 1/8 * stage.width()
+            var x = 1 / 8 * stage.width()
             var y = canY - height / 2
             var innerRect = new Konva.Rect({
-                x:x,
-                y:y,
-                width:100,
-                height:height,
-                opacity:.7,
-                fill:"lightblue",
-                cornerRadius:height / 2
+                x: x,
+                y: y,
+                width: 100,
+                height: height,
+                opacity: .7,
+                fill: "lightblue",
+                cornerRadius: height / 2
             })
             layer.add(innerRect)
             var outRect = new Konva.Rect({
-                x:x,
-                y:y,
-                width:maxWidth,
-                height:height,
-                stroke:"blue",
-                strokeWidth:.5,
-                cornerRadius:height / 2
+                x: x,
+                y: y,
+                width: maxWidth,
+                height: height,
+                stroke: "blue",
+                strokeWidth: .5,
+                cornerRadius: height / 2
             })
             layer.add(outRect)
             layer.draw()
 
             innerRect.to({
-                width:maxWidth,
-                duration:1.4,
-                easing:Konva.Easings.EaseOut,
+                width: maxWidth,
+                duration: 1.4,
+                easing: Konva.Easings.EaseOut,
             })
         },
-        drawRain(){
+        drawChess() {
             var canvas = document.getElementById("canvas")
             // var w = canvas.width = window.innerWidth
             // var h = canvas.height = window.innerHeight
@@ -148,70 +152,39 @@ export default {
             //     w = canvas.width = window.innerWidth
             //     h = canvas.height = window.innerHeight
             // })
+            canvas.width = 450, canvas.height = 450
             var chessBoard = []
-            for(var i = 0;i<15;i++){
+            for (var i = 0; i < 15; i++) {
                 chessBoard[i] = []
-                for(var j = 0;j<15;j++){
+                for (var j = 0; j < 15; j++) {
                     chessBoard[i][j] = 0
                 }
             }
 
             var ctx = canvas.getContext("2d")
-            ctx.strokeStyle = "#bfbfbf"
-            var me = true
-            var image = new Image()
-            image.src = this.waterUrl
-            image.onload = function(){
-                ctx.drawImage(image,0,0,450,450)
-                drawChess()
-                // noeStep(0,0,true)
-                // noeStep(1,1,false)
-            }
-            var drawChess = function(){
-                for(var i = 0;i < 15;i++){
-                    //竖
-                    ctx.moveTo(15 ,15 + 30 * i + .5)
-                    ctx.lineTo(435 ,15 + 30 * i + .5)
-                    //横
-                    ctx.moveTo(15+ i * 30 + .5,15)
-                    ctx.lineTo(15 + i * 30 + .5,435)
-                }
-                ctx.stroke()
-            }
-            var noeStep = function(i,j,me){
-                ctx.beginPath()
-                ctx.arc(15 + i * 30,15 + j * 30,13,0,2 * Math.PI)
-                ctx.closePath()
-                var gradient = ctx.createRadialGradient(15 + i * 30 + 2,15 + j * 30 - 2,13,15 + i * 30 + 2,15 + j * 30 - 2,0)
-                if(me){
-                    gradient.addColorStop(0,"#0a0a0a")
-                    gradient.addColorStop(1,"#636766")
-                }else{
-                    gradient.addColorStop(0,"#d1d1d1")
-                    gradient.addColorStop(1,"#f9f9f9")
-                }
-               
-                ctx.fillStyle = gradient
-                ctx.fill()
-            }
+            let chess = new Chess({
+                imageSrc: this.waterUrl
+            })
 
-            canvas.onclick = function(e){
+            chess.render(ctx)
+            var me = true
+            canvas.onclick = function (e) {
                 var x = e.offsetX
                 var y = e.offsetY
                 var i = Math.floor(x / 30)
                 var j = Math.floor(y / 30)
-                if(chessBoard[i][j] == 0){
-                    noeStep(i,j,me)
-                    if(me){
+                if (chessBoard[i][j] == 0) {
+                    chess.noeStep(ctx,i, j, me)
+                    if (me) {
                         chessBoard[i][j] = 1
-                    }else{
+                    } else {
                         chessBoard[i][j] = 2
                     }
                 }
-                
+
                 me = !me
             }
-            
+
         }
     }
 }
