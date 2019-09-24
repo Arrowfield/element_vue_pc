@@ -80,6 +80,10 @@ export default {
                 options
             })
             this.lineItem.render(ctx)
+            let _self = this
+            canvas.onmousemove = function(e){
+                _self.lineItem.hover(ctx,e.offsetX,e.offsetY)
+            }
         },
         konvaDemo(){
             var stage = new Konva.Stage({
