@@ -4,7 +4,6 @@ import LineItem from "@/components/my-canvas/src/draw/LineItem";
 import {
     SSL_OP_SSLEAY_080_CLIENT_DH_BUG
 } from 'constants';
-
 export default {
     methods: {
         productPop() {
@@ -185,6 +184,6 @@ export default {
                 me = !me
             }
 
-        }
+        },
     }
 }

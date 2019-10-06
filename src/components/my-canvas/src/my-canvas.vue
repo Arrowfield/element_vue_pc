@@ -55,11 +55,11 @@
         },
         mounted() {
             //this.konvaDemo()
-            //this.productPop()
-            this.drawChess()
+            this.productPop()
+            //this.drawChess()
         }
     }
-    //svg可以直接绑定事件 canvas则不行
+    //svg可以直接绑定事件 canvas则不行 canvas有默认的宽高
 </script>
 
 <style scoped>

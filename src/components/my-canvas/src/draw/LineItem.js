@@ -1,5 +1,6 @@
 //面向对象 封装 继承 多态
 export default class LineItem {
+    //构造
     constructor(options) {
         this.originX = options.originX || 0
         this.originY = options.originY || 0
@@ -10,7 +11,7 @@ export default class LineItem {
         this.axisRect = [] //存储每个方块的X，Y的坐标范围
         this.axisLine = [] //存储每个方块的X，Y的坐标范围
     }
-
+    //渲染
     render(ctx) {
         ctx.beginPath()
         ctx.strokeStyle = "#C23531"
@@ -20,9 +21,9 @@ export default class LineItem {
                 ctx.moveTo(this.originX + this.baseX / 2 + this.baseX * i + .5, this.originY - this.options[i][2] * this.average)
                 ctx.lineTo(this.originX + this.baseX / 2 + this.baseX * i + .5, this.originY - this.options[i][3] * this.average)
                 var x = this.originX + this.baseX / 2 + this.baseX * i + .5
-                var y = (this.options[i][2] + this.options[i][3] )* this.average
-                this.axisLine.push({x,y})
-                
+                var y = (this.options[i][2] + this.options[i][3]) * this.average
+                this.axisLine.push({x, y})
+
                 var rectX = this.originX + this.baseX / 2 + this.baseX * i - 50 + .5
                 var rectY = this.originY - this.options[i][1] * 5
                 var rectWidth = 100
@@ -35,11 +36,17 @@ export default class LineItem {
         }
         ctx.stroke()
     }
-
-    hover(ctx,x,y){
-        //悬停线条变粗 
+    //悬停
+    hover(ctx, x, y) {
         //console.log(ctx,x,y)
-        console.log(this.axisLine)
-        
+        //console.log(this.axisLine)
+    }
+    //框选
+    boxSelect(){
+
+    }
+    //鼠标滚动
+    mouseRoll(){
+
     }
 }
