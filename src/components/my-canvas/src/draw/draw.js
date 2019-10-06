@@ -84,8 +84,15 @@ export default {
             })
             this.lineItem.render(ctx)
             let _self = this
+
             canvas.onmousemove = function (e) {
-                _self.lineItem.hover(ctx, e.offsetX, e.offsetY)
+                var bb = canvas.getBoundingClientRect()
+                var x = (e.clientX - bb.left)*(canvas.width/bb.width)
+                var y = (e.clientY - bb.top)*(canvas.height/bb.height)
+                console.log('______',x,y)
+                var bool = ctx.isPointInPath(x,y)
+                console.log(bool)
+                //_self.lineItem.hover(ctx, e.clientX, e.clientY)
             }
         },
         konvaDemo() {
@@ -187,3 +194,4 @@ export default {
         },
     }
 }
+//hitpath

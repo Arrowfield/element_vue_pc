@@ -1,14 +1,10 @@
 import Vue from 'vue'
 import store from './store/'
-
 import router from './router/'
 import Config from './config/app'
 import App from './App.vue'
-
-
-
+import Util from './utils'
 //导入自定义组件
-
 import Button from './components/button'
 import Avatar from './components/avatar'
 import Input from './components/input'
@@ -28,10 +24,12 @@ const install = function(Vue,opts = {}){
 
   components.forEach(component =>{
     Vue.component(component.name,component)
-    //Vue.use(component)
   })
 
-  Vue.prototype.$Config = Config
+  Vue.prototype.$config = Object.freeze(Config)
+
+  Vue.prototype.$util = Object.freeze(Util)
+
 }
 
 if(typeof window !== 'undefined' ){

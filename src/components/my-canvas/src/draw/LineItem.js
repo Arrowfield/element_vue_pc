@@ -40,6 +40,7 @@ export default class LineItem {
     hover(ctx, x, y) {
         //console.log(ctx,x,y)
         //console.log(this.axisLine)
+        console.log(ctx.isPointInPath)
     }
     //框选
     boxSelect(){
