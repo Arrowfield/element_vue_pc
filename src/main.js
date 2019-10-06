@@ -19,7 +19,6 @@ const components = [
   MyCanvas
 ]
 
-
 const install = function(Vue,opts = {}){
 
   components.forEach(component =>{
@@ -35,7 +34,6 @@ const install = function(Vue,opts = {}){
 if(typeof window !== 'undefined' ){
   install(Vue)
 }
-
 
 new Vue({
   el: '#app',

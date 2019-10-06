@@ -34,13 +34,13 @@ export default class LineItem {
                 ctx.fillRect(rectX, rectY, rectWidth, rectHeight)
             }
         }
+        ctx.closePath()
         ctx.stroke()
     }
     //悬停
-    hover(ctx, x, y) {
-        //console.log(ctx,x,y)
-        //console.log(this.axisLine)
-        console.log(ctx.isPointInPath)
+    hover(hitPath,ctx,e) {
+        var bool = hitPath(ctx,e)
+        //ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height)
     }
     //框选
     boxSelect(){

@@ -30,7 +30,7 @@ export default {
                 baseX = 160,
                 baseY = 50,
                 pointWidth = 8,
-                originX = 40,
+                originX = 80,
                 originY = 470,
                 axisX = this.axis.xAxis,
                 axisY = this.axis.yAxis,
@@ -84,15 +84,11 @@ export default {
             })
             this.lineItem.render(ctx)
             let _self = this
-
+            //目的：当鼠标悬停在矩形或者横线上时，就输出为true
             canvas.onmousemove = function (e) {
-                var bb = canvas.getBoundingClientRect()
-                var x = (e.clientX - bb.left)*(canvas.width/bb.width)
-                var y = (e.clientY - bb.top)*(canvas.height/bb.height)
-                console.log('______',x,y)
-                var bool = ctx.isPointInPath(x,y)
-                console.log(bool)
-                //_self.lineItem.hover(ctx, e.clientX, e.clientY)
+                // var bool = _self.$util.hitPath(ctx,e)
+                //                 // console.log(bool)
+                _self.lineItem.hover(_self.$util.hitPath,ctx,e)
             }
         },
         konvaDemo() {
