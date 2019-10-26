@@ -1,15 +1,16 @@
 <template>
     <div>
         <my-canvas></my-canvas>
-<!--        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
+        <!--        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
+        <div v-if="name === 'lisi'">123456789</div>
     </div>
 </template>
 
 <script>
 
     import data from './table_data_tbody.json'
-    import {filterArray} from '@/utils/index'
-
+    //import {filterArray} from '@/utils/index'
+    import Bus from '@/components/Bus'
     export default {
         name: "Dashboard",
         data() {
@@ -26,6 +27,13 @@
                 selected: {}
             }
         },
+        //计算属性【处理基本的逻辑，依赖缓存】
+        computed: {
+            name(){
+                return Bus.$data.name
+            }
+        },
+        //监听属性【data中已经存在】//执行异步操作
         watch: {
             caseName(val) {
                 if (val) {
@@ -64,6 +72,9 @@
                 console.log(obj)
                 this.selected = Object.assign(obj, this.selected)
                 this.options = filterArray(this.options, this.array, this.selected)
+            },
+            handleClick() {
+
             }
         },
         mounted() {

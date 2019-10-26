@@ -1,11 +1,29 @@
 import Sprite from './Sprite.js'
 import Chess from './Chress.js'
 import LineItem from "@/components/my-canvas/src/draw/LineItem";
-import {
-    SSL_OP_SSLEAY_080_CLIENT_DH_BUG
-} from 'constants';
+
 export default {
+    data() {
+        return {
+            list: []
+        }
+    },
     methods: {
+        precessData(options) {
+            // this.list.map((item)=>{
+            //     return
+            // })
+            let item = {
+                itemX: options.itemX,
+                itemY: options.itemY,
+                itemWidth: options.itemWidth,
+                itemHeight: options.itemHeight,
+                itemLineHeight: options.itemLineHeight,
+                itemLineWidth: options.itemWidth,
+                data: ""
+            }
+            console.log(item)
+        },
         productPop() {
             let canvas = document.getElementById('canvas')
             let ctx = canvas.getContext('2d')
@@ -26,7 +44,7 @@ export default {
             //this.l = new LineItem({x:0, y:0, w:300, h:100,fillStyle:"red"})
             //this.l.render(ctx)
 
-            var
+            let
                 baseX = 160,
                 baseY = 50,
                 pointWidth = 8,
@@ -74,21 +92,33 @@ export default {
             }
             ctx.stroke()
 
-            this.lineItem = new LineItem({
-                originX,
-                originY,
-                axisX,
-                baseX,
-                average,
-                options
-            })
-            this.lineItem.render(ctx)
+            //绘制矩形
+
+            for (let i = 0; i < axisX.length; i++) {
+                let color = "#C23531"
+                i === 2 ? color = "#314656" : '#C23531'
+                new LineItem({
+                    originX,
+                    originY,
+                    axisX,
+                    baseX,
+                    average, data:this.axis.data[i],index:i,color
+                }).render(ctx)
+
+            }
+
+            // this.lineItem = new LineItem({
+            //     options
+            // })
+            // this.lineItem.render(ctx)
+
+            //事件
             let _self = this
             //目的：当鼠标悬停在矩形或者横线上时，就输出为true
             canvas.onmousemove = function (e) {
                 // var bool = _self.$util.hitPath(ctx,e)
                 //                 // console.log(bool)
-                _self.lineItem.hover(_self.$util.hitPath,ctx,e)
+                //_self.lineItem.hover(canvas,e)
             }
         },
         konvaDemo() {
@@ -176,7 +206,7 @@ export default {
                 var i = Math.floor(x / 30)
                 var j = Math.floor(y / 30)
                 if (chessBoard[i][j] == 0) {
-                    chess.noeStep(ctx,i, j, me)
+                    chess.noeStep(ctx, i, j, me)
                     if (me) {
                         chessBoard[i][j] = 1
                     } else {
@@ -188,6 +218,9 @@ export default {
             }
 
         },
+    },
+    beforeDestroy() {
+        //删除事件的绑定
+
     }
 }
-//hitpath
