@@ -15,6 +15,10 @@ export default class LineItem {
         this.data = options.data
         this.index = options.index
         this.color = options.color
+        this.itemX = ""
+        this.itemY = ""
+        this.itemRectWidth = ""
+        this.itemRectHeight = ""
     }
 
     //渲染
@@ -24,15 +28,21 @@ export default class LineItem {
         ctx.strokeStyle = this.color
         ctx.moveTo(this.originX + this.baseX / 2 + this.baseX * this.index + .5, this.originY - this.data[2] * this.average)
         ctx.lineTo(this.originX + this.baseX / 2 + this.baseX * this.index + .5, this.originY - this.data[3] * this.average)
-
         let rectX = this.originX + (this.index * this.baseX) * 1 + 80 - 50
         let rectY = this.originY - this.data[1] * this.average
         let rectWidth = 100
         let rectHeight = (this.data[1] - this.data[0]) * this.average
         if (rectHeight == 0) rectHeight = 1.5
-
         ctx.fillRect(rectX, rectY, rectWidth, rectHeight)
+        ctx.closePath()
+        ctx.stroke()
 
+        this.itemX = rectX
+        this.itemY = rectY
+        this.itemRectWidth = rectWidth
+        this.itemRectHeight = rectHeight
+
+        return this
         /*
 
         for (let i = 0; i <= this.axisX.length; i++) {
@@ -54,23 +64,22 @@ export default class LineItem {
             }
         }*/
 
-        ctx.closePath()
-        ctx.stroke()
+
     }
 
     //悬停
     hover(canvas, e) {
-        let obj = canvas.getBoundingClientRect()
+
         //定义一个数组存储每个对象的
         //检测鼠标是否在canvas中，水平方向上
         // if(e.clientX>obj.left &&e.clientX < obj.right ){
         //     console.log('水平方向上')
         // }
-        let left = e.clientX - obj.left, top = e.clientY - obj.top
+
         //检测鼠标是否在每个小举行中
 
         let bool = this.list.some((item) => {
-            return left > item.itemX && left < item.itemX + item.itemRectWidth && top > item.itemY && top < item.itemY + item.itemRectHeight
+
         })
 
         bool ? canvas.style.cursor = "pointer" : canvas.style.cursor = "auto"
@@ -86,4 +95,23 @@ export default class LineItem {
     mouseRoll() {
 
     }
+    isInRect(canvas,e,ctx,i){
+        let obj = canvas.getBoundingClientRect()
+        let left = e.clientX - obj.left, top = e.clientY - obj.top
+
+        let bool = left > this.itemX && left < this.itemX + this.itemRectWidth && top > this.itemY && top < this.itemY + this.itemRectHeight
+        if(bool){
+            this.color = "red"
+            if(i === 2){
+                this.color = "#314656"
+            }
+        }else{
+            this.color = "#C23531"
+            if(i === 2){
+                this.color = "#314656"
+            }
+        }
+        this.render(ctx)
+        return bool
+    }//单位通通都是px
 }

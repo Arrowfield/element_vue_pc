@@ -93,11 +93,12 @@ export default {
             ctx.stroke()
 
             //绘制矩形
+            let lineItems = []
 
             for (let i = 0; i < axisX.length; i++) {
                 let color = "#C23531"
                 i === 2 ? color = "#314656" : '#C23531'
-                new LineItem({
+                lineItems[i] = new LineItem({
                     originX,
                     originY,
                     axisX,
@@ -119,6 +120,12 @@ export default {
                 // var bool = _self.$util.hitPath(ctx,e)
                 //                 // console.log(bool)
                 //_self.lineItem.hover(canvas,e)
+                //console.log(lineItems)
+                let bool = lineItems.some((item,index)=>{
+                    return item.isInRect(canvas,e,ctx,index)
+                })
+
+                bool ? canvas.style.cursor = "pointer" : canvas.style.cursor = 'auto'
             }
         },
         konvaDemo() {
