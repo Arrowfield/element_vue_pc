@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import LineItem from "@/components/my-canvas/src/draw/LineItem";
 
 export default new Vue({
     data() {
@@ -6,7 +7,8 @@ export default new Vue({
             name: "zhangsan",
             axisRect: [],//存储每个矩形对象的坐标x，y
             axisLine: [],//存储每个线段对象的x，y
-            axis:{}
+            axis:{},
+            lineItems:[]
         }
     },
     methods: {
@@ -75,10 +77,12 @@ export default new Vue({
                 ctx.lineTo(originX + this.axis.axis.xAxis.length * baseX, originY - i * baseY + .5)
             }
             ctx.stroke()
+            //绘制矩形
+
         }
     }
 })
 
-//Bus（本质：vue的实例）中的资源所有的组件都可以使用，类似于window中的资源所有组件都可以使用
+//Bus（本质：vue的实例）中的资源（属性和方法）所有的组件都可以使用，类似于window中的资源所有组件都可以使用
 //Bus.$on('事件名',(params)=>{})
 //Bus.$emit('事件名',params)

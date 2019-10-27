@@ -28,6 +28,7 @@ export default class LineItem {
         ctx.fillStyle = this.color
         ctx.strokeStyle = this.color
         ctx.lineWidth = this.lineWidth
+
         ctx.moveTo(this.originX + this.baseX / 2 + this.baseX * this.index + .5, this.originY - this.data[2] * this.average)
         ctx.lineTo(this.originX + this.baseX / 2 + this.baseX * this.index + .5, this.originY - this.data[3] * this.average)
         let rectX = this.originX + (this.index * this.baseX) * 1 + 80 - 50
@@ -98,9 +99,9 @@ export default class LineItem {
 
     }
     isInRect(canvas,e,ctx,i){
+        //如果在矩形中的话进行显示不同的情况
         let obj = canvas.getBoundingClientRect()
         let left = e.clientX - obj.left, top = e.clientY - obj.top
-
         let bool = left > this.itemX && left < this.itemX + this.itemRectWidth && top > this.itemY && top < this.itemY + this.itemRectHeight
         if(bool){
             this.color = "red"
@@ -118,3 +119,6 @@ export default class LineItem {
         return bool
     }//单位通通都是px
 }
+
+//完成工作量所需要定义的对象数量：坐标轴（x，y），每个坐标轴对应的数值（x，y），中间的线端，每个数据的矩形，直线（）
+//8个对象
