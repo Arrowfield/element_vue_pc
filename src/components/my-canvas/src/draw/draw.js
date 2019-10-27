@@ -56,13 +56,17 @@ export default {
             //目的：当鼠标悬停在矩形或者横线上时，就输出为true
             canvas.onmousemove = function (e) {
                 //检测鼠标是否位于矩形中（线段的暂未判断）
+                //清除画布
+                ctx.clearRect(0,0,canvas.width,canvas.height)
+                Bus.initCanvas(canvas, ctx)
                 let bool = lineItems.some((item, index) => {
                     return item.isInRect(canvas, e, ctx, index)
                 })
                 bool ? canvas.style.cursor = "pointer" : canvas.style.cursor = 'auto'
-                //清除画布
-                ctx.clearRect(0,0,canvas.width,canvas.height)
-                Bus.initCanvas(canvas, ctx)
+                for(let item of lineItems){//遍历的是下标
+                    item.render(ctx)
+                }
+
             }
         },
         konvaDemo() {
