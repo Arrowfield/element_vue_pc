@@ -19,6 +19,7 @@ export default class LineItem {
         this.itemY = ""
         this.itemRectWidth = ""
         this.itemRectHeight = ""
+        this.lineWidth = 1
     }
 
     //渲染
@@ -26,6 +27,7 @@ export default class LineItem {
         ctx.beginPath()
         ctx.fillStyle = this.color
         ctx.strokeStyle = this.color
+        ctx.lineWidth = this.lineWidth
         ctx.moveTo(this.originX + this.baseX / 2 + this.baseX * this.index + .5, this.originY - this.data[2] * this.average)
         ctx.lineTo(this.originX + this.baseX / 2 + this.baseX * this.index + .5, this.originY - this.data[3] * this.average)
         let rectX = this.originX + (this.index * this.baseX) * 1 + 80 - 50
@@ -111,6 +113,7 @@ export default class LineItem {
                 this.color = "#314656"
             }
         }
+        //ctx.clearRect(this.itemX,this.itemY,this.itemRectWidth,this.itemRectHeight)
         this.render(ctx)
         return bool
     }//单位通通都是px

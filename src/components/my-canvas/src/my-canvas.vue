@@ -59,11 +59,7 @@
         },
         methods: {
             handleMoveData(e) {
-                //console.log(e.clientX,e.clientY)
-                //输入：元素的坐标
-                //输出：元素是否存在规定的区域内
-                // let isInRect = Bus.isInRect(e.clientX)
-                // console.log(isInRect)
+
             },
             handleClick() {
                 Bus.$data.name = "lisi"
@@ -71,9 +67,9 @@
         },
         mounted() {
             //this.konvaDemo()
+            Bus.$set(Bus.$data.axis,'axis',this.axis)
             this.productPop()
             //this.drawChess()
-            //console.log(Bus.$data)
         },
         beforeDestroy() {
             //移除事件的绑定
