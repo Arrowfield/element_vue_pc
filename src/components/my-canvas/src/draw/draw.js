@@ -49,8 +49,6 @@ export default {
                     average, data: this.axis.data[i], index: i, color
                 }).render(ctx)
             }
-
-
             //事件
             let _self = this
             //目的：当鼠标悬停在矩形或者横线上时，就输出为true
@@ -63,10 +61,9 @@ export default {
                     return item.isInRect(canvas, e, ctx, index)
                 })
                 bool ? canvas.style.cursor = "pointer" : canvas.style.cursor = 'auto'
-                for(let item of lineItems){//遍历的是下标
+                for(let item of lineItems){//for --- in遍历的是下标
                     item.render(ctx)
                 }
-
             }
         },
         konvaDemo() {

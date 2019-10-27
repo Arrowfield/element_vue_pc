@@ -20,6 +20,7 @@ export default class LineItem {
         this.itemRectWidth = ""
         this.itemRectHeight = ""
         this.lineWidth = 1
+        this.globalAlpha = 1
     }
 
     //渲染
@@ -28,6 +29,7 @@ export default class LineItem {
         ctx.fillStyle = this.color
         ctx.strokeStyle = this.color
         ctx.lineWidth = this.lineWidth
+        ctx.globalAlpha = this.globalAlpha
         ctx.moveTo(this.originX + this.baseX / 2 + this.baseX * this.index + .5, this.originY - this.data[2] * this.average)
         ctx.lineTo(this.originX + this.baseX / 2 + this.baseX * this.index + .5, this.originY - this.data[3] * this.average)
         let rectX = this.originX + (this.index * this.baseX)  + 80 - 50
@@ -35,6 +37,7 @@ export default class LineItem {
         let rectWidth = 100
         let rectHeight = (this.data[1] - this.data[0]) * this.average
         if (rectHeight == 0) rectHeight = 1.5
+
         ctx.fillRect(rectX, rectY, rectWidth, rectHeight)
         ctx.closePath()
         ctx.stroke()
@@ -71,21 +74,15 @@ export default class LineItem {
 
     //悬停
     hover(canvas, e) {
-
         //定义一个数组存储每个对象的
         //检测鼠标是否在canvas中，水平方向上
         // if(e.clientX>obj.left &&e.clientX < obj.right ){
         //     console.log('水平方向上')
         // }
-
         //检测鼠标是否在每个小举行中
-
         let bool = this.list.some((item) => {
-
         })
-
         bool ? canvas.style.cursor = "pointer" : canvas.style.cursor = "auto"
-
     }
 
     //框选
@@ -103,15 +100,20 @@ export default class LineItem {
         let left = e.clientX - obj.left, top = e.clientY - obj.top
         let bool = left > this.itemX && left < this.itemX + this.itemRectWidth && top > this.itemY && top < this.itemY + this.itemRectHeight
         if(bool){
-            this.color = "red"
-            if(i === 2){
-                this.color = "#314656"
-            }
+            // this.color = "red"
+            // if(i === 2){
+            //     this.color = "#314656"
+            // }
+            this.lineWidth = 1.5
+            this.globalAlpha = 0.95
+            //ctx.scale()
         }else{
-            this.color = "#C23531"
-            if(i === 2){
-                this.color = "#314656"
-            }
+            // this.color = "#C23531"
+            // if(i === 2){
+            //     this.color = "#314656"
+            // }
+            this.lineWidth = 1
+            this.globalAlpha = 1
         }
         //ctx.clearRect(this.itemX,this.itemY,this.itemRectWidth,this.itemRectHeight)
         //this.render(ctx)
