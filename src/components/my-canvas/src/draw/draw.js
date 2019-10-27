@@ -1,6 +1,7 @@
 import Sprite from './Sprite.js'
 import Chess from './Chress.js'
 import LineItem from "@/components/my-canvas/src/draw/LineItem";
+import HoverLine from "@/components/my-canvas/src/draw/HoverLine.js";
 import Bus from '@/components/Bus'
 
 export default {
@@ -27,8 +28,9 @@ export default {
         productPop() {
             let canvas = document.getElementById('canvas')
             let ctx = canvas.getContext('2d')
+            //初始化canvas
             Bus.initCanvas(canvas, ctx)
-
+            //画矩形和中间的线
             let
                 baseX = 160,
                 baseY = 50,
@@ -36,7 +38,7 @@ export default {
                 originY = 470,
                 axisX = this.axis.xAxis,
                 average = baseY / 10,
-                lineItems = []
+                lineItems = []//数组中存储
 
             for (let i = 0; i < axisX.length; i++) {
                 let color = "#C23531"
@@ -49,6 +51,10 @@ export default {
                     average, data: this.axis.data[i], index: i, color
                 }).render(ctx)
             }
+            //画悬停时候的线
+            let hoverLine = new HoverLine({}).render(canvas,ctx)
+
+
             //事件
             let _self = this
             //目的：当鼠标悬停在矩形或者横线上时，就输出为true
@@ -56,14 +62,19 @@ export default {
                 //检测鼠标是否位于矩形中（线段的暂未判断）
                 //清除画布
                 ctx.clearRect(0,0,canvas.width,canvas.height)
+                //初始化画布
                 Bus.initCanvas(canvas, ctx)
+                //判断鼠标是否在矩形中
                 let bool = lineItems.some((item, index) => {
                     return item.isInRect(canvas, e, ctx, index)
                 })
                 bool ? canvas.style.cursor = "pointer" : canvas.style.cursor = 'auto'
+                //画矩形
                 for(let item of lineItems){//for --- in遍历的是下标
                     item.render(ctx)
                 }
+                //画悬停时候的线
+                hoverLine.render(canvas,ctx)
             }
         },
         konvaDemo() {
