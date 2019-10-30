@@ -10,6 +10,7 @@
 
     import data from './table_data_tbody.json'
     //import {filterArray} from '@/utils/index'
+    import moment from 'moment'
     import Bus from '@/components/Bus'
     export default {
         name: "Dashboard",
@@ -78,6 +79,9 @@
             }
         },
         mounted() {
+            //new Date() 参与计算会自动转换为从1970.1.1开始的毫秒数
+            let time = moment(1411641720000).format('YYYY-MM-DD HH:mm:ss')
+            //console.log(new Date(1411641720000))//Thu Sep 25 2014 18:42:00 GMT+0800 (中国标准时间)
 
             data.data.forEach((item) => {
 
