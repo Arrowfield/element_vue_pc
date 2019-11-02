@@ -63,14 +63,13 @@
                 this[type] = ""
             },
             reduceItem(arr) {
-                var obj = {};
+                let obj = {};
                 arr = arr.reduce(function (item, next) {
-                    obj[next.key] ? '' : obj[next.key] = true && item.push(next);
+                    obj[next.key] ? '' : obj[next.key] = item.push(next);
                     return item;
                 }, []);
             },
             handleFilter(obj) {
-                console.log(obj)
                 this.selected = Object.assign(obj, this.selected)
                 this.options = filterArray(this.options, this.array, this.selected)
             },
@@ -79,14 +78,6 @@
             }
         },
         mounted() {
-            //new Date() 参与计算会自动转换为从1970.1.1开始的毫秒数
-            let time = moment(1411641720000).format('YYYY-MM-DD HH:mm:ss')
-            console.log(new Date(1411641720000))//Thu Sep 25 2014 18:42:00 GMT+0800 (中国标准时间)
-            console.log(Date.UTC())
-            //可以将时间戳转化成从1970/1/1日后的日期
-            data.data.forEach((item) => {
-
-            })
         }
     }
 </script>

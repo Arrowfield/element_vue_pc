@@ -3,7 +3,7 @@ import Chess from './Chress.js'
 import LineItem from "@/components/my-canvas/src/draw/LineItem";
 import HoverLine from "@/components/my-canvas/src/draw/HoverLine.js";
 import Bus from '@/components/Bus'
-
+import { handleEvent } from "@/libs/HandleEvent";
 export default {
     data() {
         return {
@@ -54,11 +54,8 @@ export default {
             //画悬停时候的线
             let hoverLine = new HoverLine({}).render(canvas,ctx)
 
-
-            //事件
-            let _self = this
             //目的：当鼠标悬停在矩形或者横线上时，就输出为true
-            canvas.onmousemove = function (e) {
+            handleEvent.on(canvas,'mousemove',(e)=>{
                 //检测鼠标是否位于矩形中（线段的暂未判断）
                 //清除画布
                 ctx.clearRect(0,0,canvas.width,canvas.height)
@@ -75,7 +72,7 @@ export default {
                 }
                 //画悬停时候的线
                 hoverLine.render(canvas,ctx)
-            }
+            },false)
         },
         konvaDemo() {
             let stage = new Konva.Stage({

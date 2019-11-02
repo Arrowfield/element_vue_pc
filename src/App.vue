@@ -18,7 +18,7 @@
 
   body,html {
     margin: 0;
-    padding: 0
+    padding: 0;
   }
 
   a {
@@ -43,15 +43,18 @@
   大网页：1920 * 1080
   最小尺寸：1024 * 768
 */
-  @media screen and (max-width:1920px) {
+  html{
+    font-size: 100px;
+  }
+  @media screen and (max-width:1700px) {
     html{
-      font-size:150px
+      font-size:100px
     }
   }
 
   @media screen and (max-width:1366px){
     html{
-      font-size:100px
+      font-size:87px
     }
   }
   @media screen and (max-width:1024px){
