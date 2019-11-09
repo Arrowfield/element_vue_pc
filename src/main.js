@@ -4,6 +4,7 @@ import router from './router/'
 import Config from './config/app'
 import App from './App.vue'
 import Util from './utils'
+import VueKonva from 'vue-konva'
 //导入自定义组件
 import Button from './components/button'
 import Avatar from './components/avatar'
@@ -20,15 +21,12 @@ const components = [
 ]
 
 const install = function(Vue,opts = {}){
-
   components.forEach(component =>{
     Vue.component(component.name,component)
   })
-
   Vue.prototype.$config = Object.freeze(Config)
-
   Vue.prototype.$util = Object.freeze(Util)
-
+  Vue.use(VueKonva)
 }
 
 if(typeof window !== 'undefined' ){

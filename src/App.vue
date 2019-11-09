@@ -48,18 +48,18 @@
   }
   @media screen and (max-width:1700px) {
     html{
-      font-size:100px
+      font-size:83px
     }
   }
 
-  @media screen and (max-width:1366px){
+  @media screen and (max-width:1400px){
     html{
-      font-size:87px
+      font-size:73px
     }
   }
-  @media screen and (max-width:1024px){
+  @media screen and (max-width:1200px){
     html{
-      font-size:50px
+      font-size:60px
     }
   }
 
