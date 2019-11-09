@@ -227,7 +227,7 @@
                     this.isHoverLine = true
 
                     this.hoverLineX = mousePos.x - 70
-                    console.log(this.selectedRange.x,this.hoverLineX)
+                    //console.log(this.selectedRange.x,this.hoverLineX)
                     if(this.selectedRange.x === this.hoverLineX){
                         this.isHoverLine = false
                     }
