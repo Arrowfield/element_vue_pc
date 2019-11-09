@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import LineItem from "@/components/my-canvas/src/draw/LineItem"
-const SELECT_DATA_AREA = "selectDataArea"
+const MOUSE_MOVE_DATA_AREA = "mousemoveDataArea"
 const CLICK_DATA_AREA = "clickDataArea"
+const MOUSE_OUT_DATA_AREA = "mouseoutDataArea"
+const MOUSE_UP_DATA_AREA = "mouseupDataArea"
 export default new Vue({
-    SELECT_DATA_AREA,
+    MOUSE_MOVE_DATA_AREA,
     CLICK_DATA_AREA,
+    MOUSE_OUT_DATA_AREA,
+    MOUSE_UP_DATA_AREA,
     data() {
         return {
             name: "zhangsan",

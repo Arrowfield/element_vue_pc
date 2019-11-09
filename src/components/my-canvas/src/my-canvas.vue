@@ -176,57 +176,56 @@
                 this.configKonva.height = 400
             },
             handleMouseMove(e) {
-                const mousePos = this.$refs.stage.getStage().getPointerPosition()
-                if (this.lastAction === 1) {
-                    this.isHoverLine = false
-                    //this.createSelectArea(mousePos)
-
-                } else {
-
-                }
-                //相对于整个canvas计算的
-                //悬停时候的线条
-                Bus.$emit(Bus.$options.SELECT_DATA_AREA,mousePos)
-
+                Bus.$emit(Bus.$options.MOUSE_MOVE_DATA_AREA,e)
             },
-            createSelectArea(position) {
-                //框选逻辑
-                //let startTime = new Date()
-                //this.selectedRange.width = position.x - this.selectedRange.x
+            handleMouseOut(e) {
+                Bus.$emit(Bus.$options.MOUSE_OUT_DATA_AREA,e)
             },
-            handleMouseOut() {
-                this.isHoverLine = false
+            handleMouseDown(e) {
+                Bus.$emit(Bus.$options.CLICK_DATA_AREA,e)
             },
-            handleMouseDown() {
-                Bus.$emit(Bus.$options.CLICK_DATA_AREA)
-            },
-            handleMouseUp() {
-                this.lastAction = MOUSE_SELECT_END
-                //this.selectedRange.x = 70
-                //this.selectedRange.width = 0
+            handleMouseUp(e) {
+                Bus.$emit(Bus.$options.MOUSE_UP_DATA_AREA,e)
             }
         },
         mounted() {
             //Bus.$set(Bus.$data.axis,'axis',this.axis)
             //this.productPop()
-
             handleEvent.on(window, 'resize', this.resize, false)
             handleEvent.on(document, 'mouseup', this.handleMouseUp)
-            handleEvent.on(Bus,Bus.$options.SELECT_DATA_AREA,(position)=>{
-                this.isHoverLine = true
-                this.hoverLineX = position.x - 70
-            })
-            handleEvent.on(Bus,Bus.$options.CLICK_DATA_AREA,()=>{
+            handleEvent.on(Bus, Bus.$options.MOUSE_MOVE_DATA_AREA, (e) => {
                 //const mousePos = this.$refs.stage.getStage().getPointerPosition()
+                const mousePos = {x:e.evt.layerX,y:e.evt.layerY}
+                if(this.lastAction === 1) {
+                    this.isHoverLine = false
+                    this.selectedRange.width = mousePos.x - this.selectedRange.x//绝对值
+                    //console.log(Math.abs(this.selectedRange.width) + 70,this.selectedRange.x)
+                    if(this.selectedRange.width < 0 && Math.abs(this.selectedRange.width) + 70 >= this.selectedRange.x){
+                        this.selectedRange.width = -this.selectedRange.x + 70
+                    }
+                }else{
+                    this.isHoverLine = true
+                    this.hoverLineX = mousePos.x - 70
+                }
+            })
+            handleEvent.on(Bus, Bus.$options.CLICK_DATA_AREA, (e) => {
+                const mousePos = {x:e.evt.layerX,y:e.evt.layerY}
                 this.isHoverLine = false
                 this.lastAction = MOUSE_SELECT_START
-                // this.isShowSelectRect = true
+                this.isShowSelectRect = true
+                this.selectedRange.width = 0
+                this.selectedRange.x = mousePos.x
+            })
+            handleEvent.on(Bus, Bus.$options.MOUSE_OUT_DATA_AREA, () => {
+                this.isHoverLine = false
+            })
+            handleEvent.on(Bus, Bus.$options.MOUSE_UP_DATA_AREA,()=>{
+                this.lastAction = MOUSE_SELECT_END
+                // this.selectedRange.x = 70
                 // this.selectedRange.width = 0
-                // this.selectedRange.x = mousePos.x
+                // this.isShowSelectRect = false
             })
             this.resize()
-
-            console.log(this.$refs.layer)
         }
     }
     //svg可以直接绑定事件 canvas则不行 canvas有默认的宽高
