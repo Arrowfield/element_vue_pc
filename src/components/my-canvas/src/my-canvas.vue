@@ -1,24 +1,31 @@
 <template>
     <div class="my-demo-canvas">
-        <v-stage :config="configKonva">
+        <v-stage :config="configKonva" ref="stage">
             <v-layer>
                 <!--            <v-circle :config="configCircle"></v-circle>-->
                 <v-line :config="axisY"></v-line>
                 <v-line :config="axisX"></v-line>
             </v-layer>
             <v-layer>
-                <v-line :config="item" v-for="(item,index) in axisPointX" ></v-line>
-                <v-line :config="item" v-for="(item,index) in axisPointY" ></v-line>
-                <v-text :config="item" v-for="(item,index) in axisTextX"  ></v-text>
-                <v-text :config="item" v-for="(item,index) in axisTextY"  ></v-text>
+                <v-line :config="item" v-for="(item,index) in axisPointX"></v-line>
+                <v-line :config="item" v-for="(item,index) in axisPointY"></v-line>
+                <v-text :config="item" v-for="(item,index) in axisTextX"></v-text>
+                <v-text :config="item" v-for="(item,index) in axisTextY"></v-text>
             </v-layer>
             <v-layer ref="layer">
                 <v-rect :config="dataAreaMove"
                         @mousemove="handleMouseMove"
-                    @mouseout="handleMouseOut"
+                        @mouseout="handleMouseOut"
+                        @mousedown="handleMouseDown"
+                        @mouseup="handleMouseUp"
                 >
                 </v-rect>
                 <v-line :config="hoverLine" v-if="isHoverLine"></v-line>
+                <v-rect :config="selectedArea"
+                        v-if="isShowSelectRect"
+                        @mousemove="handleMouseMove"
+                        @mousedown="handleMouseDown"
+                ></v-rect>
             </v-layer>
         </v-stage>
     </div>
@@ -29,6 +36,8 @@
     import Bus from '@/components/Bus'
     import {handleEvent} from "@/libs/HandleEvent";
 
+    const MOUSE_SELECT_START = 1
+    const MOUSE_SELECT_END = 2
     export default {
         name: "my-canvas",
         mixins: [drawMixin],
@@ -42,7 +51,14 @@
                     stroke: "#ACB2BF",
                     strokeWidth: 1
                 },
-                isHoverLine:false
+                isHoverLine: false,
+                isShowSelectRect: false,
+                hoverLineX: 10,
+                lastAction: "",
+                selectedRange: {
+                    x: 70,
+                    width: 0,
+                }
             }
         },
         computed: {
@@ -124,44 +140,90 @@
                 }
                 return pointLine
             },
-            dataAreaMove(){
-              return{
-                  x:70,
-                  y:60,
-                  width:this.configKonva.width - 140,
-                  height:240
-              }
-            },
-            hoverLine(){
-                return{
-                    x:70,
-                    y:60,
-                    points:[10,0,10,240],
-                    stroke: "black",
-                    strokeWidth: 2
+            dataAreaMove() {
+                return {
+                    x: 70,
+                    y: 60,
+                    width: this.configKonva.width - 140,
+                    height: 240
                 }
             },
-
+            hoverLine() {
+                return {
+                    x: 70,
+                    y: 60,
+                    points: [this.hoverLineX, 0, this.hoverLineX, 240],
+                    stroke: "black",
+                    strokeWidth: 1
+                }
+            },
+            selectedArea() {
+                return {
+                    x: this.selectedRange.x,
+                    y: 60,
+                    width: this.selectedRange.width,
+                    height: 240,
+                    fill: 'rgba(0,84,216,.2)',
+                    stroke: "#1364e9",
+                    strokeWidth: 2,
+                }
+            },
         },
         methods: {
             resize() {
                 let baseDataAreaWidth = document.querySelectorAll(".my-demo-canvas")[0].offsetWidth
                 this.configKonva.width = baseDataAreaWidth
-                //
                 this.configKonva.height = 400
             },
-            handleMouseMove(e){
-                console.log(e)
-                this.isHoverLine = true
+            handleMouseMove(e) {
+                const mousePos = this.$refs.stage.getStage().getPointerPosition()
+                if (this.lastAction === 1) {
+                    this.isHoverLine = false
+                    //this.createSelectArea(mousePos)
+
+                } else {
+
+                }
+                //相对于整个canvas计算的
+                //悬停时候的线条
+                Bus.$emit(Bus.$options.SELECT_DATA_AREA,mousePos)
+
             },
-            handleMouseOut(){
+            createSelectArea(position) {
+                //框选逻辑
+                //let startTime = new Date()
+                //this.selectedRange.width = position.x - this.selectedRange.x
+            },
+            handleMouseOut() {
                 this.isHoverLine = false
             },
+            handleMouseDown() {
+                Bus.$emit(Bus.$options.CLICK_DATA_AREA)
+            },
+            handleMouseUp() {
+                this.lastAction = MOUSE_SELECT_END
+                //this.selectedRange.x = 70
+                //this.selectedRange.width = 0
+            }
         },
         mounted() {
             //Bus.$set(Bus.$data.axis,'axis',this.axis)
             //this.productPop()
+
             handleEvent.on(window, 'resize', this.resize, false)
+            handleEvent.on(document, 'mouseup', this.handleMouseUp)
+            handleEvent.on(Bus,Bus.$options.SELECT_DATA_AREA,(position)=>{
+                this.isHoverLine = true
+                this.hoverLineX = position.x - 70
+            })
+            handleEvent.on(Bus,Bus.$options.CLICK_DATA_AREA,()=>{
+                //const mousePos = this.$refs.stage.getStage().getPointerPosition()
+                this.isHoverLine = false
+                this.lastAction = MOUSE_SELECT_START
+                // this.isShowSelectRect = true
+                // this.selectedRange.width = 0
+                // this.selectedRange.x = mousePos.x
+            })
             this.resize()
         }
     }

@@ -1,14 +1,17 @@
 import Vue from 'vue'
-import LineItem from "@/components/my-canvas/src/draw/LineItem";
-
+import LineItem from "@/components/my-canvas/src/draw/LineItem"
+const SELECT_DATA_AREA = "selectDataArea"
+const CLICK_DATA_AREA = "clickDataArea"
 export default new Vue({
+    SELECT_DATA_AREA,
+    CLICK_DATA_AREA,
     data() {
         return {
             name: "zhangsan",
             axisRect: [],//存储每个矩形对象的坐标x，y
             axisLine: [],//存储每个线段对象的x，y
             axis:{},
-            lineItems:[]
+            lineItems:[],
         }
     },
     methods: {
