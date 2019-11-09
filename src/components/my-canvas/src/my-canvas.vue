@@ -5,14 +5,15 @@
                 <!--            <v-circle :config="configCircle"></v-circle>-->
                 <v-line :config="axisY"></v-line>
                 <v-line :config="axisX"></v-line>
-            </v-layer>
-            <v-layer>
                 <v-line :config="item" v-for="(item,index) in axisPointX"></v-line>
                 <v-line :config="item" v-for="(item,index) in axisPointY"></v-line>
                 <v-text :config="item" v-for="(item,index) in axisTextX"></v-text>
                 <v-text :config="item" v-for="(item,index) in axisTextY"></v-text>
             </v-layer>
-            <v-layer ref="layer">
+            <v-layer>
+                <v-path :config="configPath"></v-path>
+            </v-layer>
+            <v-layer>
                 <v-rect :config="dataAreaMove"
                         @mousemove="handleMouseMove"
                         @mouseout="handleMouseOut"
@@ -190,6 +191,32 @@
                     strokeWidth: 2,
                 }
             },
+            configPath() {
+                //生成一万个点
+                let i = 0,paths = [],data = "",distance = (this.configKonva.width - 140) / 1000
+                while(i < 1000){
+                    let path = {x:distance * i,y:Math.random() * 240}
+                    paths.push(path)
+                    i ++
+                }
+                paths.forEach((item,index)=>{
+                    if(index === 0) {
+                        data += `M${item.x} ${-item.y} `
+                    }else{
+                        data += `L${item.x} ${-item.y} `
+                    }
+
+                })//构造一个新数组
+                //console.log(data)
+                return {
+                    x: 70,
+                    y: 300,
+                    data,
+                    // fill:"#c541b1",
+                    stroke:"#c541b1",
+                    strokeWidth:1.5
+                }
+            }
         },
         methods: {
             resize() {

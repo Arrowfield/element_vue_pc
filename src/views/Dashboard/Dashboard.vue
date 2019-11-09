@@ -4,6 +4,12 @@
         <my-canvas></my-canvas>
         <my-canvas></my-canvas>
         <my-canvas></my-canvas>
+        <my-canvas></my-canvas>
+        <my-canvas></my-canvas>
+        <my-canvas></my-canvas>
+        <my-canvas></my-canvas>
+        <my-canvas></my-canvas>
+        <my-canvas></my-canvas>
         <!--        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
         <div v-if="name === 'lisi'">123456789</div>
     </div>
