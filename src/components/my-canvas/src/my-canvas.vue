@@ -225,6 +225,8 @@
                 // this.selectedRange.x = mousePos.x
             })
             this.resize()
+
+            console.log(this.$refs.layer)
         }
     }
     //svg可以直接绑定事件 canvas则不行 canvas有默认的宽高
