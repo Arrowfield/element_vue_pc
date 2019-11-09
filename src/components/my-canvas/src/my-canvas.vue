@@ -1,6 +1,6 @@
 <template>
     <div class="my-demo-canvas">
-        <v-stage :config="configKonva" ref="stage">
+        <v-stage :config="configKonva" ref="stage" @contextmenu="handleContext">
             <v-layer>
                 <!--            <v-circle :config="configCircle"></v-circle>-->
                 <v-line :config="axisY"></v-line>
@@ -28,6 +28,9 @@
                         @mousemove="handleMouseMove"
                         @mousedown="handleMouseDown"
                 ></v-rect>
+            </v-layer>
+            <v-layer>
+                <v-rect :config="scrollBar"></v-rect>
             </v-layer>
         </v-stage>
     </div>
@@ -60,7 +63,8 @@
                 selectedRange: {
                     x: 70,
                     width: 0,
-                }
+                },
+                baseDataAreaWidth:""
             }
         },
         computed: {
@@ -216,6 +220,15 @@
                     stroke:"#c541b1",
                     strokeWidth:1.5
                 }
+            },
+            scrollBar(){
+                return{
+                    x:70,
+                    y:330,
+                    width:this.baseDataAreaWidth,
+                    height:14,
+                    fill:"#e1e4e9"
+                }
             }
         },
         methods: {
@@ -223,6 +236,7 @@
                 let baseDataAreaWidth = document.querySelectorAll(".my-demo-canvas")[0].offsetWidth
                 this.configKonva.width = baseDataAreaWidth
                 this.configKonva.height = 400
+                this.baseDataAreaWidth = this.configKonva.width - 140
             },
             handleMouseMove(e) {
                 Bus.$emit(Bus.$options.MOUSE_MOVE_DATA_AREA, e)
@@ -235,6 +249,9 @@
             },
             handleMouseUp(e) {
                 Bus.$emit(Bus.$options.MOUSE_UP_DATA_AREA, e)
+            },
+            handleContext(){
+                return false
             }
         },
         mounted() {
