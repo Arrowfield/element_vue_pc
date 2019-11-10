@@ -15,7 +15,7 @@
 
 <script>
     import {handleEvent} from "@/libs/HandleEvent";
-
+    import Bus from "@/components/Bus";
     const SCROLL_BTN_WIDTH = 22
     const MIN_LEFT_DISTANCE = 70
     export default {
@@ -94,35 +94,31 @@
             handleMouseMove(e) {
                 //这个事件我想绑定在整个canvas上
                 e.evt.cancelBubble = true
-
-
             },
             handleMouseDown(e) {
-                switch (e.target.index) {
-                    case 1 :
-                        break;
-                    case 2 :
-                        //console.log(this.leftBtnX,e.evt.layerX)
-                        this.isClickLeftBtn = true
-                        break;
-                    case 3 :
-                        this.isClickRightBtn = true
-                        break;
-                }
+                Bus.$emit(Bus.$options.SCROLL_BTN_MOUSE_DOWN,e)
             },
-            handleMouseUp(e) {
-            },
+            handleMouseUp(e) {},
         },
         mounted() {
             let imageObj = new Image()
             imageObj.src = this.imageBtn
-            imageObj.onload = () => {
-                this.imageRightObj = imageObj
-            }
+            imageObj.onload = () => {this.imageRightObj = imageObj}
             //滑动事件绑定在canvas上
-            //console.log(this.$refs.scroll)
             handleEvent.on(document.documentElement, 'mousemove', (e) => {
+                Bus.$emit(Bus.$options.SCROLL_BTN_MOUSE_MOVE,e)
+            })
+            //鼠标放下事件绑定在body上
+            handleEvent.on(document.documentElement, 'mouseup', () => {
+                this.isClickLeftBtn = false
+                this.isClickRightBtn = false
+            })
+            //Bus
+            handleEvent.on(Bus,Bus.$options.SCROLL_BTN_MOUSE_MOVE,(e)=>{
+
                 if (e.target.tagName === 'CANVAS' && this.isClickLeftBtn) {
+                    //console.log(1231)
+                    console.log(e.target.tagName)
                     if (MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2) {
                         this.leftBtnX = e.layerX - SCROLL_BTN_WIDTH / 2
                         this.srcollCenterBarWidth = e.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
@@ -132,10 +128,17 @@
                     console.log('right')
                 }
             })
-            //鼠标放下事件绑定在body上
-            handleEvent.on(document.documentElement, 'mouseup', () => {
-                this.isClickLeftBtn = false
-                this.isClickRightBtn = false
+            handleEvent.on(Bus,Bus.$options.SCROLL_BTN_MOUSE_DOWN,(e)=>{
+                switch (e.target.index) {
+                    case 1 :
+                        break;
+                    case 2 :
+                        this.isClickLeftBtn = true
+                        break;
+                    case 3 :
+                        this.isClickRightBtn = true
+                        break;
+                }
             })
         }
     }

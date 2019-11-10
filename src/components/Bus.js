@@ -4,11 +4,15 @@ const MOUSE_MOVE_DATA_AREA = "mousemoveDataArea"
 const CLICK_DATA_AREA = "clickDataArea"
 const MOUSE_OUT_DATA_AREA = "mouseoutDataArea"
 const MOUSE_UP_DATA_AREA = "mouseupDataArea"
+const SCROLL_BTN_MOUSE_MOVE = "scrollbtnMousemove"
+const SCROLL_BTN_MOUSE_DOWN = "scrollbtnMousedown"
 export default new Vue({
     MOUSE_MOVE_DATA_AREA,
     CLICK_DATA_AREA,
     MOUSE_OUT_DATA_AREA,
     MOUSE_UP_DATA_AREA,
+    SCROLL_BTN_MOUSE_MOVE,
+    SCROLL_BTN_MOUSE_DOWN,
     data() {
         return {
             name: "zhangsan",
