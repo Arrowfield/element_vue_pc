@@ -4,7 +4,6 @@
             @mouseover="handleMouseOver"
             @mouseleave="handleMouseLeave"
             @mousedown="handleMouseDown"
-            @mouseup="handleMouseUp"
     >
         <v-rect :config="scrollBar"></v-rect>
         <v-image :config="scrollCenterBar"></v-image>
@@ -91,14 +90,9 @@
             handleMouseLeave() {
                 this.isHoverBtn = 0
             },
-            handleMouseMove(e) {
-                //这个事件我想绑定在整个canvas上
-                e.evt.cancelBubble = true
-            },
             handleMouseDown(e) {
                 Bus.$emit(Bus.$options.SCROLL_BTN_MOUSE_DOWN,e)
             },
-            handleMouseUp(e) {},
         },
         mounted() {
             let imageObj = new Image()
@@ -118,7 +112,6 @@
 
                 if (e.target.tagName === 'CANVAS' && this.isClickLeftBtn) {
                     //console.log(1231)
-                    console.log(e.target.tagName)
                     if (MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2) {
                         this.leftBtnX = e.layerX - SCROLL_BTN_WIDTH / 2
                         this.srcollCenterBarWidth = e.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
