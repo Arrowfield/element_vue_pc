@@ -58,7 +58,7 @@
             },
             scrollRightBtn() {
                 return {
-                    x: MIN_LEFT_DISTANCE + this.width - SCROLL_BTN_WIDTH,
+                    x: this.rightBtnX ? this.rightBtnX : MIN_LEFT_DISTANCE + this.width - SCROLL_BTN_WIDTH,
                     y: 326,
                     image: this.imageRightObj,
                     width: 22,
@@ -78,6 +78,7 @@
                 isClickLeftBtn: false,
                 isClickRightBtn: false,
                 srcollCenterBarWidth: 0,
+                rightBtnX:0
             }
         },
         props: {
@@ -115,13 +116,15 @@
 
                 if (e.target.tagName === 'CANVAS' && this.isClickLeftBtn) {
                     //console.log(1231)
-                    if (MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2) {
+                    if (MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.scrollRightBtn.x + SCROLL_BTN_WIDTH / 2) {
                         this.leftBtnX = e.layerX - SCROLL_BTN_WIDTH / 2
                         this.srcollCenterBarWidth = e.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
                     }
                 }
                 if (e.target.tagName === 'CANVAS' && this.isClickRightBtn) {
-                    console.log('right')
+                    if(this.leftBtnX + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2){
+                        this.rightBtnX = e.layerX - SCROLL_BTN_WIDTH / 2
+                    }
                 }
             })
             handleEvent.on(Bus,Bus.$options.SCROLL_BTN_MOUSE_DOWN,(e)=>{
