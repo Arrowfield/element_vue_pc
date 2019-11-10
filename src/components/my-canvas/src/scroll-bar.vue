@@ -74,6 +74,7 @@
                 imageRightObj: null,
                 leftBtnX: 70,
                 isClickLeftBtn: false,
+                isClickRightBtn: false,
                 srcollCenterBarWidth: 0,
             }
         },
@@ -105,6 +106,7 @@
                         this.isClickLeftBtn = true
                         break;
                     case 3 :
+                        this.isClickRightBtn = true
                         break;
                 }
             },
@@ -126,10 +128,14 @@
                         this.srcollCenterBarWidth = e.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
                     }
                 }
+                if (e.target.tagName === 'CANVAS' && this.isClickRightBtn) {
+                    console.log('right')
+                }
             })
             //鼠标放下事件绑定在body上
             handleEvent.on(document.documentElement, 'mouseup', () => {
                 this.isClickLeftBtn = false
+                this.isClickRightBtn = false
             })
         }
     }
