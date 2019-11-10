@@ -12,6 +12,7 @@
             </v-layer>
             <v-layer>
                 <v-path :config="configPath"></v-path>
+                <v-circle :config="item" v-for="(item,index) in configPoint"></v-circle>
             </v-layer>
             <v-layer>
                 <v-rect :config="dataAreaMove"
@@ -41,6 +42,7 @@
     import ScorllBar from './scroll-bar'
     const MOUSE_SELECT_START = 1
     const MOUSE_SELECT_END = 2
+    const DATA_NUMBER_TOTAL = 1000
     export default {
         name: "my-canvas",
         mixins: [drawMixin],
@@ -66,6 +68,7 @@
                     width: 0,
                 },
                 baseDataAreaWidth:0,
+                points:[]
             }
         },
         computed: {
@@ -198,12 +201,13 @@
             },
             configPath() {
                 //生成一万个点
-                let i = 0,paths = [],data = "",distance = (this.configKonva.width - 140) / 500
-                while(i < 500){
+                let i = 0,paths = [],data = "",distance = (this.configKonva.width - 140) / DATA_NUMBER_TOTAL
+                while(i < DATA_NUMBER_TOTAL){
                     let path = {x:distance * i,y:Math.random() * 240}
                     paths.push(path)
                     i ++
                 }
+                this.points = paths
                 paths.forEach((item,index)=>{
                     if(index === 0) {
                         data += `M${item.x} ${-item.y} `
@@ -217,11 +221,24 @@
                     x: 70,
                     y: 300,
                     data,
-                    // fill:"#c541b1",
                     stroke:"#c541b1",
                     strokeWidth:1.5
                 }
             },
+            configPoint(){
+
+                let i = 0,points = []
+                while(i < DATA_NUMBER_TOTAL){
+                    points.push({
+                        x:70 + this.points[i].x ,
+                        y:300 - this.points[i].y ,
+                        fill:"#c541b1",
+                        radius:2
+                    })
+                    i ++
+                }
+                return points
+            }
 
         },
         methods: {

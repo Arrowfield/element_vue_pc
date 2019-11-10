@@ -15,6 +15,7 @@
 <script>
     import {handleEvent} from "@/libs/HandleEvent";
     import Bus from "@/components/Bus";
+
     const SCROLL_BTN_WIDTH = 22
     const SCROLL_BTN_HEIGHT = 22
     const MIN_LEFT_DISTANCE = 70
@@ -36,11 +37,11 @@
                 let imageObj = new Image()
                 imageObj.src = this.isHoverBtn === 1 ? this.imageBarHover : this.imageBar
                 return {
-                    x: 70 + this.srcollCenterBarWidth,
+                    x: 70 + this.scrollCenterBarWidth,
                     y: 330,
                     image: imageObj,
                     height: 14,
-                    width: this.width - this.srcollCenterBarWidth - this.rightBtnActionWidth
+                    width: this.width - this.scrollCenterBarWidth - this.rightBtnActionWidth
                 }
             },
             scrollLeftBtn() {
@@ -77,9 +78,10 @@
                 leftBtnX: 70,
                 isClickLeftBtn: false,
                 isClickRightBtn: false,
-                srcollCenterBarWidth: 0,
-                rightBtnActionWidth:0,
-                rightBtnX:0
+                isClickCenterBar: false,
+                scrollCenterBarWidth: 0,
+                rightBtnActionWidth: 0,
+                rightBtnX: 0
             }
         },
         props: {
@@ -96,7 +98,7 @@
                 this.isHoverBtn = 0
             },
             handleMouseDown(e) {
-                Bus.$emit(Bus.$options.SCROLL_BTN_MOUSE_DOWN,e)
+                Bus.$emit(Bus.$options.SCROLL_BTN_MOUSE_DOWN, e)
             },
         },
         mounted() {
@@ -105,7 +107,7 @@
             imageObj.onload = () => {this.imageRightObj = imageObj}
             //滑动事件绑定在canvas上
             handleEvent.on(document.documentElement, 'mousemove', (e) => {
-                Bus.$emit(Bus.$options.SCROLL_BTN_MOUSE_MOVE,e)
+                Bus.$emit(Bus.$options.SCROLL_BTN_MOUSE_MOVE, e)
             })
             //鼠标放下事件绑定在body上
             handleEvent.on(document.documentElement, 'mouseup', () => {
@@ -113,25 +115,29 @@
                 this.isClickRightBtn = false
             })
             //Bus
-            handleEvent.on(Bus,Bus.$options.SCROLL_BTN_MOUSE_MOVE,(e)=>{
+            handleEvent.on(Bus, Bus.$options.SCROLL_BTN_MOUSE_MOVE, (e) => {
                 if (e.target.tagName === 'CANVAS' && this.isClickLeftBtn) {
                     //console.log(1231)
                     if (MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.scrollRightBtn.x + SCROLL_BTN_WIDTH / 2) {
                         this.leftBtnX = e.layerX - SCROLL_BTN_WIDTH / 2
-                        this.srcollCenterBarWidth = e.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
+                        this.scrollCenterBarWidth = e.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
                     }
                 }
                 if (e.target.tagName === 'CANVAS' && this.isClickRightBtn) {
-                    if(this.leftBtnX + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2){
+                    if (this.leftBtnX + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2) {
                         this.rightBtnX = e.layerX - SCROLL_BTN_WIDTH / 2
-                        //this.srcollCenterBarWidth = e.layerX - this.leftBtnX
+                        //this.scrollCenterBarWidth = e.layerX - this.leftBtnX
                         this.rightBtnActionWidth = this.width - e.layerX + 70
                     }
                 }
+                if (e.target.tagName === 'CANVAS' && this.isClickCenterBar) {
+                    //console.log(123)
+                }
             })
-            handleEvent.on(Bus,Bus.$options.SCROLL_BTN_MOUSE_DOWN,(e)=>{
+            handleEvent.on(Bus, Bus.$options.SCROLL_BTN_MOUSE_DOWN, (e) => {
                 switch (e.target.index) {
                     case 1 :
+                        this.isClickCenterBar = true
                         break;
                     case 2 :
                         this.isClickLeftBtn = true
