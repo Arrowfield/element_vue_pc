@@ -25,16 +25,11 @@
                 <v-text :config="item" v-for="(item,index) in hoverText" v-if="isHoverLine"></v-text>
                 <v-rect :config="selectedArea"
                         v-if="isShowSelectRect"
-                        @mousemove="handleMouseMove"
+                        @mousemove.prevent="handleMouseMove"
                         @mousedown="handleMouseDown"
                 ></v-rect>
             </v-layer>
-            <v-layer>
-                <v-rect :config="scrollBar"></v-rect>
-                <v-rect :config="scrollCenterBar"></v-rect>
-                <v-image :config="scrollLeftBtn"></v-image>
-                <v-image :config="scrollRightBtn"></v-image>
-            </v-layer>
+            <scorll-bar :width="baseDataAreaWidth"></scorll-bar>
         </v-stage>
     </div>
 </template>
@@ -43,12 +38,15 @@
     import drawMixin from './draw/draw.js'
     import Bus from '@/components/Bus'
     import {handleEvent} from "@/libs/HandleEvent";
-
+    import ScorllBar from './scroll-bar'
     const MOUSE_SELECT_START = 1
     const MOUSE_SELECT_END = 2
     export default {
         name: "my-canvas",
         mixins: [drawMixin],
+        components:{
+            ScorllBar
+        },
         data() {
             return {
                 configKonva: {width: 0, height: 0},
@@ -68,7 +66,6 @@
                     width: 0,
                 },
                 baseDataAreaWidth:0,
-                imageBtn:require('@/assets/icon/scrooll-btn.png')
             }
         },
         computed: {
@@ -225,42 +222,7 @@
                     strokeWidth:1.5
                 }
             },
-            scrollBar(){
-                return{
-                    x:70,
-                    y:330,
-                    width:this.baseDataAreaWidth,
-                    height:14,
-                    fill:"#e1e4e9"
-                }
-            },
-            scrollCenterBar(){
 
-            },
-            scrollLeftBtn(){
-                let imageObj = new Image()
-                imageObj.src = this.imageBtn
-                return{
-                    x:70,
-                    y:326,
-                    image:imageObj,
-                    width:22,
-                    height:22,
-                    crop:{x:0,y:0,width:22,height:22}
-                }
-            },
-            scrollRightBtn(){
-                let imageObj = new Image()
-                imageObj.src = this.imageBtn
-                return{
-                    x:70 + this.baseDataAreaWidth - 22,
-                    y:326,
-                    image:imageObj,
-                    width:22,
-                    height:22,
-                    crop:{x:0,y:0,width:22,height:22}
-                }
-            }
         },
         methods: {
             resize() {
