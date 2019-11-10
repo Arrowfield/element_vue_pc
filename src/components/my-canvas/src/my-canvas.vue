@@ -25,7 +25,7 @@
                 <v-text :config="item" v-for="(item,index) in hoverText" v-if="isHoverLine"></v-text>
                 <v-rect :config="selectedArea"
                         v-if="isShowSelectRect"
-                        @mousemove.prevent="handleMouseMove"
+                        @mousemove="handleMouseMove"
                         @mousedown="handleMouseDown"
                 ></v-rect>
             </v-layer>
