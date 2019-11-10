@@ -1,8 +1,8 @@
 <template>
     <v-layer
+            ref="scroll"
             @mouseover="handleMouseOver"
             @mouseleave="handleMouseLeave"
-            @mousemove="handleMouseMove"
             @mousedown="handleMouseDown"
             @mouseup="handleMouseUp"
     >
@@ -71,10 +71,10 @@
                 imageBar: require('@/assets/icon/srcoll-center-bar.png'),
                 imageBarHover: require('@/assets/icon/srcoll-center-bar-hover.png'),
                 isHoverBtn: 0,
-                imageRightObj:null,
-                leftBtnX:70,
-                isClickLeftBtn:false,
-                srcollCenterBarWidth:0,
+                imageRightObj: null,
+                leftBtnX: 70,
+                isClickLeftBtn: false,
+                srcollCenterBarWidth: 0,
             }
         },
         props: {
@@ -90,17 +90,13 @@
             handleMouseLeave() {
                 this.isHoverBtn = 0
             },
-            handleMouseMove(e){
-                if(this.isClickLeftBtn) {
-                    //console.log(e.evt.layerX,this.width)
-                    if(MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.evt.layerX && e.evt.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2){
-                        this.leftBtnX = e.evt.layerX - SCROLL_BTN_WIDTH / 2
-                        this.srcollCenterBarWidth = e.evt.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
-                    }
-                }
+            handleMouseMove(e) {
+                //这个事件我想绑定在整个canvas上
+                e.evt.cancelBubble = true
+
 
             },
-            handleMouseDown(e){
+            handleMouseDown(e) {
                 switch (e.target.index) {
                     case 1 :
                         break;
@@ -112,18 +108,27 @@
                         break;
                 }
             },
-            handleMouseUp(e){
-
+            handleMouseUp(e) {
             },
         },
         mounted() {
             let imageObj = new Image()
             imageObj.src = this.imageBtn
-            imageObj.onload = ()=>{this.imageRightObj = imageObj}
+            imageObj.onload = () => {
+                this.imageRightObj = imageObj
+            }
             //滑动事件绑定在canvas上
-
+            //console.log(this.$refs.scroll)
+            handleEvent.on(document.documentElement, 'mousemove', (e) => {
+                if (e.target.tagName === 'CANVAS' && this.isClickLeftBtn) {
+                    if (MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2) {
+                        this.leftBtnX = e.layerX - SCROLL_BTN_WIDTH / 2
+                        this.srcollCenterBarWidth = e.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
+                    }
+                }
+            })
             //鼠标放下事件绑定在body上
-            handleEvent.on(document.documentElement,'mouseup',()=>{
+            handleEvent.on(document.documentElement, 'mouseup', () => {
                 this.isClickLeftBtn = false
             })
         }

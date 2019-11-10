@@ -1,6 +1,6 @@
 <template>
     <div class="my-demo-canvas">
-        <v-stage :config="configKonva" ref="stage" @contextmenu="handleContext">
+        <v-stage :config="configKonva" ref="stage">
             <v-layer>
                 <!--            <v-circle :config="configCircle"></v-circle>-->
                 <v-line :config="axisY"></v-line>
@@ -243,9 +243,6 @@
             handleMouseUp(e) {
                 Bus.$emit(Bus.$options.MOUSE_UP_DATA_AREA, e)
             },
-            handleContext(){
-                return false
-            }
         },
         mounted() {
             handleEvent.on(window, 'resize', this.resize, false)
