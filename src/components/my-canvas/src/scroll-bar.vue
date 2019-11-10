@@ -40,7 +40,7 @@
                     y: 330,
                     image: imageObj,
                     height: 14,
-                    width: this.width - this.srcollCenterBarWidth
+                    width: this.width - this.srcollCenterBarWidth - this.rightBtnActionWidth
                 }
             },
             scrollLeftBtn() {
@@ -78,6 +78,7 @@
                 isClickLeftBtn: false,
                 isClickRightBtn: false,
                 srcollCenterBarWidth: 0,
+                rightBtnActionWidth:0,
                 rightBtnX:0
             }
         },
@@ -113,7 +114,6 @@
             })
             //Bus
             handleEvent.on(Bus,Bus.$options.SCROLL_BTN_MOUSE_MOVE,(e)=>{
-
                 if (e.target.tagName === 'CANVAS' && this.isClickLeftBtn) {
                     //console.log(1231)
                     if (MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.scrollRightBtn.x + SCROLL_BTN_WIDTH / 2) {
@@ -124,6 +124,8 @@
                 if (e.target.tagName === 'CANVAS' && this.isClickRightBtn) {
                     if(this.leftBtnX + SCROLL_BTN_WIDTH / 2 <= e.layerX && e.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2){
                         this.rightBtnX = e.layerX - SCROLL_BTN_WIDTH / 2
+                        //this.srcollCenterBarWidth = e.layerX - this.leftBtnX
+                        this.rightBtnActionWidth = this.width - e.layerX + 70
                     }
                 }
             })
