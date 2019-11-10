@@ -31,6 +31,9 @@
             </v-layer>
             <v-layer>
                 <v-rect :config="scrollBar"></v-rect>
+                <v-rect :config="scrollCenterBar"></v-rect>
+                <v-image :config="scrollLeftBtn"></v-image>
+                <v-image :config="scrollRightBtn"></v-image>
             </v-layer>
         </v-stage>
     </div>
@@ -64,7 +67,8 @@
                     x: 70,
                     width: 0,
                 },
-                baseDataAreaWidth:""
+                baseDataAreaWidth:0,
+                imageBtn:require('@/assets/icon/scrooll-btn.png')
             }
         },
         computed: {
@@ -229,6 +233,33 @@
                     height:14,
                     fill:"#e1e4e9"
                 }
+            },
+            scrollCenterBar(){
+
+            },
+            scrollLeftBtn(){
+                let imageObj = new Image()
+                imageObj.src = this.imageBtn
+                return{
+                    x:70,
+                    y:326,
+                    image:imageObj,
+                    width:22,
+                    height:22,
+                    crop:{x:0,y:0,width:22,height:22}
+                }
+            },
+            scrollRightBtn(){
+                let imageObj = new Image()
+                imageObj.src = this.imageBtn
+                return{
+                    x:70 + this.baseDataAreaWidth - 22,
+                    y:326,
+                    image:imageObj,
+                    width:22,
+                    height:22,
+                    crop:{x:0,y:0,width:22,height:22}
+                }
             }
         },
         methods: {
@@ -262,6 +293,7 @@
                 const mousePos = {x: e.evt.layerX, y: e.evt.layerY}
                 if (this.lastAction === 1) {
                     this.isHoverLine = false
+                    this.isShowSelectRect = true
                     this.selectedRange.width = mousePos.x - this.selectedRange.x//绝对值
                     //console.log(Math.abs(this.selectedRange.width) + 70,this.selectedRange.x)
                     if (this.selectedRange.width < 0 && Math.abs(this.selectedRange.width) + 70 >= this.selectedRange.x) {
@@ -269,7 +301,6 @@
                     }
                 } else {
                     this.isHoverLine = true
-
                     this.hoverLineX = mousePos.x - 70
                     //console.log(this.selectedRange.x,this.hoverLineX)
                     if(this.selectedRange.x === this.hoverLineX){
@@ -280,8 +311,8 @@
             handleEvent.on(Bus, Bus.$options.CLICK_DATA_AREA, (e) => {
                 const mousePos = {x: e.evt.layerX, y: e.evt.layerY}
                 this.isHoverLine = false
+                this.isShowSelectRect = false
                 this.lastAction = MOUSE_SELECT_START
-                this.isShowSelectRect = true
                 this.selectedRange.width = 0
                 this.selectedRange.x = mousePos.x
             })
