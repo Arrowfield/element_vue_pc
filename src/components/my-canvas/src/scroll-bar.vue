@@ -2,6 +2,9 @@
     <v-layer
             @mouseover="handleMouseOver"
             @mouseleave="handleMouseLeave"
+            @mousemove="handleMouseMove"
+            @mousedown="handleMouseDown"
+            @mouseup="handleMouseUp"
     >
         <v-rect :config="scrollBar"></v-rect>
         <v-image :config="scrollCenterBar"></v-image>
@@ -11,6 +14,10 @@
 </template>
 
 <script>
+    import {handleEvent} from "@/libs/HandleEvent";
+
+    const SCROLL_BTN_WIDTH = 22
+    const MIN_LEFT_DISTANCE = 70
     export default {
         name: "scroll-bar",
         computed: {
@@ -27,14 +34,11 @@
                 let imageObj = new Image()
                 imageObj.src = this.isHoverBtn === 1 ? this.imageBarHover : this.imageBar
                 return {
-                    x: 70,
+                    x: 70 + this.srcollCenterBarWidth,
                     y: 330,
-                    // width:this.width,
-                    // height:14,
-                    // fill:"#e1e4e9"
                     image: imageObj,
                     height: 14,
-                    width: this.width
+                    width: this.width - this.srcollCenterBarWidth
                 }
             },
             scrollLeftBtn() {
@@ -42,7 +46,7 @@
                 imageObj.src = this.imageBtn
                 //console.log(imageObj)
                 return {
-                    x: 70,
+                    x: this.leftBtnX,
                     y: 326,
                     image: imageObj,
                     width: 22,
@@ -51,11 +55,6 @@
                 }
             },
             scrollRightBtn() {
-                let imageObj = new Image()
-                imageObj.src = this.imageBtn
-                imageObj.onload = ()=>{
-                    this.imageRightObj = imageObj
-                }
                 return {
                     x: 70 + this.width - 22,
                     y: 326,
@@ -64,7 +63,6 @@
                     height: 22,
                     crop: {x: this.isHoverBtn === 3 ? 22 : 0, y: 0, width: 22, height: 22}
                 }
-
             }
         },
         data() {
@@ -73,7 +71,10 @@
                 imageBar: require('@/assets/icon/srcoll-center-bar.png'),
                 imageBarHover: require('@/assets/icon/srcoll-center-bar-hover.png'),
                 isHoverBtn: 0,
-                imageRightObj:null
+                imageRightObj:null,
+                leftBtnX:70,
+                isClickLeftBtn:false,
+                srcollCenterBarWidth:0,
             }
         },
         props: {
@@ -85,21 +86,46 @@
         methods: {
             handleMouseOver(e) {
                 this.isHoverBtn = e.target.index
+            },
+            handleMouseLeave() {
+                this.isHoverBtn = 0
+            },
+            handleMouseMove(e){
+                if(this.isClickLeftBtn) {
+                    //console.log(e.evt.layerX,this.width)
+                    if(MIN_LEFT_DISTANCE + SCROLL_BTN_WIDTH / 2 <= e.evt.layerX && e.evt.layerX <= this.width + MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2){
+                        this.leftBtnX = e.evt.layerX - SCROLL_BTN_WIDTH / 2
+                        this.srcollCenterBarWidth = e.evt.layerX - MIN_LEFT_DISTANCE - SCROLL_BTN_WIDTH / 2
+                    }
+                }
+
+            },
+            handleMouseDown(e){
                 switch (e.target.index) {
                     case 1 :
                         break;
                     case 2 :
+                        //console.log(this.leftBtnX,e.evt.layerX)
+                        this.isClickLeftBtn = true
                         break;
                     case 3 :
                         break;
                 }
             },
-            handleMouseLeave() {
-                this.isHoverBtn = 0
-            }
+            handleMouseUp(e){
+
+            },
         },
         mounted() {
-            //console.log(this.width)
+            let imageObj = new Image()
+            imageObj.src = this.imageBtn
+            imageObj.onload = ()=>{this.imageRightObj = imageObj}
+            //滑动事件绑定在canvas上
+
+            //鼠标放下事件绑定在body上
+            handleEvent.on(document.documentElement,'mouseup',()=>{
+                this.isClickLeftBtn = false
+            })
         }
     }
 </script>

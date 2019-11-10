@@ -11,6 +11,11 @@ export const handleEvent = {
         }
     },
     off: function () {
-
+        //移除事件
+        if (element instanceof Vue) {
+            element.$off(eventType,fun)
+        } else {
+            element.removeEventListener(eventType, fun, handler)
+        }
     }
 }

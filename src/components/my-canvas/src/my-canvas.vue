@@ -198,8 +198,8 @@
             },
             configPath() {
                 //生成一万个点
-                let i = 0,paths = [],data = "",distance = (this.configKonva.width - 140) / 1000
-                while(i < 1000){
+                let i = 0,paths = [],data = "",distance = (this.configKonva.width - 140) / 500
+                while(i < 500){
                     let path = {x:distance * i,y:Math.random() * 240}
                     paths.push(path)
                     i ++
