@@ -16,16 +16,19 @@
     import {handleEvent} from "@/libs/HandleEvent";
     import Bus from "@/components/Bus";
     const SCROLL_BTN_WIDTH = 22
+    const SCROLL_BTN_HEIGHT = 22
     const MIN_LEFT_DISTANCE = 70
+    const AXIS_Y_DISTANCE = 330
+    const SCROLL_BAR_HEIGHT = 14
     export default {
         name: "scroll-bar",
         computed: {
             scrollBar() {
                 return {
-                    x: 70,
-                    y: 330,
+                    x: MIN_LEFT_DISTANCE,
+                    y: AXIS_Y_DISTANCE,
                     width: this.width,
-                    height: 14,
+                    height: SCROLL_BAR_HEIGHT,
                     fill: "#e1e4e9"
                 }
             },
@@ -46,16 +49,16 @@
                 //console.log(imageObj)
                 return {
                     x: this.leftBtnX,
-                    y: 326,
+                    y: AXIS_Y_DISTANCE - (SCROLL_BTN_WIDTH - SCROLL_BAR_HEIGHT) / 2,
                     image: imageObj,
-                    width: 22,
-                    height: 22,
+                    width: SCROLL_BTN_WIDTH,
+                    height: SCROLL_BTN_HEIGHT,
                     crop: {x: this.isHoverBtn === 2 ? 22 : 0, y: 0, width: 22, height: 22}
                 }
             },
             scrollRightBtn() {
                 return {
-                    x: 70 + this.width - 22,
+                    x: MIN_LEFT_DISTANCE + this.width - SCROLL_BTN_WIDTH,
                     y: 326,
                     image: this.imageRightObj,
                     width: 22,
