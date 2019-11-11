@@ -12,7 +12,7 @@
             </v-layer>
             <v-layer>
                 <v-path :config="configPath"></v-path>
-                <v-circle :config="item" v-for="(item,index) in configPoint"></v-circle>
+                <!-- <v-circle :config="item" v-for="(item,index) in configPoint"></v-circle> -->
             </v-layer>
             <v-layer>
                 <v-rect :config="dataAreaMove"
@@ -42,7 +42,7 @@
     import ScorllBar from './scroll-bar'
     const MOUSE_SELECT_START = 1
     const MOUSE_SELECT_END = 2
-    const DATA_NUMBER_TOTAL = 1000
+    const DATA_NUMBER_TOTAL = 20000
     export default {
         name: "my-canvas",
         mixins: [drawMixin],
