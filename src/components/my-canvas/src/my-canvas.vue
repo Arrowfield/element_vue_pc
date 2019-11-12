@@ -42,7 +42,7 @@
     import ScorllBar from './scroll-bar'
     const MOUSE_SELECT_START = 1
     const MOUSE_SELECT_END = 2
-    const DATA_NUMBER_TOTAL = 20000
+    const DATA_NUMBER_TOTAL = 100
     export default {
         name: "my-canvas",
         mixins: [drawMixin],
@@ -82,13 +82,18 @@
                 }
             },
             axisPointX() {
+                /*
+                * 分析：生成100个点
+                * */
+                let distance = (this.configKonva.width - 70 * 2) / DATA_NUMBER_TOTAL
+                console.log(distance)
                 let i = 0, pointLine = []
-                while (i < Math.floor(this.configKonva.width - 70 * 2) / 100) {
+                while (i < DATA_NUMBER_TOTAL) {
                     pointLine.push(
                         {
-                            x: 70 + i * 100,
+                            x: 70 + i * distance,
                             y: 300,
-                            points: [0, 0, 0, 7],
+                            points: [0, 0, 0, i%10 == 0 ? 7 : 0],
                             stroke: "#ACB2BF",
                             strokeWidth: 1
                         }
@@ -114,13 +119,19 @@
                 return pointLine
             },
             axisTextX() {
-                let i = 0, pointLine = []
+               /*
+               * 分析：100个点相当于100s，每秒采集数据一次，00:00:00
+               * 知道总时长，=》知道显示多少个点，坐标轴显示17个点，在不拖动滚动条的情况下
+               * */
+                let i = 0, pointLine = [],m = Math.floor(DATA_NUMBER_TOTAL / 60),s = DATA_NUMBER_TOTAL % 60
+                let distance = (this.configKonva.width - 70 * 2) / DATA_NUMBER_TOTAL
+                console.log(distance)
                 while (i < Math.floor(this.configKonva.width - 70 * 2) / 100) {
                     pointLine.push(
                         {
-                            x: 70 + i * 100 - 50,
+                            x: 70 + i * distance * 10 - 50,
                             y: 300 + 10,
-                            text: '00:00',
+                            text: (m < 10 ? `0${m}` : m ) + ":" + (s < 10 ? `0${s}` : s) ,
                             fontSize: 13,
                             fontFamily: 'Calibri',
                             fill: '#333',
@@ -222,7 +233,7 @@
                     y: 300,
                     data,
                     stroke:"#c541b1",
-                    strokeWidth:1.5
+                    strokeWidth:1
                 }
             },
             configPoint(){
