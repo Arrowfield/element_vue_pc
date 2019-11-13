@@ -40,6 +40,7 @@
     import Bus from '@/components/Bus'
     import {handleEvent} from "@/libs/HandleEvent";
     import ScorllBar from './scroll-bar'
+    import DouglasPeucker  from '@/libs/DouglasPeucker'
     const MOUSE_SELECT_START = 1
     const MOUSE_SELECT_END = 2
     const DATA_NUMBER_TOTAL = 100
@@ -100,6 +101,10 @@
                     )
                     i++
                 }
+                //console.log(pointLine)
+
+                let result = new DouglasPeucker(pointLine).compress()
+                console.log(result)
                 return pointLine
             },
             axisPointY() {
