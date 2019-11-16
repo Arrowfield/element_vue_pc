@@ -44,7 +44,7 @@
 
     const MOUSE_SELECT_START = 1
     const MOUSE_SELECT_END = 2
-    const DATA_NUMBER_TOTAL = 1000
+    const DATA_NUMBER_TOTAL = 100
     //const DATA_SELECT_AREA =
     const AXIS_TIME_SHOW = 20
 
@@ -242,11 +242,12 @@
             configPath() {
                 //生成一万个点
                 let i = 0,paths = [],data = ""
-                let distance = (this.configKonva.width - 70 * 2) / this.dataTimeNumber
-                let time = Math.ceil(DATA_NUMBER_TOTAL / (this.dataTimeNumber-1))  //100/17 = 5 ...15
+                //let distance = (this.configKonva.width - 70 * 2) / this.dataTimeNumber
+                //let time = Math.ceil(DATA_NUMBER_TOTAL / (this.dataTimeNumber-1))  //100/17 = 5 ...15
+                let distance = (this.configKonva.width - 70 * 2) / DATA_NUMBER_TOTAL
 
-                while(i < DATA_NUMBER_TOTAL){
-                    let path = {x:distance / time * i,y:Math.random() * 240}
+                while(i <= DATA_NUMBER_TOTAL){
+                    let path = {x:distance * i,y:Math.random() * 240}
                     paths.push(path)
                     i ++
                 }
@@ -358,6 +359,7 @@
      * 100s 分20段 5s
      * 60s 分20段 3s
      * 1000s 分20段 20s
+     * 点数不固定：那么应该怎样调整点数呢？
      * */
 </script>
 
