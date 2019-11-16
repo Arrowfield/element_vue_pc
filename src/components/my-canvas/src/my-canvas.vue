@@ -41,9 +41,13 @@
     import {handleEvent} from "@/libs/HandleEvent";
     import ScorllBar from './scroll-bar'
     import DouglasPeucker  from '@/libs/DouglasPeucker'
+
     const MOUSE_SELECT_START = 1
     const MOUSE_SELECT_END = 2
-    const DATA_NUMBER_TOTAL = 100
+    const DATA_NUMBER_TOTAL = 1000
+    //const DATA_SELECT_AREA =
+    const AXIS_TIME_SHOW = 20
+
     export default {
         name: "my-canvas",
         mixins: [drawMixin],
@@ -69,7 +73,8 @@
                     width: 0,
                 },
                 baseDataAreaWidth:0,
-                points:[]
+                points:[],
+                dataTimeNumber:18
             }
         },
         computed: {
@@ -86,15 +91,17 @@
                 /*
                 * 分析：生成100个点
                 * */
-                let distance = (this.configKonva.width - 70 * 2) / DATA_NUMBER_TOTAL
-                console.log(distance)
+                //let distance = (this.configKonva.width - 70 * 2) / DATA_NUMBER_TOTAL
                 let i = 0, pointLine = []
-                while (i < DATA_NUMBER_TOTAL) {
+
+                let distance = (this.configKonva.width - 70 * 2) / this.dataTimeNumber
+
+                while (i < this.dataTimeNumber) {
                     pointLine.push(
                         {
                             x: 70 + i * distance,
                             y: 300,
-                            points: [0, 0, 0, i%10 == 0 ? 7 : 0],
+                            points: [0, 0, 0, 7 ],
                             stroke: "#ACB2BF",
                             strokeWidth: 1
                         }
@@ -104,7 +111,6 @@
                 //console.log(pointLine)
 
                 let result = new DouglasPeucker(pointLine).compress()
-                console.log(result)
                 return pointLine
             },
             axisPointY() {
@@ -128,15 +134,33 @@
                * 分析：100个点相当于100s，每秒采集数据一次，00:00:00
                * 知道总时长，=》知道显示多少个点，坐标轴显示17个点，在不拖动滚动条的情况下
                * */
-                let i = 0, pointLine = [],m = Math.floor(DATA_NUMBER_TOTAL / 60),s = DATA_NUMBER_TOTAL % 60
-                let distance = (this.configKonva.width - 70 * 2) / DATA_NUMBER_TOTAL
-                console.log(distance)
-                while (i < Math.floor(this.configKonva.width - 70 * 2) / 100) {
+                let i = 0, pointLine = [],m = 0,s = 0
+
+                let distance = (this.configKonva.width - 70 * 2) / this.dataTimeNumber
+                let time = Math.ceil(DATA_NUMBER_TOTAL / (this.dataTimeNumber-1))  //100/17 = 5 ...15
+
+                while (i < this.dataTimeNumber) {
+
+                    s = i * time
+                    if(s < 10){
+                        s = `0${s}`
+                    }else if(s >= 60){
+                        m = Math.floor(s / 60)
+                        s %= 60
+
+                        if(s < 10){
+                            s = `0${s}`
+                        }
+                    }
+
+                    if(m < 10 || m == 0){
+                        m = `0${parseInt(m)}`
+                    }
                     pointLine.push(
                         {
-                            x: 70 + i * distance * 10 - 50,
+                            x: 70 + i * distance - 50,
                             y: 300 + 10,
-                            text: (m < 10 ? `0${m}` : m ) + ":" + (s < 10 ? `0${s}` : s) ,
+                            text: `${m}:${s}`,
                             fontSize: 13,
                             fontFamily: 'Calibri',
                             fill: '#333',
@@ -217,9 +241,12 @@
             },
             configPath() {
                 //生成一万个点
-                let i = 0,paths = [],data = "",distance = (this.configKonva.width - 140) / DATA_NUMBER_TOTAL
+                let i = 0,paths = [],data = ""
+                let distance = (this.configKonva.width - 70 * 2) / this.dataTimeNumber
+                let time = Math.ceil(DATA_NUMBER_TOTAL / (this.dataTimeNumber-1))  //100/17 = 5 ...15
+
                 while(i < DATA_NUMBER_TOTAL){
-                    let path = {x:distance * i,y:Math.random() * 240}
+                    let path = {x:distance / time * i,y:Math.random() * 240}
                     paths.push(path)
                     i ++
                 }
@@ -255,7 +282,6 @@
                 }
                 return points
             }
-
         },
         methods: {
             resize() {
@@ -328,6 +354,10 @@
      * y:
      * 小线段：
      * 文字：
+     * 在固定的情况下，我想将总的时间显示分为20段，进行显示
+     * 100s 分20段 5s
+     * 60s 分20段 3s
+     * 1000s 分20段 20s
      * */
 </script>
 
