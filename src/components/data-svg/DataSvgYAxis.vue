@@ -23,7 +23,8 @@
             },
             top(){
                 return this.$store.state.dashboard.dataAreaTop
-            }
+            },
+
         }
     }
 </script>

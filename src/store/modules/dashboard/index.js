@@ -11,7 +11,9 @@ const state = {
 }
 
 const getters = {
-
+    dataAreaWidth : state => {
+        return state.width - 2 * state.axisYWidth
+    }
 }
 
 const mutations = {
@@ -21,5 +23,6 @@ const mutations = {
 }
 
 export default {
-    state
+    state,
+    getters
 }
