@@ -24,5 +24,6 @@
 <style scoped>
     .data-svg-top{
         width:100%;
+        height:400px;
     }
 </style>
