@@ -1,17 +1,7 @@
 <template>
-    <div>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
-        <my-canvas></my-canvas>
+    <div class="data-svg">
         <!--        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
-        <div v-if="name === 'lisi'">123456789</div>
+        <DataSvg/>
     </div>
 </template>
 
@@ -20,9 +10,13 @@
     import data from './table_data_tbody.json'
     //import {filterArray} from '@/utils/index'
     import moment from 'moment'
+    import DataSvg from '@/components/data-svg/Index'
     import Bus from '@/components/Bus'
     export default {
         name: "Dashboard",
+        components:{
+            DataSvg
+        },
         data() {
             return {
                 options: {},
@@ -104,5 +98,9 @@
         select {
             width: 180px;
         }
+    }
+    .data-svg{
+        width: 16rem;
+        margin:1rem auto 0;
     }
 </style>

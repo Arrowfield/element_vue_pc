@@ -44,9 +44,20 @@
 
     const MOUSE_SELECT_START = 1
     const MOUSE_SELECT_END = 2
-    const DATA_NUMBER_TOTAL = 100
+    const DATA_NUMBER_TOTAL = 25
     //const DATA_SELECT_AREA =
     const AXIS_TIME_SHOW = 20
+
+
+    /**
+     * 2 2
+     * 4 4
+     * 定义规则：超过20个数据
+     * 1 : width / 20
+     *  : width / 22
+     * 5 : 100
+     * 50 : 1000
+     * */
 
     export default {
         name: "my-canvas",
@@ -94,12 +105,29 @@
                 //let distance = (this.configKonva.width - 70 * 2) / DATA_NUMBER_TOTAL
                 let i = 0, pointLine = []
 
-                let distance = (this.configKonva.width - 70 * 2) / this.dataTimeNumber
+                //let distance = (this.configKonva.width - 70 * 2) / this.dataTimeNumber
 
-                while (i < this.dataTimeNumber) {
+
+                let distance = (this.configKonva.width - 70 * 2) / DATA_NUMBER_TOTAL
+                /*
+                * 已知显示的数量：DATA_NUMBER_TOTAL
+                * 已知总宽度：this.configKonva.width - 70 * 2
+                * 求出了一个点显示的距离 distance
+                * 1 : 20    1倍的distance
+                * X : 25    x倍的distance（缩小比例）
+                * 数学转化的问题：
+                *
+                * * */
+                let dataCount = DATA_NUMBER_TOTAL
+                if(DATA_NUMBER_TOTAL > 20){
+                    //distance
+                    dataCount = 17
+                }
+
+                while (i <= dataCount) {
                     pointLine.push(
                         {
-                            x: 70 + i * distance,
+                            x: 70 + i * distance ,
                             y: 300,
                             points: [0, 0, 0, 7 ],
                             stroke: "#ACB2BF",
@@ -359,7 +387,10 @@
      * 100s 分20段 5s
      * 60s 分20段 3s
      * 1000s 分20段 20s
-     * 点数不固定：那么应该怎样调整点数呢？
+     * 点数不固定：那么应该怎样调整点数呢？，多少s显示一个点数呢
+     * 1.首先点的数量做不到保持一致
+     * 2.点与点之间的距离没发保持一致
+     * 将数据进行分组：每组多少怎么确定，分的组数怎么确定 吧
      * */
 </script>
 
