@@ -6,7 +6,7 @@
         <fl-radio v-model="radio" lable="1">备选项1</fl-radio>
         <fl-radio v-model="radio" lable="2">备选项2</fl-radio>
         <div class="e-charts">
-            <ve-line :data="chartData" :settings="charSet"></ve-line>
+            <ve-line :data="chartData" :settings="charSet" :extend="charExtend"></ve-line>
         </div>
     </div>
 </template>
@@ -69,9 +69,26 @@
                         reportTime:"上传报告时长",
                         reportCount:"上传报告次数",
                         caseCount:"上传用例次数",
-                        caseTime:"上传用例时长"
-                    }
-                }//维度 指标
+                        caseTime:"上传用例时长",
+                        time:"时长",
+                        count:"数量"
+                    },
+                    axisSite:{right:['reportTime']},
+                    yAxisType:[''],
+                    yAxisName:['数量','时长'],
+
+                },//维度 指标
+                charExtend:{
+                    'xAxis.0.axisLabel.align': 'center',
+                    'yAxis.0.nameLocation': "middle",//y轴文本改变颜色
+                    'yAxis.1.nameLocation': "middle",
+                    // 'yAxis.0.offset': "-20",
+                    "yAxis.0.nameGap":"50",
+                    "yAxis.1.nameGap":"50",
+                    "grid.left":'120',
+                    "grid.right":'120'
+
+                }
             }
         },
         //计算属性【处理基本的逻辑，依赖缓存】
