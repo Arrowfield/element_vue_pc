@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import LineItem from "@/components/my-canvas/src/draw/LineItem"
+// import LineItem from "@/components/my-canvas/src/draw/LineItem"
 const MOUSE_MOVE_DATA_AREA = "mousemoveDataArea"
 const CLICK_DATA_AREA = "clickDataArea"
 const MOUSE_OUT_DATA_AREA = "mouseoutDataArea"

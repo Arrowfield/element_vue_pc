@@ -37,7 +37,7 @@
 
 <script>
     import drawMixin from './draw/draw.js'
-    import Bus from '@/components/Bus'
+    import Bus from '@/components/my-canvas/Bus'
     import {handleEvent} from "@/libs/HandleEvent";
     import ScorllBar from './scroll-bar'
     import DouglasPeucker  from '@/libs/DouglasPeucker'

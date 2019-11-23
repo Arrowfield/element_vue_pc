@@ -14,7 +14,7 @@
 
 <script>
     import {handleEvent} from "@/libs/HandleEvent";
-    import Bus from "@/components/Bus";
+    import Bus from "@/components/my-canvas/Bus";
 
     const SCROLL_BTN_WIDTH = 22
     const SCROLL_BTN_HEIGHT = 22

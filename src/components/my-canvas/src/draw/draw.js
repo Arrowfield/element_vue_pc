@@ -2,7 +2,7 @@ import Sprite from './Sprite.js'
 import Chess from './Chress.js'
 import LineItem from "@/components/my-canvas/src/draw/LineItem";
 import HoverLine from "@/components/my-canvas/src/draw/HoverLine.js";
-import Bus from '@/components/Bus'
+import Bus from '@/components/my-canvas/Bus'
 import { handleEvent } from "@/libs/HandleEvent";
 export default {
     data() {

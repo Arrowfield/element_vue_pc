@@ -1,7 +1,7 @@
 <template>
     <div class="data-svg">
         <!--        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
-        <DataSvg/>
+        <!-- <DataSvg/> -->
     </div>
 </template>
 
@@ -11,7 +11,7 @@
     //import {filterArray} from '@/utils/index'
     import moment from 'moment'
     import DataSvg from '@/components/data-svg/Index'
-    import Bus from '@/components/Bus'
+    import Bus from '@/components/my-canvas/Bus.js'
     export default {
         name: "Dashboard",
         components:{
