@@ -11,13 +11,15 @@ import Avatar from './components/avatar'
 import Input from './components/input'
 import Checkbox from './components/checkbox'
 import MyCanvas from './components/my-canvas'
+import FRadio from './components/f-radio'
 
 const components = [
   Button,
   Avatar,
   Input,
   Checkbox,
-  MyCanvas
+  MyCanvas,
+  FRadio 
 ]
 
 const install = function(Vue,opts = {}){

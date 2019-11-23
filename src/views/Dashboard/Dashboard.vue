@@ -1,7 +1,10 @@
 <template>
-    <div class="data-svg">
-        <!--        <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
+    <div>
+        <!-- <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
         <!-- <DataSvg/> -->
+        <div style="height:50px"></div>
+        <fl-radio v-model="radio" lable="1">备选项1</fl-radio>
+        <fl-radio v-model="radio" lable="2">备选项2</fl-radio>
     </div>
 </template>
 
@@ -12,11 +15,10 @@
     import moment from 'moment'
     import DataSvg from '@/components/data-svg/Index'
     import Bus from '@/components/my-canvas/Bus.js'
+
     export default {
         name: "Dashboard",
-        components:{
-            DataSvg
-        },
+        components:{DataSvg},
         data() {
             return {
                 options: {},
@@ -28,7 +30,8 @@
                 taskName: "",
                 creators: [],
                 creatorName: "",
-                selected: {}
+                selected: {},
+                radio:'1'
             }
         },
         //计算属性【处理基本的逻辑，依赖缓存】
