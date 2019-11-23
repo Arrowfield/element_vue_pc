@@ -5,7 +5,9 @@
         <div style="height:50px"></div>
         <fl-radio v-model="radio" lable="1">备选项1</fl-radio>
         <fl-radio v-model="radio" lable="2">备选项2</fl-radio>
-        <ve-line :data="chartData" width="1600" ></ve-line>
+        <div class="e-charts">
+            <ve-line :data="chartData" :settings="charSet"></ve-line>
+        </div>
     </div>
 </template>
 
@@ -34,13 +36,42 @@
                 selected: {},
                 radio:'1',
                 chartData:{
-                    columns: ['日期', '访问用户', '下单用户'],
+                    columns: ['date', 'reportTime', 'reportCount'],
                     rows: [
-                        { '日期': '2018-05-22', '访问用户': 32371, '下单用户': 19810 },
-                        { '日期': '2018-05-23', '访问用户': 12328, '下单用户': 4398 },
-                        { '日期': '2018-05-24', '访问用户': 92381, '下单用户': 52910 }
+                        { 'date': '00:00', 'reportTime': 32371, 'reportCount': 19810 },
+                        { 'date': '01:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '02:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '03:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '04:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '05:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '06:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '07:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '08:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '09:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '10:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '11:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '12:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '13:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '14:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '15:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '16:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '17:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '18:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '19:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '20:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '21:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '22:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        { 'date': '23:00', 'reportTime': 12328, 'reportCount': 4398 },
                     ]
-                }
+                },
+                charSet:{
+                    labelMap:{
+                        reportTime:"上传报告时长",
+                        reportCount:"上传报告次数",
+                        caseCount:"上传用例次数",
+                        caseTime:"上传用例时长"
+                    }
+                }//维度 指标
             }
         },
         //计算属性【处理基本的逻辑，依赖缓存】
@@ -114,5 +145,9 @@
     .data-svg{
         width: 16rem;
         margin:1rem auto 0;
+    }
+    .e-charts{
+        width:16rem;
+        margin:0 auto;
     }
 </style>
