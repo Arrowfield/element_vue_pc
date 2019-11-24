@@ -7,6 +7,8 @@
         <fl-radio v-model="radio" lable="2">备选项2</fl-radio>
         <div class="e-charts">
             <ve-line :data="chartData" :settings="charSet" :extend="charExtend"></ve-line>
+<!--            <ve-line :data="chartData" :settings="charSet" :extend="charExtend"></ve-line>-->
+<!--            <ve-line :data="chartData" :settings="charSet" :extend="charExtend"></ve-line>-->
         </div>
     </div>
 </template>
@@ -79,12 +81,6 @@
 
                 },//维度 指标
                 charExtend: {
-                    // 'xAxis.0.axisLabel.align': 'center',
-
-                    //"yAxis.0.nameGap": "50",
-                    // "yAxis.0.show":false,
-                    //"yAxis.1.nameGap": "50",
-
                     "grid": {
                         show: false,
                         left: 120,
@@ -93,7 +89,12 @@
                     'yAxis':{
                         nameLocation:"middle",
                         nameGap:"50",
-                        'axisLine':{
+                        nameRotate:90,
+                        splitLine:false,
+                        axisTick:{
+                            show:true
+                        },
+                        axisLine:{
                             show:true
                         },
                         nameTextStyle:{
@@ -101,10 +102,6 @@
                             lineHeight:20,
                             height:40
                         },
-                        'axisTick':{
-                            show:true
-                        },
-                        splitLine:false,
                     },
                     'xAxis':{
                         axisLine:{
@@ -118,7 +115,15 @@
                     },
                     'legend':{
                         bottom:20
-                    }
+                    },
+                    'series':[
+                        {
+                            type:"line",
+                            name:"点击量"
+                        }
+                    ],
+                    //所有系列的元素
+                    color:['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']
                 }
             }
         },
