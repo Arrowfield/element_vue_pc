@@ -98,15 +98,18 @@
                         },
                         'axisTick':{
                             show:true
-                        }
+                        },
+                        splitLine:false
                     },
                     'xAxis':{
-                        'axisLine':{
+                        axisLine:{
                             show:true
                         },
-                        'axisTick':{
+                        axisTick:{
                             show:true
-                        }
+                        },
+                        boundaryGap : false,
+                        splitLine:false
                     }
                 }
             }
