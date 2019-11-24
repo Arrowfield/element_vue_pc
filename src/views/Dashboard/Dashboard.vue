@@ -110,6 +110,9 @@
                         },
                         boundaryGap : false,
                         splitLine:false
+                    },
+                    'legend':{
+                        bottom:20
                     }
                 }
             }
