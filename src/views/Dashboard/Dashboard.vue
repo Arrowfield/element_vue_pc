@@ -96,10 +96,15 @@
                         'axisLine':{
                             show:true
                         },
+                        nameTextStyle:{
+                            padding:10,
+                            lineHeight:20,
+                            height:40
+                        },
                         'axisTick':{
                             show:true
                         },
-                        splitLine:false
+                        splitLine:false,
                     },
                     'xAxis':{
                         axisLine:{
