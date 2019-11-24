@@ -21,7 +21,7 @@
 
     export default {
         name: "Dashboard",
-        components:{DataSvg},
+        components: {DataSvg},
         data() {
             return {
                 options: {},
@@ -34,66 +34,86 @@
                 creators: [],
                 creatorName: "",
                 selected: {},
-                radio:'1',
-                chartData:{
+                radio: '1',
+                chartData: {
                     columns: ['date', 'reportTime', 'reportCount'],
                     rows: [
-                        { 'date': '00:00', 'reportTime': 32371, 'reportCount': 19810 },
-                        { 'date': '01:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '02:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '03:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '04:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '05:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '06:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '07:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '08:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '09:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '10:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '11:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '12:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '13:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '14:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '15:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '16:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '17:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '18:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '19:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '20:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '21:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '22:00', 'reportTime': 12328, 'reportCount': 4398 },
-                        { 'date': '23:00', 'reportTime': 12328, 'reportCount': 4398 },
+                        {'date': '00:00', 'reportTime': 32371, 'reportCount': 19810},
+                        {'date': '01:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '02:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '03:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '04:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '05:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '06:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '07:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '08:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '09:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '10:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '11:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '12:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '13:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '14:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '15:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '16:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '17:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '18:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '19:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '20:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '21:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '22:00', 'reportTime': 12328, 'reportCount': 4398},
+                        {'date': '23:00', 'reportTime': 12328, 'reportCount': 4398},
                     ]
                 },
-                charSet:{
-                    labelMap:{
-                        reportTime:"上传报告时长",
-                        reportCount:"上传报告次数",
-                        caseCount:"上传用例次数",
-                        caseTime:"上传用例时长",
-                        time:"时长",
-                        count:"数量"
+                charSet: {
+                    labelMap: {
+                        reportTime: "上传报告时长",
+                        reportCount: "上传报告次数",
+                        caseCount: "上传用例次数",
+                        caseTime: "上传用例时长",
+                        time: "时长",
+                        count: "数量"
                     },
-                    axisSite:{right:['reportTime']},
-                    yAxisType:[''],
-                    yAxisName:['数量','时长'],
+                    axisSite: {right: ['reportTime']},
+                    yAxisType: [''],
+                    yAxisName: ['数量', '时长'],
 
                 },//维度 指标
-                charExtend:{
-                    'xAxis.0.axisLabel.align': 'center',
-                    'yAxis.0.nameLocation': "middle",//y轴文本改变颜色
-                    'yAxis.1.nameLocation': "middle",
-                    // 'yAxis.0.offset': "-20",
-                    "yAxis.0.nameGap":"50",
-                    "yAxis.1.nameGap":"50",
-                    "grid.left":'120',
-                    "grid.right":'120'
+                charExtend: {
+                    // 'xAxis.0.axisLabel.align': 'center',
 
+                    //"yAxis.0.nameGap": "50",
+                    // "yAxis.0.show":false,
+                    //"yAxis.1.nameGap": "50",
+
+                    "grid": {
+                        show: false,
+                        left: 120,
+                        right: 120
+                    },
+                    'yAxis':{
+                        nameLocation:"middle",
+                        nameGap:"50",
+                        'axisLine':{
+                            show:true
+                        },
+                        'axisTick':{
+                            show:true
+                        }
+                    },
+                    'xAxis':{
+                        'axisLine':{
+                            show:true
+                        },
+                        'axisTick':{
+                            show:true
+                        }
+                    }
                 }
             }
         },
         //计算属性【处理基本的逻辑，依赖缓存】
         computed: {
-            name(){
+            name() {
                 return Bus.$data.name
             }
         },
@@ -159,12 +179,14 @@
             width: 180px;
         }
     }
-    .data-svg{
+
+    .data-svg {
         width: 16rem;
-        margin:1rem auto 0;
+        margin: 1rem auto 0;
     }
-    .e-charts{
-        width:16rem;
-        margin:0 auto;
+
+    .e-charts {
+        width: 16rem;
+        margin: 0 auto;
     }
 </style>
