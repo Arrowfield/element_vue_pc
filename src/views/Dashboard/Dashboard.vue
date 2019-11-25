@@ -6,8 +6,6 @@
         <fl-radio v-model="radio" lable="1">备选项1</fl-radio>
         <fl-radio v-model="radio" lable="2">备选项2</fl-radio>
         <div class="e-charts">
-            <ve-line :data="chartData" :settings="charSet" :extend="charExtend"></ve-line>
-<!--            <ve-line :data="chartData" :settings="charSet" :extend="charExtend"></ve-line>-->
 <!--            <ve-line :data="chartData" :settings="charSet" :extend="charExtend"></ve-line>-->
         </div>
     </div>
