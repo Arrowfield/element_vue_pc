@@ -14,14 +14,15 @@
 <script>
     import {setToken} from '../../utils/dataStorage'
     import {login as loginApi} from '../../api/'
+    import {mapState} from 'vuex'
     export default {
-        data() {
-            return {
-                avatarSrc: "",
-                user: "admin",
-                password: "123456",
-                checked: false
-            }
+        computed:{
+            ...mapState({
+                avatarSrc : state => state.login.avatarScr,
+                user:state => state.login.user,
+                password: state => state.login.password,
+                checked: state => state.login.checked
+            })
         },
         methods: {
             async login() {
