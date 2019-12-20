@@ -28,10 +28,10 @@
         },
         methods: {
             drawStatic(el){
-                let pen = el.getContext('2d'),image = new Image()
+                let ctx = el.getContext('2d'),image = new Image()
 								image.src = require('../../assets/img/background.jpg')
-								image.onload = ()=>{ pen.drawImage(image,0,0,800,600)}
-                makeActinian()
+								image.onload = ()=>{ ctx.drawImage(image,0,0,800,600)}
+                makeActinian(ctx)
 						}
         },
 
