@@ -17,7 +17,6 @@ export function getToken() {
 }
 
 export function setToken(token) {
-  
   return Storage.session.set(Config.tokenKey, token)
 }
 
