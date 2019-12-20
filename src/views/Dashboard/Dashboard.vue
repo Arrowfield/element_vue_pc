@@ -14,11 +14,12 @@
             return {
                 deltaTime:0,
                 lastTime:0,
-                ctx:null
+                ctx:null,
+								action:null
 						}
         },
         mounted() {
-						this.drawStatic(this.$el.children[1])
+						this.drawStatic(this.$el.children[0],this.$el.children[1])
         },
         name: "Dashboard",
         computed: {
@@ -30,11 +31,12 @@
         watch: {
         },
         methods: {
-            drawStatic(el){
+            drawStatic(act,sta){
                 let image = new Image()
-                this.ctx = el.getContext('2d')
+                this.act = act.getContext('2d')
+								this.sta = sta.getContext('2d')
 								image.src = require('../../assets/img/background.jpg')
-								image.onload = ()=>{ this.ctx.drawImage(image,0,0,800,600)}
+								image.onload = ()=>{ this.sta.drawImage(image,0,0,800,600)}
 								this.draw()
 
 						},
@@ -43,7 +45,8 @@
 								let now = new Date()
 								this.deltaTime = now - this.lastTime
 								this.lastTime = now
-                makeActinian(this.ctx,this.deltaTime)
+                makeActinian(this.act,this.deltaTime)
+                //this.act.clearRect(0, 0, this.width, this.height)
 						}
         },
 
@@ -62,7 +65,7 @@
 			top: 0;
 			left: 0;
 			&:nth-child(1){
-				background: transparent;
+				//background: transparent;
 			}
 		}
 	}
