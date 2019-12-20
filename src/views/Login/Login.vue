@@ -71,4 +71,4 @@
     }
 </script>
 
-<style src="./Login.scss" lang="scss" scoped></style>
+<style src="./login.scss" lang="scss" scoped></style>

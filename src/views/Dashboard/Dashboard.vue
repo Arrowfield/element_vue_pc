@@ -1,14 +1,5 @@
 <template>
-    <div>
-        <!-- <button @click="handleFilter" style="margin-top:10px">操作过滤</button>-->
-        <!-- <DataSvg/> -->
-        <div style="height:50px"></div>
-        <fl-radio v-model="radio" lable="1">备选项1</fl-radio>
-        <fl-radio v-model="radio" lable="2">备选项2</fl-radio>
-        <div class="e-charts">
-<!--            <ve-line :data="chartData" :settings="charSet" :extend="charExtend"></ve-line>-->
-        </div>
-    </div>
+    <div></div>
 </template>
 
 <script>
@@ -156,7 +147,6 @@
         },
         methods: {
             handleFocus(type) {
-                //console.log(e.target)
                 this[type] = ""
             },
             reduceItem(arr) {
