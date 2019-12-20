@@ -12,6 +12,9 @@
     export default {
         data() {
             return {
+                deltaTime:0,
+                lastTime:0,
+                ctx:null
 						}
         },
         mounted() {
@@ -28,10 +31,19 @@
         },
         methods: {
             drawStatic(el){
-                let ctx = el.getContext('2d'),image = new Image()
+                let image = new Image()
+                this.ctx = el.getContext('2d')
 								image.src = require('../../assets/img/background.jpg')
-								image.onload = ()=>{ ctx.drawImage(image,0,0,800,600)}
-                makeActinian(ctx)
+								image.onload = ()=>{ this.ctx.drawImage(image,0,0,800,600)}
+								this.draw()
+
+						},
+            draw(){
+                requestAnimationFrame(this.draw)
+								let now = new Date()
+								this.deltaTime = now - this.lastTime
+								this.lastTime = now
+                makeActinian(this.ctx,this.deltaTime)
 						}
         },
 
