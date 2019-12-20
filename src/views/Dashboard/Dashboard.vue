@@ -1,128 +1,24 @@
 <template>
-    <div></div>
+	<canvas :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
 </template>
 
 <script>
-
-    import data from './table_data_tbody.json'
-    //import {filterArray} from '@/utils/index'
-    import moment from 'moment'
-    import DataSvg from '@/components/data-svg/Index'
-    import Bus from '@/components/my-canvas/Bus.js'
+    import {mapState} from 'vuex'
 
     export default {
-        name: "Dashboard",
-        components: {DataSvg},
         data() {
-            return {
-                options: {},
-                cases: [],
-                caseName: "",
-                projects: [],
-                projectName: "",
-                tasks: [],
-                taskName: "",
-                creators: [],
-                creatorName: "",
-                selected: {},
-                radio: '1',
-                chartData: {
-                    columns: ['date', 'reportTime', 'reportCount'],
-                    rows: [
-                        {'date': '00:00', 'reportTime': 32371, 'reportCount': 19810},
-                        {'date': '01:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '02:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '03:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '04:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '05:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '06:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '07:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '08:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '09:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '10:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '11:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '12:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '13:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '14:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '15:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '16:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '17:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '18:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '19:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '20:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '21:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '22:00', 'reportTime': 12328, 'reportCount': 4398},
-                        {'date': '23:00', 'reportTime': 12328, 'reportCount': 4398},
-                    ]
-                },
-                charSet: {
-                    labelMap: {
-                        reportTime: "上传报告时长",
-                        reportCount: "上传报告次数",
-                        caseCount: "上传用例次数",
-                        caseTime: "上传用例时长",
-                        time: "时长",
-                        count: "数量"
-                    },
-                    axisSite: {right: ['reportTime']},
-                    yAxisType: [''],
-                    yAxisName: ['数量', '时长'],
+            return {}
+        },
+        mounted() {
 
-                },//维度 指标
-                charExtend: {
-                    "grid": {
-                        show: false,
-                        left: 120,
-                        right: 120
-                    },
-                    'yAxis':{
-                        nameLocation:"middle",
-                        nameGap:"50",
-                        nameRotate:90,
-                        splitLine:false,
-                        axisTick:{
-                            show:true
-                        },
-                        axisLine:{
-                            show:true
-                        },
-                        nameTextStyle:{
-                            padding:10,
-                            lineHeight:20,
-                            height:40
-                        },
-                    },
-                    'xAxis':{
-                        axisLine:{
-                            show:true
-                        },
-                        axisTick:{
-                            show:true
-                        },
-                        boundaryGap : false,
-                        splitLine:false
-                    },
-                    'legend':{
-                        bottom:20
-                    },
-                    'series':[
-                        {
-                            type:"line",
-                            name:"点击量"
-                        }
-                    ],
-                    //所有系列的元素
-                    color:['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']
-                }
-            }
         },
-        //计算属性【处理基本的逻辑，依赖缓存】
+        name: "Dashboard",
         computed: {
-            name() {
-                return Bus.$data.name
-            }
+            ...mapState({
+                width: state => state.dashboard.canvasConfig.width,
+                height: state => state.dashboard.canvasConfig.height
+            })
         },
-        //监听属性【data中已经存在】//执行异步操作
         watch: {
             caseName(val) {
                 if (val) {
@@ -164,33 +60,32 @@
 
             }
         },
-        mounted() {
-        }
+
     }
 </script>
 
 <style scoped lang="scss">
-    .fl-select {
-        display: inline-block;
-        margin-left: 30px;
-        padding: 10px 0;
+	.fl-select {
+		display: inline-block;
+		margin-left: 30px;
+		padding: 10px 0;
 
-        label {
-            margin-right: 10px;
-        }
+		label {
+			margin-right: 10px;
+		}
 
-        select {
-            width: 180px;
-        }
-    }
+		select {
+			width: 180px;
+		}
+	}
 
-    .data-svg {
-        width: 16rem;
-        margin: 1rem auto 0;
-    }
+	.data-svg {
+		width: 16rem;
+		margin: 1rem auto 0;
+	}
 
-    .e-charts {
-        width: 16rem;
-        margin: 0 auto;
-    }
+	.e-charts {
+		width: 16rem;
+		margin: 0 auto;
+	}
 </style>

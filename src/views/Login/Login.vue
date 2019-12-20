@@ -33,9 +33,9 @@
                 this.$router.push("/home")
                 this.loginLoading = false
             },
-            async handleClick() {
+            handleClick() {
                 if (this.user === "admin" && this.password === "123456") {
-                    const {href} = this.$router.resolve({name: "dashboard"})
+                    const { href } = this.$router.resolve({name: "dashboard"})
                     window.open(href, "_blank")
                 }
             }
