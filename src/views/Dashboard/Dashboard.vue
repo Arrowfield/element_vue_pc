@@ -36,17 +36,18 @@
                 this.act = act.getContext('2d')
 								this.sta = sta.getContext('2d')
 								image.src = require('../../assets/img/background.jpg')
-								image.onload = ()=>{ this.sta.drawImage(image,0,0,800,600)}
+								image.onload = ()=>{ this.act.drawImage(image,0,0,800,600)}
 								this.draw()
 
 						},
             draw(){
                 requestAnimationFrame(this.draw)
+                this.sta.clearRect(0, 0, this.width, this.height)
 								let now = new Date()
 								this.deltaTime = now - this.lastTime
 								this.lastTime = now
-                makeActinian(this.act,this.deltaTime)
-                //this.act.clearRect(0, 0, this.width, this.height)
+                makeActinian(this.sta,this.deltaTime)
+
 						}
         },
 
