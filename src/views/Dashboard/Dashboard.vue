@@ -6,8 +6,9 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-		import {IMAGE_URL_BG} from '@/store/modules/dashboard/constants'
+    import { mapState } from 'vuex'
+		import { IMAGE_URL_BG } from '@/store/modules/dashboard/constants'
+		import { makeActinian } from '@/store/modules/dashboard/utils/draw'
     export default {
         data() {
             return {
@@ -29,7 +30,8 @@
             drawStatic(el){
                 let pen = el.getContext('2d'),image = new Image()
 								image.src = require('../../assets/img/background.jpg')
-								image.onload = ()=>{ pen.drawImage(image,0,0,800,600) }
+								image.onload = ()=>{ pen.drawImage(image,0,0,800,600)}
+                makeActinian()
 						}
         },
 
