@@ -1,16 +1,20 @@
 <template>
-	<canvas :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
+	<div class="canvas-parent">
+		<canvas id="action" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
+		<canvas id="static" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
+	</div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
-
+		import {IMAGE_URL_BG} from '@/store/modules/dashboard/constants'
     export default {
         data() {
-            return {}
+            return {
+						}
         },
         mounted() {
-
+						this.drawStatic(this.$el.children[1])
         },
         name: "Dashboard",
         computed: {
@@ -20,72 +24,32 @@
             })
         },
         watch: {
-            caseName(val) {
-                if (val) {
-                    this.handleFilter({caseName: val})
-                }
-            },
-            projectName(val) {
-                if (val) {
-                    this.handleFilter({projectName: val})
-                }
-            },
-            taskName(val) {
-                if (val) {
-                    this.handleFilter({taskName: val})
-                }
-            },
-            creatorName(val) {
-                if (val) {
-                    this.handleFilter({creatorName: val})
-                }
-            }
         },
         methods: {
-            handleFocus(type) {
-                this[type] = ""
-            },
-            reduceItem(arr) {
-                let obj = {};
-                arr = arr.reduce(function (item, next) {
-                    obj[next.key] ? '' : obj[next.key] = item.push(next);
-                    return item;
-                }, []);
-            },
-            handleFilter(obj) {
-                this.selected = Object.assign(obj, this.selected)
-                this.options = filterArray(this.options, this.array, this.selected)
-            },
-            handleClick() {
-
-            }
+            drawStatic(el){
+                let pen = el.getContext('2d'),image = new Image()
+								image.src = require('../../assets/img/background.jpg')
+								image.onload = ()=>{ pen.drawImage(image,0,0,800,600) }
+						}
         },
 
     }
 </script>
 
 <style scoped lang="scss">
-	.fl-select {
-		display: inline-block;
-		margin-left: 30px;
-		padding: 10px 0;
-
-		label {
-			margin-right: 10px;
+	.canvas-parent {
+		position: relative;
+		width: 800px;
+		height: 600px;
+		display: block;
+		margin: 10px auto;
+		canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			&:nth-child(1){
+				background: transparent;
+			}
 		}
-
-		select {
-			width: 180px;
-		}
-	}
-
-	.data-svg {
-		width: 16rem;
-		margin: 1rem auto 0;
-	}
-
-	.e-charts {
-		width: 16rem;
-		margin: 0 auto;
 	}
 </style>

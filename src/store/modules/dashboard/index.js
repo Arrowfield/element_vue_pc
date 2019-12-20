@@ -1,7 +1,7 @@
 const state = {
     canvasConfig:{
-        width:0,
-        height:0,
+        width:800,
+        height:600,
     }
 }
 
