@@ -1,7 +1,9 @@
 //构造海葵数据
 import Ant from './Ant'
 
-let ant = null,deltaTime = 0,lastTime = 0
+let ant = null,
+    deltaTime = 0,
+    lastTime = 0
 /*
 * canvas的初始化
 * @parmas act ，sta
@@ -18,8 +20,8 @@ export const canvasLoop = function(act,sta){
     let now = new Date()
     deltaTime = now - lastTime
     lastTime = now
-    //console.log(act)
     ant.draw(act,deltaTime)
+    drawBackground(sta)
 }
 /*
 * 绘制小鱼的妈妈
@@ -27,5 +29,13 @@ export const canvasLoop = function(act,sta){
 * */
 export const makeMom = function (ctx,) {
 
+}
+
+function drawBackground(ctx){
+    let image = new Image()
+    image.src = require("../../../../assets/img/background.jpg")
+    image.onload = ()=>{
+        ctx.drawImage(image,0,0,ctx.canvas.width,ctx.canvas.height)
+    }
 }
 

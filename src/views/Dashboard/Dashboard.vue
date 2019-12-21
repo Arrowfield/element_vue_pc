@@ -1,7 +1,7 @@
 <template>
 	<div class="canvas-parent">
-		<canvas id="action" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
 		<canvas id="static" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
+		<canvas id="action" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
 	</div>
 </template>
 
@@ -19,7 +19,7 @@
 						}
         },
         mounted() {
-						this.init(this.$el.children[0],this.$el.children[1])
+						this.init(this.$el.children[1],this.$el.children[0])
         },
         name: "Dashboard",
         computed: {
@@ -62,8 +62,8 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			&:nth-child(1){
-				//background: transparent;
+			&:nth-child(2){
+				//background: red;
 			}
 		}
 	}
