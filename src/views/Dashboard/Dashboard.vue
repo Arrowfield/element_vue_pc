@@ -8,7 +8,7 @@
 <script>
     import { mapState } from 'vuex'
 		import { IMAGE_URL_BG } from '@/store/modules/dashboard/constants'
-		import { makeActinian } from '@/store/modules/dashboard/utils/draw'
+		import { canvasInit,canvasLoop } from '@/store/modules/dashboard/utils/draw'
     export default {
         data() {
             return {
@@ -19,7 +19,7 @@
 						}
         },
         mounted() {
-						this.drawStatic(this.$el.children[0],this.$el.children[1])
+						this.init(this.$el.children[0],this.$el.children[1])
         },
         name: "Dashboard",
         computed: {
@@ -31,14 +31,11 @@
         watch: {
         },
         methods: {
-            drawStatic(act,sta){
-                let image = new Image()
+            init(act,sta){
                 this.act = act.getContext('2d')
 								this.sta = sta.getContext('2d')
-								image.src = require('../../assets/img/background.jpg')
-								image.onload = ()=>{ this.act.drawImage(image,0,0,800,600)}
-								this.draw()
-
+                canvasInit(this.act,this.sta)
+                canvasLoop(this.act,this.sta)
 						},
             draw(){
                 requestAnimationFrame(this.draw)
@@ -46,7 +43,7 @@
 								let now = new Date()
 								this.deltaTime = now - this.lastTime
 								this.lastTime = now
-                makeActinian(this.sta,this.deltaTime)
+                //makeActinian(this.sta,this.deltaTime)
 
 						}
         },
