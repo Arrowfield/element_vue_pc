@@ -3,7 +3,7 @@ import Ant from './Ant'
 import Mom from './Mom'
 let ant = null,mom = null,
     deltaTime = 0,
-    lastTime = 0
+    lastTime = 0,mx = 0,my = 0
 /*
 * canvas的初始化
 * @parmas act ，sta
@@ -14,8 +14,11 @@ export const canvasInit = function (act,sta) { //动态 静态的绘制
     mom = new Mom()
     mom.init(act.canvas)
     drawBackground(sta)
-    console.log(mom)
 }
+/*
+* canvas重绘
+* @params
+* */
 
 export const canvasLoop = function(act,sta){
     //清除画布
@@ -25,6 +28,7 @@ export const canvasLoop = function(act,sta){
     deltaTime = now - lastTime
     lastTime = now
     ant.draw(act,deltaTime)
+    mom.draw(act,mx,my,deltaTime)
 }
 /*
 * 绘制小鱼的妈妈
@@ -40,5 +44,9 @@ function drawBackground(ctx){
     image.onload = ()=>{
         ctx.drawImage(image,0,0,ctx.canvas.width,ctx.canvas.height)
     }
+}
+
+export const getArea = function(x,y){
+    mx = x,my = y
 }
 
