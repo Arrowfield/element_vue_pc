@@ -1,7 +1,7 @@
 //构造海葵数据
 import Ant from './Ant'
-
-let ant = null,
+import Mom from './Mom'
+let ant = null,mom = null,
     deltaTime = 0,
     lastTime = 0
 /*
@@ -11,6 +11,10 @@ let ant = null,
 export const canvasInit = function (act,sta) { //动态 静态的绘制
     ant = new Ant()
     ant.init(act.canvas.height)
+    mom = new Mom()
+    mom.init(act.canvas)
+    drawBackground(sta)
+    console.log(mom)
 }
 
 export const canvasLoop = function(act,sta){
@@ -21,7 +25,6 @@ export const canvasLoop = function(act,sta){
     deltaTime = now - lastTime
     lastTime = now
     ant.draw(act,deltaTime)
-    drawBackground(sta)
 }
 /*
 * 绘制小鱼的妈妈
@@ -33,7 +36,7 @@ export const makeMom = function (ctx,) {
 
 function drawBackground(ctx){
     let image = new Image()
-    image.src = require("../../../../assets/img/background.jpg")
+    image.src = require("@/assets/img/background.jpg")
     image.onload = ()=>{
         ctx.drawImage(image,0,0,ctx.canvas.width,ctx.canvas.height)
     }

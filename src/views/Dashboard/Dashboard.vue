@@ -1,7 +1,7 @@
 <template>
 	<div class="canvas-parent">
 		<canvas id="static" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
-		<canvas id="action" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
+		<canvas id="action" :width="width" :height="height" @mousemove="leapCanvas">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
 	</div>
 </template>
 
@@ -15,7 +15,9 @@
                 deltaTime:0,
                 lastTime:0,
                 ctx:null,
-								action:null
+								action:null,
+                mx:0,
+								my:0
 						}
         },
         mounted() {
@@ -43,8 +45,14 @@
 								let now = new Date()
 								this.deltaTime = now - this.lastTime
 								this.lastTime = now
-                //makeActinian(this.sta,this.deltaTime)
-
+						},
+            leapCanvas(e){
+                if(e.offsetX || e.layerX){
+                    this.mx = e.offsetX === undefined ? e.layerX : e.offsetX;
+                }
+                if(e.offsetY || e.layerY){
+                    this.my = e.offsetY === undefined ? e.layerY : e.offsetY;
+                }
 						}
         },
 
