@@ -20,8 +20,9 @@ VUE_APP_URL=http://127.0.0.1:5000
 + 3.public 放置主入口文件index.html 部分资源无法通过import/require导入，需要放置在该目录下如icon、iframe中的src资源
 + 4.src 所有的vue相关的目录都在此处
 + 5.assets 放置些静态资源，如图片，图片命名xx_xx.png
-+ 6.组件的命名：全驼峰命名
-+ 7.类的命名：全驼峰命名
++ 6.组件的命名：Pascal 命名法
++ 7.类的命名：Pascal 命名法
 + 8.方法以及普通变量的命名：半驼峰命名法
 + 9.样式类的命名：xx-xx
 + 10.普通文件的命名：xx或者xx-xx
++ 模块命名还是使用Camel 命名法
