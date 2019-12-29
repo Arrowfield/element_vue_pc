@@ -1,52 +1,50 @@
 //构造海葵数据
 import Ant from './Ant'
 import Mom from './Mom'
-let ant = null,mom = null,
-    deltaTime = 0,
-    lastTime = 0,mx = 0,my = 0
+let ant = null, mom = null, deltaTime = 0, lastTime = 0, mx = 0, my = 0
 /*
 * canvas的初始化
 * @parmas act ，sta
 * */
-export const canvasInit = function (act,sta) { //动态 静态的绘制
+export const canvasInit = function (act, sta) { //动态 静态的绘制
+    drawBackground(sta)
     ant = new Ant()
     ant.init(act.canvas.height)
     mom = new Mom()
     mom.init(act.canvas)
-    drawBackground(sta)
 }
 /*
 * canvas重绘
 * @params
 * */
 
-export const canvasLoop = function(act,sta){
+export const canvasLoop = function (act, sta) {
     //清除画布
-    act.clearRect(0,0,act.canvas.width,act.canvas.height)
-    requestAnimationFrame(()=>{canvasLoop(act,sta)})
+    act.clearRect(0, 0, act.canvas.width, act.canvas.height)
+    requestAnimationFrame(() => {
+        canvasLoop(act, sta)
+    })
     let now = new Date()
     deltaTime = now - lastTime
     lastTime = now
-    ant.draw(act,deltaTime)
-    mom.draw(act,mx,my,deltaTime)
+    ant.draw(act, deltaTime)
+    mom.draw(act, mx, my, deltaTime)
 }
 /*
-* 绘制小鱼的妈妈
-* @params ctx
+* 获取移动的坐标
+* @params x,y
 * */
-export const makeMom = function (ctx,) {
-
+export const getArea = function (x, y) {
+    mx = x, my = y
 }
 
-function drawBackground(ctx){
+function drawBackground(ctx) {
     let image = new Image()
     image.src = require("@/assets/img/background.jpg")
-    image.onload = ()=>{
-        ctx.drawImage(image,0,0,ctx.canvas.width,ctx.canvas.height)
+    image.onload = () => {
+        ctx.drawImage(image, 0, 0, ctx.canvas.width, ctx.canvas.height)
     }
 }
 
-export const getArea = function(x,y){
-    mx = x,my = y
-}
+
 
