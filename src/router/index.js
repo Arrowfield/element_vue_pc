@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Config from "@/config/app.js"
-import {isLogin} from "@/utils/dataStorage"
 
-const LoginView = () => import("@/views/login/Login.vue")
-const TestDemo = () => import("@/views/TestDemo.vue")
-const Goods = () => import("@/views/Goods.vue")
-const DashboardView = () => import('@/views/dashboard/Dashboard.vue')
+
+const LoginView = () => import("@/views/Login.vue")
+const DashboardView = () => import('@/views/Dashboard.vue')
 
 Vue.use(Router)
 

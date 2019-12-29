@@ -14,11 +14,8 @@
 
 <script>
     import {
-        setToken
-    } from '../../utils/dataStorage'
-    import {
         login as loginApi
-    } from '../../api/'
+    } from '@/api/'
     import {
         mapState
     } from 'vuex'
@@ -57,4 +54,38 @@
     }
 </script>
 
-<style src="./login.scss" lang="scss" scoped></style>
+<style lang="scss" scoped>
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: url("../assets/images/loginbg.jpg") no-repeat;
+  background-size:cover;
+  .login-panel{
+    max-width: 400px;
+    background:rgba(255,255,255, 0.2);
+    border:1px solid #e3e3e3;
+    padding:20px;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .login-notice{
+    text-align: center;
+    color:white;
+  }
+  video{
+    position: fixed;
+    top:50%;
+    left:50%;
+    width:auto;
+    height:auto;
+    min-width: 100%;
+    min-height:100%;
+    transform: translate(-50%,-50%);
+    z-index: -100;
+  }
+}
+</style>

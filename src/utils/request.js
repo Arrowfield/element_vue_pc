@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import Config from '../config/app.js'
 import {Message} from 'element-ui';
-import {getToken, removeToken} from '../utils/dataStorage.js'
+
 
 const config = {
   baseURL: Config.apiUrl + '/' + Config.apiPrefix,
