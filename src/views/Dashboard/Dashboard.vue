@@ -14,7 +14,7 @@
     data() {
       return {
         deltaTime: 0,
-        lastTime: 0,
+				lastTime: 0,
         ctx: null,
         action: null,
         mx: 0,

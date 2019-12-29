@@ -1,8 +1,8 @@
 <template>
-	<!--加减商品-->
-	<div class="cartControl-wrapper">
+  <!--加减商品-->
+  <div class="cartControl-wrapper">
 
-		<!--button @click="handleClick">加入购物车</button>
+    <!--button @click="handleClick">加入购物车</button>
 
 		<div class="compare">加入对比</div>
 
@@ -29,7 +29,7 @@
 				</table>
 		</transition-->
 
-		<!--div class="drop">
+    <!--div class="drop">
 				<div v-for="(item) in items" class="drop-item" draggable
 						 v-on:dragstart="dragStart"
 						 v-on:drag="drag"
@@ -69,19 +69,19 @@
 				</div>
 		</div-->
 
-		<!--        <div id="move" class="move-item"></div>-->
+    <!--        <div id="move" class="move-item"></div>-->
 
-		<!--        <div-->
-		<!--             @dragover="handleImageOver"-->
-		<!--             @dragenter="handleImage"-->
-		<!--             @drop="handleImageDrop"-->
-		<!--             @click="handleUpload" class="dragImage">+-->
-		<!--        </div>-->
-		<!--        <input hidden type="file" name="file" @change="handleChange" accept="image/*">-->
-		<!--        <div class="image-parent">-->
-		<!--            <img src="" alt="" id="showImage">-->
-		<!--        </div>-->
-	</div>
+    <!--        <div-->
+    <!--             @dragover="handleImageOver"-->
+    <!--             @dragenter="handleImage"-->
+    <!--             @drop="handleImageDrop"-->
+    <!--             @click="handleUpload" class="dragImage">+-->
+    <!--        </div>-->
+    <!--        <input hidden type="file" name="file" @change="handleChange" accept="image/*">-->
+    <!--        <div class="image-parent">-->
+    <!--            <img src="" alt="" id="showImage">-->
+    <!--        </div>-->
+  </div>
 </template>
 <script>
   import CartControl from './CartControl'
@@ -94,7 +94,15 @@
         flag: false,
         dom: "",
         domElse: "",
-        items: [{num: 1}, {num: 2}, {num: 3}, {num: 4}]
+        items: [{
+          num: 1
+        }, {
+          num: 2
+        }, {
+          num: 3
+        }, {
+          num: 4
+        }]
       }
     },
     components: {},
@@ -246,7 +254,7 @@
 
         let type = ev.type
         switch (type) {
-          case 'mousedown' :
+          case 'mousedown':
             var scroll = _that.getScrollOffsets()
             toggle = true
             //获取鼠标当前位置
@@ -255,11 +263,13 @@
             offsetX = dom.offsetLeft, offsetY = dom.offsetTop
 
             break;
-          case "mousemove" :
+          case "mousemove":
             if (toggle) {
               var scroll = _that.getScrollOffsets()
-              var x1 = ev.clientX + scroll.x, y1 = ev.clientY + scroll.x
-              var nowX = offsetX + x1 - mouseX, nowY = offsetY + y1 - mouseY
+              var x1 = ev.clientX + scroll.x,
+                y1 = ev.clientY + scroll.x
+              var nowX = offsetX + x1 - mouseX,
+                nowY = offsetY + y1 - mouseY
 
               dom.style.left = nowX + 'px'
               dom.style.top = nowY + 'px'
@@ -278,83 +288,84 @@
   }
 </script>
 <style lang="scss" scoped>
-	.ball {
-		width: 15px;
-		height: 15px;
-		border-radius: 50%;
-		background: red;
-	}
+  .ball {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: red;
+  }
 
-	table {
-		table-layout: fixed;
-		width: 600px;
-		position: fixed;
-		top: 400px;
-		right: 500px;
+  table {
+    table-layout: fixed;
+    width: 600px;
+    position: fixed;
+    top: 400px;
+    right: 500px;
 
-		th, td {
-			padding: 10px 0;
-			text-align: center;
-			border-bottom: 1px solid #ddd;
-		}
-	}
+    th,
+    td {
+      padding: 10px 0;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+  }
 
-	.compare {
-		width: 120px;
-		height: 30px;
-		border-radius: 30px;
-		text-align: center;
-		line-height: 30px;
-		background: #3c8dbc;
-		position: fixed;
-		top: 0;
-		right: 120px;
-		color: white;
-	}
+  .compare {
+    width: 120px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: #3c8dbc;
+    position: fixed;
+    top: 0;
+    right: 120px;
+    color: white;
+  }
 
-	.drop {
-		width: 1200px;
-		margin: 50px auto;
-		display: flex;
+  .drop {
+    width: 1200px;
+    margin: 50px auto;
+    display: flex;
 
-		.drop-item {
-			width: 25%;
-			border: 1px solid red;
-			/*border-right: 0;*/
-			height: 300px;
-			line-height: 300px;
-			font-size: 80px;
-			text-align: center;
+    .drop-item {
+      width: 25%;
+      border: 1px solid red;
+      /*border-right: 0;*/
+      height: 300px;
+      line-height: 300px;
+      font-size: 80px;
+      text-align: center;
 
-			&:last-child {
-				/*border-right: 1px solid #ddd;*/
-			}
-		}
-	}
+      &:last-child {
+        /*border-right: 1px solid #ddd;*/
+      }
+    }
+  }
 
-	.move-item {
-		width: 200px;
-		height: 200px;
-		position: absolute;
-		top: 500px;
-		left: 500px;
-		background: bisque;
-		cursor: pointer;
-	}
+  .move-item {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 500px;
+    left: 500px;
+    background: bisque;
+    cursor: pointer;
+  }
 
-	.image-parent {
-		padding: 10px;
-	}
+  .image-parent {
+    padding: 10px;
+  }
 
-	.dragImage {
-		width: 120px;
-		height: 120px;
-		font-size: 50px;
-		color: #333;
-		line-height: 120px;
-		text-align: center;
-		border: 1px dotted #ddd;
-		margin: 50px;
-		cursor: pointer;
-	}
+  .dragImage {
+    width: 120px;
+    height: 120px;
+    font-size: 50px;
+    color: #333;
+    line-height: 120px;
+    text-align: center;
+    border: 1px dotted #ddd;
+    margin: 50px;
+    cursor: pointer;
+  }
 </style>

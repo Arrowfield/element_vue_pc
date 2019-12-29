@@ -41,7 +41,7 @@
                         this.dropBalls.push(ball) // 将这个小球放入到dropBalls数组中
                         return
                     }
-                    
+
                 }
                 console.log(this.dropBalls)
 
@@ -55,7 +55,7 @@
                     let ball = this.balls[count]
                     if (ball.show) {
                         let rect = ball.el
-                        .getBoundingClientRect() // getBoundingClientRect()获取小球相对于视窗的位置，屏幕左上角坐标为0，0
+                            .getBoundingClientRect() // getBoundingClientRect()获取小球相对于视窗的位置，屏幕左上角坐标为0，0
                         let x = rect.left - 32 // 小球x方向位移= 小球距离屏幕左侧的距离-外层盒子距离水平的距离
                         let y = -(window.innerHeight - rect.top - 22) // 负数，因为是从左上角向下
                         el.style.display = ''
@@ -95,9 +95,9 @@
 </script>
 
 <style>
-    .ball{
-        width:20px;
-        height:20px;
+    .ball {
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
         background: blue;
     }
