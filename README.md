@@ -1,43 +1,23 @@
-
 ## 目录结构介绍 
-
-	|-- dist                             // 打包目录
-	|-- src                              // 源码目录
-	|   |-- api                          // Api接口目录
-	|       |-- user.js           	     //用户登录、头像上传、密码修改等用户相关api
-	|       |-- xxxx.js           	     // 添加自己的api
-	|   |-- assets                       // 静态资源，你的style(主题自定义等)、图片、字体等。
-	|   |-- components                   // 全局组件，其他页面组件请归类到所在目录
-	|       |-- HelpHint                 // 帮助组件
-	|       |-- ScrollPane               // 滚动组件，鼠标滚动左右移动容器，TabBar上有用
-	|       |-- ToolBar                  // 每个页面的工具栏，可以在这里做权限控制，添加权限之类的
-	|   |-- config                       // 应用的配置文件
-	|       |-- app.js                   // 应用的配置，名字，api请求的url，版本号等。在main.js挂载全部配置到vue原型上，Vue.prototype.$Config = Config
-	|       |-- localKey.js              // 性别对应的key、应用的名字、文章的状态等，可以具体到某个页面的配置，统一管理。
-	|       |-- xxx.js                   // 其他配置文件，建议分类清楚，如post.js用于文章相关配置
-	|   |-- utils                        // 工具函数和工具命令行之类的。
-	|   |-- menu                         // 后台菜单配置，包括使用的图标等，里面也可以做权限控制
-	|   |-- router                       // vue-route,当项目比较大，路由较多也建议分为多个文件，里面有例子。
-	|   |-- store                        // vuex,数据仓库,model之类的
-	|   |-- views                        // 页面视图。里面文件夹建议使用大驼峰,因为这样比较好看 - -
-	|       |-- Layout                   // 主页面布局视图
-	|       |-- Home                     // 后台主页
-	|       |-- xxxx                     // 不一一介绍了，自己看吧
-	|   |-- App.vue                      // 页面入口文件
-	|   |-- main.js                      // 程序入口文件，加载各种公共组件
-	|-- .gitignore                       // 忽略的文件
-	|-- package.json                     // 项目及工具的依赖配置文件
-	|-- vue.config.js                    // vue cli 配置
-	|-- README.md                        // 说明
-
 #### 项目总结
-
 + 1、Vue的版本使用的2.6.6,element-ui版本2.10,vue-cli的版本3.8
 + 2、数据可视化
 + 3、使用.env.local
 ```
-UI_BASE_URL=dev.admin.com
-# SERVER_BASE_URL=http://127.0.0.1:5000
-# dev product
-VUE_APP_URL=http://127.0.0.1:5000
+  UI_BASE_URL=dev.admin.com
+  # SERVER_BASE_URL=http://127.0.0.1:5000
+  # dev product
+  VUE_APP_URL=http://127.0.0.1:5000
 ```
+#### 描述下自己的文件目录结构以及文件命令风格
++ 1.idea 打开webstorm配置文件
++ 2.node_modules 项目的依赖包 -save -save-dev
++ 3.public 放置主入口文件index.html 部分资源无法通过import/require导入，需要放置在该目录下如icon、iframe中的src资源
++ 4.src 所有的vue相关的目录都在此处
++ 5.assets 放置些静态资源，如图片，图片命名xx_xx.png
++ 6.组件的命名：Pascal 命名法
++ 7.类的命名：Pascal 命名法
++ 8.方法以及普通变量的命名：半驼峰命名法
++ 9.样式类的命名：xx-xx
++ 10.普通文件的命名：xx或者xx-xx
++ 模块命名还是使用Camel 命名法
