@@ -3,7 +3,7 @@ import Chess from './Chress.js'
 import LineItem from "@/components/my-canvas/src/draw/LineItem";
 import HoverLine from "@/components/my-canvas/src/draw/HoverLine.js";
 import Bus from '@/components/my-canvas/Bus'
-import { handleEvent } from "@/libs/HandleEvent";
+import { handleEvent } from "@/libs/handleEvent";
 export default {
     data() {
         return {

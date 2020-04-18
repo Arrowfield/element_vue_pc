@@ -13,6 +13,6 @@ module.exports = {
     },
     devServer:{
         host:process.env.UI_BASE_URL,
-        port:"80"
+        port:"81"
     }
 }
