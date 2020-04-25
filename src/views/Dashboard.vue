@@ -1,5 +1,10 @@
 <template>
 	<div class="canvas-parent">
+	
+	  <a href="mailto:768449566@qq.com">123</a>
+    <div class="demo-3d"></div>
+	
+	
 		<canvas id="static" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
 		<canvas id="action" :width="width" :height="height" @mousemove="leapCanvas">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
 	</div>
@@ -63,6 +68,17 @@
 </script>
 
 <style scoped lang="scss">
+
+    .demo-3d {
+      margin-top:100px;
+      margin-left:100px;
+      width: 320px;
+      height: 180px;
+      background: gray;
+      transform: rotate(-25deg) skew(-40deg,25deg) rotateY(37deg);
+    }
+
+
 	.canvas-parent {
 		position: relative;
 		width: 800px;

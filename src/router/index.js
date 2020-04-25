@@ -15,7 +15,10 @@ let RouteList = [
     {path: "**", redirect: "/login"}
 ]
 
-const router = new Router({routes: RouteList})
+const router = new Router({
+  mode:"history",
+  routes: RouteList
+})
 router.beforeEach((to, from, next) => {
     window.document.title = to.meta.title ? to.meta.title + '-' + Config.siteName : Config.siteName
     next()
