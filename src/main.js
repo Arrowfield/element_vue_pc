@@ -7,6 +7,12 @@ import App from './App.vue'
 //import VueKonva from 'vue-konva'
 //import VCharts from 'v-charts'
 //import VeLine from 'v-charts/lib/line.common'
+
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
 //导入自定义组件
 import Button from './components/button'
 import Avatar from './components/avatar'

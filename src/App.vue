@@ -27,10 +27,10 @@
   }
 
   body {
-    font-size: 13px;
+    // font-size: 13px;
     font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    color: #999;
+    // font-weight: 400;
+    // color: #999;
   }
 
   /*
@@ -46,24 +46,24 @@
   最小尺寸：1024 * 768
 */
   html {
-    font-size: 100px;
+    //font-size: 100px;
   }
 
   @media screen and (max-width:1700px) {
     html {
-      font-size: 83px
+      //font-size: 83px
     }
   }
 
   @media screen and (max-width:1400px) {
     html {
-      font-size: 73px
+      //font-size: 73px
     }
   }
 
   @media screen and (max-width:1200px) {
     html {
-      font-size: 60px
+      //font-size: 60px
     }
   }
 </style>

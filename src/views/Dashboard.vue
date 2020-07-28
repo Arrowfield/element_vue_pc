@@ -1,12 +1,10 @@
 <template>
-	<div class="canvas-parent">
-	
-	  <a href="mailto:768449566@qq.com">123</a>
+	<div>
+	  <!--a href="mailto:768449566@qq.com">123</a>
     <div class="demo-3d"></div>
-	
-	
 		<canvas id="static" :width="width" :height="height">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
-		<canvas id="action" :width="width" :height="height" @mousemove="leapCanvas">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas>
+		<canvas id="action" :width="width" :height="height" @mousemove="leapCanvas">你的浏览器版本过低，暂不支持canvas，请升级浏览器</canvas-->
+    <TestDemo/>  
 	</div>
 </template>
 
@@ -14,7 +12,7 @@
   import {mapState} from 'vuex'
   import {IMAGE_URL_BG} from '@/store/modules/dashboard/constants'
   import {canvasInit, canvasLoop, getArea} from '@/store/modules/dashboard/utils/draw'
-
+  import TestDemo from '@/components/test-demo/Index.vue'
   export default {
     data() {
       return {
@@ -26,8 +24,9 @@
         my: 0
       }
     },
+    components:{TestDemo},
     mounted() {
-      this.init(this.$el.children[1], this.$el.children[0])
+      //this.init(this.$el.children[1], this.$el.children[0])
     },
     name: "Dashboard",
     computed: {
