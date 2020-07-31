@@ -16,7 +16,7 @@ import App from './App.vue'
 //按需引入elementui
 
 import { Upload } from 'element-ui';
-
+// import '../theme/index.css'
 Vue.component(Upload.name, Upload);
 
 
