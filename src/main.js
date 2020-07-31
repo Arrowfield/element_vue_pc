@@ -8,10 +8,17 @@ import App from './App.vue'
 //import VCharts from 'v-charts'
 //import VeLine from 'v-charts/lib/line.common'
 
+//全局使用elementui
+// import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+// Vue.use(ElementUI);
 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
+//按需引入elementui
+
+import { Upload } from 'element-ui';
+
+Vue.component(Upload.name, Upload);
+
 
 //导入自定义组件
 import Button from './components/button'
